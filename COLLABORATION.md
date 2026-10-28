@@ -17,11 +17,13 @@ git switch -c feat/your-alias-topic
 ## 组员第一次运行
 
 1. 接受 private repo 邀请。
-2. 打开 [team_colab.ipynb](notebooks/team_colab.ipynb)。仓库发布后可用下面的 Open in Colab 入口；如私库直达需要授权，按 Colab 提示完成。若暂时打不开，从 GitHub 下载该 notebook，再在 Colab 上传打开也可。
+2. 打开 [team_colab.ipynb](notebooks/team_colab.ipynb)。当前工作版本可用下面固定 commit 的 Open in Colab 入口；如私库直达需要授权，按 Colab 提示完成。若暂时打不开，从 GitHub 下载该 notebook，再在 Colab 上传打开也可。
 3. 首先 Run all：自动校验并展开约 70 KB 的代码压缩快照、安装固定依赖、运行离线检查。runtime 里不需要 GitHub token、git clone 或 MCP 客户端。公开模型和数据仍通过原发布方下载。
 4. 要训练时切换 GPU，设置自己的 `MEMBER`、seed 与 `RUN_TRAINING=True`，再执行相应训练 cell。输出目录有随机标识，不覆盖已有 run。
 
-[Open in Colab](https://colab.research.google.com/github/Mommrie/COMP9501-GP/blob/main/notebooks/team_colab.ipynb)
+[Open in Colab：已发布的固定快照](https://colab.research.google.com/github/Mommrie/COMP9501-GP/blob/41e3f73ceb1fb4ee7b53fc492f2f0647d1400ef6/notebooks/team_colab.ipynb)
+
+团队工作流目前在 `feat/team-colab`；审阅合入 main 后可使用 [main 入口](https://colab.research.google.com/github/Mommrie/COMP9501-GP/blob/main/notebooks/team_colab.ipynb)。固定入口对应发布时的 notebook，不自动更新为后续代码。
 
 这个入口是源代码执行快照，不是一个已认证的 Git checkout。启动时显示快照 SHA；checkpoint 和结果记录使用同一 SHA 对齐。若源代码修改后没有重建 launcher，仓库检查会指出快照过期。
 
@@ -52,4 +54,4 @@ GitHub 邀请不自动授予 Drive 访问权限。当前不会自动挂载或写
 - [GitHub：邀请 collaborators](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/inviting-collaborators-to-a-personal-repository)：邀请需要对方接受。
 - [Colab FAQ](https://research.google.com/colaboratory/faq.html)：notebook 分享范围、私有 runtime、临时 VM 与账号权益。
 
-启动器、恢复与导出流程先进行本地验证；这不等同于所有组员的 GitHub/Google 授权、GPU 分配和网络环境均已验证。首次 remote push 仍取决于本机 Git 授权，checkpoint 的共享云位置也尚未设定。
+启动器、恢复与导出流程已进行本地验证；这不等同于所有组员的 GitHub/Google 授权、GPU 分配和网络环境均已验证。维护者已完成 Git 授权并推送 main 和 feat/team-colab；checkpoint 的共享云位置尚未设定。
