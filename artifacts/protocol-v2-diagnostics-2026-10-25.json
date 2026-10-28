@@ -1,0 +1,484 @@
+{
+  "state": "passed",
+  "seed": 42,
+  "runs": {
+    "overfit_sst2": {
+      "task": "sst2",
+      "seed": 42,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.0,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 32,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 32,
+        "select_best_on_calibration": false,
+        "diagnostics": true,
+        "batch_size": 4,
+        "gradient_accumulation_steps": 4,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.0,
+        "weight_decay": 0.01,
+        "logging_steps": 8
+      },
+      "max_steps": 40,
+      "head_only": false,
+      "train_samples": 32,
+      "selection_split": "calibration",
+      "selection_samples": 32,
+      "train_seconds": 44.656823305000046,
+      "train": {
+        "train_runtime": 44.4329,
+        "train_samples_per_second": 14.404,
+        "train_steps_per_second": 0.9,
+        "total_flos": 37292343966720.0,
+        "train_loss": 3.14252764582634,
+        "epoch": 20.0
+      },
+      "selection": {
+        "eval_loss": 0.993593156337738,
+        "eval_model_preparation_time": 0.0079,
+        "eval_accuracy": 0.71875,
+        "eval_f1": 0.8,
+        "eval_mcc": 0.34188172937891387,
+        "eval_runtime": 0.4156,
+        "eval_samples_per_second": 76.995,
+        "eval_steps_per_second": 19.249,
+        "epoch": 20.0
+      },
+      "initial_selection": {
+        "initial_loss": 3.0693140029907227,
+        "initial_model_preparation_time": 0.0079,
+        "initial_accuracy": 0.6875,
+        "initial_f1": 0.8076923076923077,
+        "initial_mcc": 0.24816038707378335,
+        "initial_runtime": 0.7365,
+        "initial_samples_per_second": 43.446,
+        "initial_steps_per_second": 10.862
+      },
+      "train_probe": {
+        "train_probe_loss": 0.035505086183547974,
+        "train_probe_model_preparation_time": 0.0079,
+        "train_probe_accuracy": 1.0,
+        "train_probe_f1": 1.0,
+        "train_probe_mcc": 1.0,
+        "train_probe_runtime": 0.4149,
+        "train_probe_samples_per_second": 77.134,
+        "train_probe_steps_per_second": 19.284,
+        "epoch": 20.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.20556259151733905,
+        "lora_l2": 0.9844424053122977
+      },
+      "best_checkpoint": null,
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 1.9189348220825195,
+        "peak_reserved_gib": 2.04296875
+      },
+      "classification_head": "task-specific; never merged",
+      "process_wall_seconds": 71.604211469
+    },
+    "head_only_sst2": {
+      "task": "sst2",
+      "seed": 42,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 512,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 4,
+        "gradient_accumulation_steps": 4,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 8
+      },
+      "max_steps": -1,
+      "head_only": true,
+      "train_samples": 512,
+      "selection_split": "calibration",
+      "selection_samples": 256,
+      "train_seconds": 36.786555006000015,
+      "train": {
+        "train_runtime": 36.5579,
+        "train_samples_per_second": 42.016,
+        "train_steps_per_second": 2.626,
+        "total_flos": 80494685697024.0,
+        "train_loss": 3.37691929936409,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.601103663444519,
+        "eval_model_preparation_time": 0.0077,
+        "eval_accuracy": 0.77734375,
+        "eval_f1": 0.822429906542056,
+        "eval_mcc": 0.5284149057525497,
+        "eval_runtime": 3.2558,
+        "eval_samples_per_second": 78.629,
+        "eval_steps_per_second": 19.657,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 3.770531177520752,
+        "initial_model_preparation_time": 0.0077,
+        "initial_accuracy": 0.60546875,
+        "initial_f1": 0.7530562347188264,
+        "initial_mcc": 0.0769467328248964,
+        "initial_runtime": 3.6455,
+        "initial_samples_per_second": 70.223,
+        "initial_steps_per_second": 17.556
+      },
+      "train_probe": {
+        "train_probe_loss": 0.47472652792930603,
+        "train_probe_model_preparation_time": 0.0077,
+        "train_probe_accuracy": 0.796875,
+        "train_probe_f1": 0.8194444444444444,
+        "train_probe_mcc": 0.5876999905344767,
+        "train_probe_runtime": 1.6239,
+        "train_probe_samples_per_second": 78.82,
+        "train_probe_steps_per_second": 19.705,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.2500648712392826,
+        "lora_l2": 0.0
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/diagnostics-v2-01/head_only_sst2/checkpoints/checkpoint-96",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 1.8753104209899902,
+        "peak_reserved_gib": 2.0
+      },
+      "classification_head": "task-specific; never merged",
+      "process_wall_seconds": 58.58656217599997
+    },
+    "lora_sst2": {
+      "task": "sst2",
+      "seed": 42,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 512,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 4,
+        "gradient_accumulation_steps": 4,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 8
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 512,
+      "selection_split": "calibration",
+      "selection_samples": 256,
+      "train_seconds": 98.63812040399995,
+      "train": {
+        "train_runtime": 98.414,
+        "train_samples_per_second": 15.608,
+        "train_steps_per_second": 0.975,
+        "total_flos": 80494685697024.0,
+        "train_loss": 2.8222416589657464,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.42526012659072876,
+        "eval_model_preparation_time": 0.0081,
+        "eval_accuracy": 0.84375,
+        "eval_f1": 0.8726114649681529,
+        "eval_mcc": 0.6716012940034598,
+        "eval_runtime": 3.3037,
+        "eval_samples_per_second": 77.489,
+        "eval_steps_per_second": 19.372,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 3.770531177520752,
+        "initial_model_preparation_time": 0.0081,
+        "initial_accuracy": 0.60546875,
+        "initial_f1": 0.7530562347188264,
+        "initial_mcc": 0.0769467328248964,
+        "initial_runtime": 3.5657,
+        "initial_samples_per_second": 71.795,
+        "initial_steps_per_second": 17.949
+      },
+      "train_probe": {
+        "train_probe_loss": 0.21205857396125793,
+        "train_probe_model_preparation_time": 0.0081,
+        "train_probe_accuracy": 0.9140625,
+        "train_probe_f1": 0.9219858156028369,
+        "train_probe_mcc": 0.8291805298812961,
+        "train_probe_runtime": 1.6665,
+        "train_probe_samples_per_second": 76.809,
+        "train_probe_steps_per_second": 19.202,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.26482265973583513,
+        "lora_l2": 1.2549788807487934
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/diagnostics-v2-01/lora_sst2/checkpoints/checkpoint-96",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 1.9220867156982422,
+        "peak_reserved_gib": 2.04296875
+      },
+      "classification_head": "task-specific; never merged",
+      "process_wall_seconds": 120.30335108799994
+    },
+    "lora_rte": {
+      "task": "rte",
+      "seed": 42,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 512,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 4,
+        "gradient_accumulation_steps": 4,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 8
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 512,
+      "selection_split": "calibration",
+      "selection_samples": 249,
+      "train_seconds": 102.07627776599998,
+      "train": {
+        "train_runtime": 101.8541,
+        "train_samples_per_second": 15.08,
+        "train_steps_per_second": 0.943,
+        "total_flos": 359408728624128.0,
+        "train_loss": 4.962455997864406,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.8698150515556335,
+        "eval_model_preparation_time": 0.0076,
+        "eval_accuracy": 0.5903614457831325,
+        "eval_f1": 0.6015625,
+        "eval_mcc": 0.181295539899435,
+        "eval_runtime": 3.3735,
+        "eval_samples_per_second": 73.811,
+        "eval_steps_per_second": 18.675,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 5.803462028503418,
+        "initial_model_preparation_time": 0.0076,
+        "initial_accuracy": 0.5020080321285141,
+        "initial_f1": 0.6666666666666666,
+        "initial_mcc": 0.06324555320336758,
+        "initial_runtime": 3.6251,
+        "initial_samples_per_second": 68.689,
+        "initial_steps_per_second": 17.379
+      },
+      "train_probe": {
+        "train_probe_loss": 0.48839515447616577,
+        "train_probe_model_preparation_time": 0.0076,
+        "train_probe_accuracy": 0.7421875,
+        "train_probe_f1": 0.7480916030534351,
+        "train_probe_mcc": 0.49147195148026696,
+        "train_probe_runtime": 1.6988,
+        "train_probe_samples_per_second": 75.345,
+        "train_probe_steps_per_second": 18.836,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.25992136424054296,
+        "lora_l2": 1.1512120120984142
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/diagnostics-v2-01/lora_rte/checkpoints/checkpoint-96",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 1.967587947845459,
+        "peak_reserved_gib": 2.115234375
+      },
+      "classification_head": "task-specific; never merged",
+      "process_wall_seconds": 126.25496615899999
+    }
+  },
+  "current": null,
+  "started_at_epoch": 1792927981.556889
+}

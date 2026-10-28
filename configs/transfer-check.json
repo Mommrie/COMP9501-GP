@@ -1,0 +1,12 @@
+{
+  "seeds":[42,43,44],"sample_seed":950125,"samples_per_dataset":512,
+  "methods":["individual","average","uniform_gain2","layer_ce_gt","layer_kl_teacher_selected"],
+  "datasets":[
+    {"name":"imdb","repo":"stanfordnlp/imdb","config":null,"split":"test","head":"sst2","source_fields":["text"],"label_mapping":"0 negative, 1 positive; same polarity as SST2"},
+    {"name":"paws","repo":"google-research-datasets/paws","config":"labeled_final","split":"test","head":"mrpc","source_fields":["sentence1","sentence2"],"label_mapping":"0 non-paraphrase, 1 paraphrase; same polarity as MRPC"}
+  ],
+  "deduplication":"Canonical lowercase whitespace, unordered pair key; exclude exact matches to the corresponding GLUE full train+validation before label-blind sampling",
+  "selection":"All coefficients and methods frozen from previous source calibration; no target adaptation or label-dependent model selection",
+  "metrics":["accuracy per dataset","F1 per dataset","mean of two accuracies, descriptive only","128-token content truncation proportion"],
+  "scope":"First use of these target subsets in this project. Small two-domain transfer check, not a new independent model development program, not pretraining-contamination-free, and not full GLUE/OOD robustness. IMDb long review truncation is a confound."
+}

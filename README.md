@@ -1,0 +1,37 @@
+# COMP9501 Group Project
+
+Private working repository for COMP9501 Group 13. Maintainer: **lrtang**.
+
+Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aware Merging of LoRA Adapters for Multi-Task Learning**. Implementation and recorded experiments are available. The activation signal's unique benefit and robust transfer remain unestablished.
+
+## Start here
+
+- [Build and reproduction](BUILD.md): environment, checks, pipeline order and output paths.
+- [Part 2 code](code/README.md) and [frozen configurations](configs/README.md).
+- [Part 1 implementation and results](part1-reproduction-20261025/README.md), [presentation outline](part1-reproduction-20261025/PRESENTATION-OUTLINE.md).
+- [Colab starter](notebooks/quickstart.ipynb): use an authenticated private checkout or an uploaded repository ZIP.
+- [Contribution conventions](CONTRIBUTING.md) and [repository checks](scripts/README.md).
+
+## Recorded Part 2 findings
+
+Qwen2.5-0.5B, q/v LoRA, four source tasks: SST-2, MRPC, RTE and CoLA. Three adapter seeds: 42/43/44. Every method uses the original, known task-specific classification head.
+
+| Configuration | Four-task primary score, mean +/- sample SD |
+|---|---:|
+| Individual adapters | 0.7684 +/- 0.0027 |
+| Uniform mixture, gain 2 | 0.6365 +/- 0.0365 |
+| Layer coefficients, CE fit and label-based selection | 0.6997 +/- 0.0124 |
+| Layer coefficients, teacher-KL fit and teacher-KL selection | 0.6996 +/- 0.0126 |
+
+The score averages SST-2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy and CoLA MCC on native scales. It is not the official full GLUE score. Source validation has been examined repeatedly during exploration. Teacher training and original checkpoint selection used labels, including the original calibration pool.
+
+- [Three-seed baselines and pair diagnostics](REPLICATION-2026-10-25.md).
+- [Static fitting, capacity controls and routing](PROTOTYPES-2026-10-25.md).
+- [Selection-label control](SELECTION-CONTROL-2026-10-25.md).
+- [Fixed IMDb/PAWS transfer checks](TRANSFER-CHECK-2026-10-25.md): no stable layer-KL advantage. PAWS results fall below the subset majority baseline, including individual adapters. IMDb is heavily truncated at the original 128-token limit.
+
+## Repository contents
+
+Source, configurations, derived result JSON and generated plots are included. Raw datasets, trained weights, runtime caches, local backups, course lecture files and original member documents stay outside Git. Download data through the original publishers and recreate weights using the build instructions, or arrange a separate authorized transfer.
+
+[Source provenance](artifacts/source-provenance-2026-10-28.json) records archived/shared file hashes. Training/evaluation Python text matches the archived implementation after LF normalization. LF normalization, documentation deduplication, publication-boundary links and backup-metadata path redaction are listed as sharing adaptations. No new GPU result is claimed by this repository setup.

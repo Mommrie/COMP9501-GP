@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-28",
+  "purpose": "Shared-repository preparation; no new GPU training",
+  "state": "passed",
+  "checks": {
+    "repository_structure_json_notebook_links_credentials_provenance": "passed",
+    "merge_math": 5,
+    "input_protocol": 4,
+    "functional_matching_math": 3,
+    "coefficient_freezing_and_materialization": 1,
+    "csa_math": 2
+  },
+  "offline_numerical_tests": 15,
+  "local_python_for_offline_checks": "3.9.20",
+  "training_python_requirement": ">=3.11",
+  "scope": "Offline numerical tests and packaging checks only. Archived GPU results have separate evidence. Training/evaluation source text matches the archived implementation after LF normalization."
+}

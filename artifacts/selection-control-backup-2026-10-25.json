@@ -1,0 +1,9 @@
+{
+  "bytes": 48984,
+  "sha256": "4f89e605999222968a4b4511da8b452a33784fec3363b91a7541f19bd8f46226",
+  "local": "../.tools/selection-control-2026-10-25.zip",
+  "crc_passed": true,
+  "sha_passed": true,
+  "source_and_plan_exact_match": true,
+  "sharing_note": "Checksum provenance only. Model/archive payloads remain in private local storage and are not included in Git."
+}

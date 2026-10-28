@@ -1,0 +1,27 @@
+# Local runtime and data
+.tools/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.cache/
+outputs/
+data/
+datasets/
+.ipynb_checkpoints/
+.env
+.env.*
+!.env.example
+*.pt
+*.pth
+*.safetensors
+*.npz
+*.npy
+*.pkl
+*.zip
+*.tar.gz
+*.docx
+*.pdf
+!artifacts/*.pdf
+!part1-reproduction-20261025/artifacts/*.pdf

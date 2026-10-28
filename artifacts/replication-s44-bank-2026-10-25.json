@@ -1,0 +1,907 @@
+{
+  "state": "passed",
+  "seed": 44,
+  "config": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "tasks": [
+      "sst2",
+      "mrpc",
+      "rte",
+      "cola"
+    ],
+    "base_seed": 9501,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "input_format": "sentence_fields_v2",
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "max_length": 128,
+    "train_samples": 4096,
+    "eval_samples": 0,
+    "probe_samples_per_task": 32,
+    "calibration_fraction": 0.1,
+    "selection_split": "calibration",
+    "calibration_eval_samples": 256,
+    "select_best_on_calibration": true,
+    "diagnostics": true,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "head_learning_rate": 0.001,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "logging_steps": 32,
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+  },
+  "training": {
+    "sst2": {
+      "task": "sst2",
+      "seed": 44,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 4096,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 16,
+        "gradient_accumulation_steps": 1,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 32,
+        "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 4096,
+      "selection_split": "calibration",
+      "selection_samples": 256,
+      "train_seconds": 184.17699982999966,
+      "train": {
+        "train_runtime": 183.9366,
+        "train_samples_per_second": 66.806,
+        "train_steps_per_second": 4.175,
+        "total_flos": 932626895990784.0,
+        "train_loss": 0.34849476255476475,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.2840614914894104,
+        "eval_model_preparation_time": 0.0077,
+        "eval_accuracy": 0.9375,
+        "eval_f1": 0.948051948051948,
+        "eval_mcc": 0.8696205755029285,
+        "eval_runtime": 0.8606,
+        "eval_samples_per_second": 297.462,
+        "eval_steps_per_second": 18.591,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 3.759085178375244,
+        "initial_model_preparation_time": 0.0077,
+        "initial_accuracy": 0.60546875,
+        "initial_f1": 0.7530562347188264,
+        "initial_mcc": 0.0769467328248964,
+        "initial_runtime": 1.1411,
+        "initial_samples_per_second": 224.355,
+        "initial_steps_per_second": 14.022
+      },
+      "train_probe": {
+        "train_probe_loss": 0.07619719952344894,
+        "train_probe_model_preparation_time": 0.0077,
+        "train_probe_accuracy": 0.9765625,
+        "train_probe_f1": 0.9790209790209791,
+        "train_probe_mcc": 0.9535751785580525,
+        "train_probe_runtime": 0.4359,
+        "train_probe_samples_per_second": 293.612,
+        "train_probe_steps_per_second": 18.351,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.4027596148510015,
+        "lora_l2": 3.50840582069831
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/sst2/checkpoints/checkpoint-768",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 2.0226168632507324,
+        "peak_reserved_gib": 2.189453125
+      },
+      "classification_head": "task-specific; never merged"
+    },
+    "mrpc": {
+      "task": "mrpc",
+      "seed": 44,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 4096,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 16,
+        "gradient_accumulation_steps": 1,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 32,
+        "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 3301,
+      "selection_split": "calibration",
+      "selection_samples": 256,
+      "train_seconds": 152.58168041299996,
+      "train": {
+        "train_runtime": 152.3547,
+        "train_samples_per_second": 65.0,
+        "train_steps_per_second": 4.076,
+        "total_flos": 1912052027547648.0,
+        "train_loss": 0.5914424736526661,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.390508234500885,
+        "eval_model_preparation_time": 0.0076,
+        "eval_accuracy": 0.84375,
+        "eval_f1": 0.8947368421052632,
+        "eval_mcc": 0.610910640159995,
+        "eval_runtime": 0.876,
+        "eval_samples_per_second": 292.238,
+        "eval_steps_per_second": 18.265,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 3.6119539737701416,
+        "initial_model_preparation_time": 0.0076,
+        "initial_accuracy": 0.69921875,
+        "initial_f1": 0.8229885057471265,
+        "initial_mcc": 0.0,
+        "initial_runtime": 1.1503,
+        "initial_samples_per_second": 222.553,
+        "initial_steps_per_second": 13.91
+      },
+      "train_probe": {
+        "train_probe_loss": 0.30367380380630493,
+        "train_probe_model_preparation_time": 0.0076,
+        "train_probe_accuracy": 0.875,
+        "train_probe_f1": 0.9139784946236559,
+        "train_probe_mcc": 0.7269364240335541,
+        "train_probe_runtime": 0.4371,
+        "train_probe_samples_per_second": 292.856,
+        "train_probe_steps_per_second": 18.304,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.3914482977357114,
+        "lora_l2": 2.8301541034893263
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/mrpc/checkpoints/checkpoint-414",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 2.205371856689453,
+        "peak_reserved_gib": 2.46875
+      },
+      "classification_head": "task-specific; never merged"
+    },
+    "rte": {
+      "task": "rte",
+      "seed": 44,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 4096,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 16,
+        "gradient_accumulation_steps": 1,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 32,
+        "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 2241,
+      "selection_split": "calibration",
+      "selection_samples": 249,
+      "train_seconds": 108.39748419999978,
+      "train": {
+        "train_runtime": 108.1694,
+        "train_samples_per_second": 62.153,
+        "train_steps_per_second": 3.911,
+        "total_flos": 1838075974755072.0,
+        "train_loss": 0.8356287327218563,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.5349266529083252,
+        "eval_model_preparation_time": 0.0078,
+        "eval_accuracy": 0.7550200803212851,
+        "eval_f1": 0.7550200803212851,
+        "eval_mcc": 0.5100645161290323,
+        "eval_runtime": 0.9146,
+        "eval_samples_per_second": 272.261,
+        "eval_steps_per_second": 17.495,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 5.788916110992432,
+        "initial_model_preparation_time": 0.0078,
+        "initial_accuracy": 0.5020080321285141,
+        "initial_f1": 0.6666666666666666,
+        "initial_mcc": 0.06324555320336758,
+        "initial_runtime": 1.1657,
+        "initial_samples_per_second": 213.605,
+        "initial_steps_per_second": 13.726
+      },
+      "train_probe": {
+        "train_probe_loss": 0.4040285348892212,
+        "train_probe_model_preparation_time": 0.0078,
+        "train_probe_accuracy": 0.8359375,
+        "train_probe_f1": 0.8421052631578947,
+        "train_probe_mcc": 0.6764010794469809,
+        "train_probe_runtime": 0.4566,
+        "train_probe_samples_per_second": 280.35,
+        "train_probe_steps_per_second": 17.522,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.380763349898925,
+        "lora_l2": 2.5862627912022718
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/rte/checkpoints/checkpoint-423",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 2.206188201904297,
+        "peak_reserved_gib": 2.40234375
+      },
+      "classification_head": "task-specific; never merged"
+    },
+    "cola": {
+      "task": "cola",
+      "seed": 44,
+      "config": {
+        "model": "Qwen/Qwen2.5-0.5B",
+        "tasks": [
+          "sst2",
+          "mrpc",
+          "rte",
+          "cola"
+        ],
+        "base_seed": 9501,
+        "seeds": [
+          42,
+          43,
+          44
+        ],
+        "input_format": "sentence_fields_v2",
+        "rank": 8,
+        "alpha": 16,
+        "dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "max_length": 128,
+        "train_samples": 4096,
+        "eval_samples": 0,
+        "probe_samples_per_task": 32,
+        "calibration_fraction": 0.1,
+        "selection_split": "calibration",
+        "calibration_eval_samples": 256,
+        "select_best_on_calibration": true,
+        "diagnostics": true,
+        "batch_size": 16,
+        "gradient_accumulation_steps": 1,
+        "epochs": 3,
+        "learning_rate": 0.0002,
+        "head_learning_rate": 0.001,
+        "warmup_ratio": 0.1,
+        "weight_decay": 0.01,
+        "logging_steps": 32,
+        "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+      },
+      "max_steps": -1,
+      "head_only": false,
+      "train_samples": 4096,
+      "selection_split": "calibration",
+      "selection_samples": 256,
+      "train_seconds": 183.49261000499973,
+      "train": {
+        "train_runtime": 183.253,
+        "train_samples_per_second": 67.055,
+        "train_steps_per_second": 4.191,
+        "total_flos": 531641720217600.0,
+        "train_loss": 0.5591519909600416,
+        "epoch": 3.0
+      },
+      "selection": {
+        "eval_loss": 0.46765947341918945,
+        "eval_model_preparation_time": 0.0077,
+        "eval_accuracy": 0.78515625,
+        "eval_f1": 0.8405797101449275,
+        "eval_mcc": 0.5126448537670799,
+        "eval_runtime": 0.863,
+        "eval_samples_per_second": 296.656,
+        "eval_steps_per_second": 18.541,
+        "epoch": 3.0
+      },
+      "initial_selection": {
+        "initial_loss": 2.304518461227417,
+        "initial_model_preparation_time": 0.0077,
+        "initial_accuracy": 0.68359375,
+        "initial_f1": 0.8094117647058824,
+        "initial_mcc": 0.04198685197534287,
+        "initial_runtime": 1.137,
+        "initial_samples_per_second": 225.157,
+        "initial_steps_per_second": 14.072
+      },
+      "train_probe": {
+        "train_probe_loss": 0.41186434030532837,
+        "train_probe_model_preparation_time": 0.0077,
+        "train_probe_accuracy": 0.8125,
+        "train_probe_f1": 0.8681318681318682,
+        "train_probe_mcc": 0.5459253551495216,
+        "train_probe_runtime": 0.4353,
+        "train_probe_samples_per_second": 294.05,
+        "train_probe_steps_per_second": 18.378,
+        "epoch": 3.0
+      },
+      "parameter_change_from_initialization": {
+        "head_l2": 0.37250487413993777,
+        "lora_l2": 3.4362730027542607
+      },
+      "best_checkpoint": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/cola/checkpoints/checkpoint-512",
+      "validation": null,
+      "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+      "source_sha256": {
+        "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+        "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+      },
+      "environment": {
+        "python": "3.13.16",
+        "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+        "packages": {
+          "torch": "2.11.0+cu130",
+          "transformers": "4.57.6",
+          "peft": "0.18.1",
+          "datasets": "4.5.0",
+          "accelerate": "1.12.0",
+          "safetensors": "0.7.0"
+        },
+        "gpu": "NVIDIA A100-SXM4-40GB",
+        "vram_gib": 39.4935302734375,
+        "peak_allocated_gib": 1.9797215461730957,
+        "peak_reserved_gib": 2.1328125
+      },
+      "classification_head": "task-specific; never merged"
+    }
+  },
+  "evaluation": {
+    "sst2": {
+      "individual": {
+        "task": "sst2",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/sst2/adapter",
+        "merge": null,
+        "metrics": {
+          "accuracy": 0.9243119266055045,
+          "f1": 0.9273127753303965,
+          "mcc": 0.8493414429716692
+        },
+        "samples": 872,
+        "seconds": 2.678505605999817,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.9161920547485352,
+          "peak_reserved_gib": 2.1171875
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      },
+      "average": {
+        "task": "sst2",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/sst2/adapter",
+        "merge": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/average.pt",
+        "metrics": {
+          "accuracy": 0.8474770642201835,
+          "f1": 0.8607329842931937,
+          "mcc": 0.7023842303398788
+        },
+        "samples": 872,
+        "seconds": 2.6570828730000358,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.9161920547485352,
+          "peak_reserved_gib": 2.1171875
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      }
+    },
+    "mrpc": {
+      "individual": {
+        "task": "mrpc",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/mrpc/adapter",
+        "merge": null,
+        "metrics": {
+          "accuracy": 0.821078431372549,
+          "f1": 0.8805237315875614,
+          "mcc": 0.5682408147797423
+        },
+        "samples": 408,
+        "seconds": 2.140293742999347,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.9592633247375488,
+          "peak_reserved_gib": 2.1875
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      },
+      "average": {
+        "task": "mrpc",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/mrpc/adapter",
+        "merge": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/average.pt",
+        "metrics": {
+          "accuracy": 0.7622549019607843,
+          "f1": 0.8347529812606473,
+          "mcc": 0.4213310272269069
+        },
+        "samples": 408,
+        "seconds": 2.156079896999472,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.9592633247375488,
+          "peak_reserved_gib": 2.1875
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      }
+    },
+    "rte": {
+      "individual": {
+        "task": "rte",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/rte/adapter",
+        "merge": null,
+        "metrics": {
+          "accuracy": 0.7689530685920578,
+          "f1": 0.7557251908396947,
+          "mcc": 0.5365471086479139
+        },
+        "samples": 277,
+        "seconds": 2.044633247999627,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.989013671875,
+          "peak_reserved_gib": 2.150390625
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      },
+      "average": {
+        "task": "rte",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/rte/adapter",
+        "merge": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/average.pt",
+        "metrics": {
+          "accuracy": 0.5884476534296029,
+          "f1": 0.6666666666666666,
+          "mcc": 0.2412349029269615
+        },
+        "samples": 277,
+        "seconds": 2.0102668609997636,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.989013671875,
+          "peak_reserved_gib": 2.150390625
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      }
+    },
+    "cola": {
+      "individual": {
+        "task": "cola",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/cola/adapter",
+        "merge": null,
+        "metrics": {
+          "accuracy": 0.7909875359539789,
+          "f1": 0.8469101123595506,
+          "mcc": 0.5181816434902297
+        },
+        "samples": 1043,
+        "seconds": 2.2585947749994375,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.8884029388427734,
+          "peak_reserved_gib": 2.017578125
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      },
+      "average": {
+        "task": "cola",
+        "adapter": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/cola/adapter",
+        "merge": "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/average.pt",
+        "metrics": {
+          "accuracy": 0.7229146692233941,
+          "f1": 0.828486646884273,
+          "mcc": 0.2479541128202605
+        },
+        "samples": 1043,
+        "seconds": 2.3390370429997347,
+        "environment": {
+          "python": "3.13.16",
+          "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+          "packages": {
+            "torch": "2.11.0+cu130",
+            "transformers": "4.57.6",
+            "peft": "0.18.1",
+            "datasets": "4.5.0",
+            "accelerate": "1.12.0",
+            "safetensors": "0.7.0"
+          },
+          "gpu": "NVIDIA A100-SXM4-40GB",
+          "vram_gib": 39.4935302734375,
+          "peak_allocated_gib": 1.8884029388427734,
+          "peak_reserved_gib": 2.017578125
+        },
+        "protocol": "task ID selects the original task head; only backbone deltas merged"
+      }
+    }
+  },
+  "jobs": [
+    {
+      "name": "train-sst2",
+      "returncode": 0,
+      "wall_seconds": 200.44636013800027
+    },
+    {
+      "name": "train-mrpc",
+      "returncode": 0,
+      "wall_seconds": 168.63531763900028
+    },
+    {
+      "name": "train-rte",
+      "returncode": 0,
+      "wall_seconds": 124.54565763099981
+    },
+    {
+      "name": "train-cola",
+      "returncode": 0,
+      "wall_seconds": 199.48131126700082
+    },
+    {
+      "name": "merge-average",
+      "returncode": 0,
+      "wall_seconds": 2.2713993560000745
+    },
+    {
+      "name": "eval-individual-sst2",
+      "returncode": 0,
+      "wall_seconds": 13.242011974999514
+    },
+    {
+      "name": "eval-average-sst2",
+      "returncode": 0,
+      "wall_seconds": 13.14487340300002
+    },
+    {
+      "name": "eval-individual-mrpc",
+      "returncode": 0,
+      "wall_seconds": 12.579874017000293
+    },
+    {
+      "name": "eval-average-mrpc",
+      "returncode": 0,
+      "wall_seconds": 12.79523699099991
+    },
+    {
+      "name": "eval-individual-rte",
+      "returncode": 0,
+      "wall_seconds": 12.635953242000141
+    },
+    {
+      "name": "eval-average-rte",
+      "returncode": 0,
+      "wall_seconds": 12.716049786999974
+    },
+    {
+      "name": "eval-individual-cola",
+      "returncode": 0,
+      "wall_seconds": 12.763083861000268
+    },
+    {
+      "name": "eval-average-cola",
+      "returncode": 0,
+      "wall_seconds": 13.094022381000286
+    },
+    {
+      "name": "probe",
+      "returncode": 0,
+      "wall_seconds": 26.513895181000407
+    }
+  ],
+  "current": null,
+  "started_at_epoch": 1792932389.452934,
+  "probe": {
+    "adapters": [
+      "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/sst2/adapter",
+      "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/mrpc/adapter",
+      "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/rte/adapter",
+      "/content/comp9501-v2-20261025/outputs/replication-s43-s44/bank-s44/cola/adapter"
+    ],
+    "samples": 128,
+    "raw_cosine": [
+      [
+        1.0000022649765015,
+        0.9728980660438538,
+        0.9756591320037842,
+        0.9745184779167175
+      ],
+      [
+        0.9728980660438538,
+        1.0000011920928955,
+        0.9974291324615479,
+        0.9302213191986084
+      ],
+      [
+        0.9756591320037842,
+        0.9974291324615479,
+        1.0000030994415283,
+        0.936541736125946
+      ],
+      [
+        0.9745184779167175,
+        0.9302213191986084,
+        0.936541736125946,
+        1.0000041723251343
+      ]
+    ],
+    "delta_cosine": [
+      [
+        1.0000003576278687,
+        0.6328904628753662,
+        0.6453644037246704,
+        0.2364843785762787
+      ],
+      [
+        0.6328904628753662,
+        1.0000016689300537,
+        0.9900205731391907,
+        -0.34380820393562317
+      ],
+      [
+        0.6453644037246704,
+        0.9900205731391907,
+        1.0000016689300537,
+        -0.32082799077033997
+      ],
+      [
+        0.2364843785762787,
+        -0.34380820393562317,
+        -0.32082799077033997,
+        1.0000007152557373
+      ]
+    ],
+    "delta_norms": [
+      582.184814453125,
+      1023.482177734375,
+      961.3899536132812,
+      699.9536743164062
+    ],
+    "protocol": "last hidden layer; mask-aware token mean; flatten common examples; train calibration only"
+  }
+}

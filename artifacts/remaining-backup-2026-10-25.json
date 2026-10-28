@@ -1,0 +1,21 @@
+{
+  "remote_path": "/content/comp9501-v2-20261025/remaining-evidence.zip",
+  "bytes": 12389081,
+  "sha256": "ec4e39a2ee35e26293dc1430b7200887b23e8f38402d1ba305b2d95655b1f411",
+  "chunk_bytes": 380000,
+  "chunks": 33,
+  "local": "../.tools/remaining-evidence-2026-10-25.zip",
+  "files": [
+    "outputs/router-v1/features-and-routes.npz",
+    "outputs/router-v1/summary.json",
+    "outputs/router-v1/status.json",
+    "outputs/router-v1/split-ids.json",
+    "outputs/router-v1/selection.json",
+    "outputs/coefficient-v1/s44/teacher-logits.pt",
+    "outputs/coefficient-v1/s42/teacher-logits.pt",
+    "outputs/coefficient-v1/s43/teacher-logits.pt",
+    "runtime-packages.json"
+  ],
+  "sha_crc_passed": true,
+  "sharing_note": "Checksum provenance only. Model/archive payloads remain in private local storage and are not included in Git."
+}

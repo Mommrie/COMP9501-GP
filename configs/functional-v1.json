@@ -1,0 +1,33 @@
+{
+  "description": "Task-conditioned linear LoRA response matching; exploratory follow-up, RegMean-related, novelty unestablished",
+  "stats_samples_per_task": 32,
+  "selection_samples_per_task": 256,
+  "selection_split": "calibration",
+  "betas": [
+    0.0,
+    1.0
+  ],
+  "gains": [
+    1.0,
+    2.0
+  ],
+  "modes": [
+    "uniform",
+    "global",
+    "layer"
+  ],
+  "response_loss": "sum over teachers of mean squared q/v delta output per valid token and output channel; teacher-specific input distributions; equal teacher and q/v weight",
+  "coefficient_constraint": "nonnegative simplex; beta ridge to uniform; global or shared q/v coefficients per block",
+  "control": "common input squared matching has uniform optimum; uniform gain selected on same calibration",
+  "selection_score": "SST2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy, CoLA MCC; macro native scores",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "sources": [
+    "https://arxiv.org/abs/2212.09849"
+  ],
+  "validation_policy": "freeze this 10-candidate protocol before new method validation; no novelty or clean confirmatory holdout claim after earlier baseline exploration",
+  "global_layer_weighting": "Each block quadratic divided by trace(G) before summing; layer mode normalizes within each block"
+}

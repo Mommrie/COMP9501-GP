@@ -1,0 +1,44 @@
+{
+  "plan": {
+    "description": "Matched 97-parameter supervised CE control for layer KL; same splits, steps, initialization and selection, exploratory follow-up",
+    "fit_samples_per_task": 128,
+    "total_calibration_samples": 256,
+    "steps": 120,
+    "batch_size": 8,
+    "learning_rate": 0.03,
+    "penalty": 0.01,
+    "temperature": 2.0,
+    "check_steps": [
+      0,
+      30,
+      60,
+      90,
+      120
+    ],
+    "profiles": [
+      {
+        "name": "layer_ce",
+        "layers": 24,
+        "objective": "ce"
+      }
+    ],
+    "uniform_gains": [
+      1.0,
+      2.0
+    ],
+    "selection": "macro native task score on calibration examples 128:256 only; initial state included; ties keep earlier step",
+    "gain_range": [
+      0.5,
+      4.0
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "scope": "Static coefficients; no backbone, LoRA factor or task-head updates; validation used in previous exploration, no confirmatory novelty claim",
+    "split_caveat": "Coefficient fit/select IDs disjoint, but teacher checkpoint and prior baseline choices used full calibration; GLUE validation reused for exploration."
+  },
+  "sha256": "15fe5d61281a9483b245bf4a7ade86f157dff3fb09023e118ecdcb6db21dfd34",
+  "reason": "Separate parameter-capacity effect from teacher objective; fixed before layer CE validation"
+}

@@ -1,0 +1,117 @@
+{
+  "prefix": "/content/comp9501-v2-20261025/.venv",
+  "package_paths": {
+    "torch": "/usr/local/lib/python3.13/dist-packages/torch/__init__.py",
+    "transformers": "/content/comp9501-v2-20261025/.venv/lib/python3.13/site-packages/transformers/__init__.py",
+    "peft": "/content/comp9501-v2-20261025/.venv/lib/python3.13/site-packages/peft/__init__.py",
+    "datasets": "/content/comp9501-v2-20261025/.venv/lib/python3.13/site-packages/datasets/__init__.py",
+    "accelerate": "/content/comp9501-v2-20261025/.venv/lib/python3.13/site-packages/accelerate/__init__.py",
+    "safetensors": "/content/comp9501-v2-20261025/.venv/lib/python3.13/site-packages/safetensors/__init__.py"
+  },
+  "tasks": {
+    "sst2": {
+      "full_train_partition": 60614,
+      "calibration_partition": 6735,
+      "full_validation": 872,
+      "disjoint_train_calibration": true,
+      "example_tokens": 38,
+      "decoded_example": "Text: all over the map thematically and stylistically , and borrows heavily from lynch , jeunet , and von trier while failing to find a spark of its own ",
+      "train_selected": {
+        "dataset": "nyu-mll/glue",
+        "task": "sst2",
+        "split": "train",
+        "input_format": "sentence_fields_v2",
+        "max_length": 128,
+        "revision_requested": null,
+        "fingerprint": "eaae7c051f25f204",
+        "ids_sha256": "be1a161ada39943c02ebca8b6de2e6c608b763257d4f9fc84ab26dd39d9a32ac",
+        "label_names": [
+          "negative",
+          "positive"
+        ],
+        "label_counts": {
+          "0": 1817,
+          "1": 2279
+        }
+      }
+    },
+    "mrpc": {
+      "full_train_partition": 3301,
+      "calibration_partition": 367,
+      "full_validation": 408,
+      "disjoint_train_calibration": true,
+      "example_tokens": 72,
+      "decoded_example": "Sentence A: Buyers can purchase a Windows- and Office-loaded desktop for $ 298 , excluding taxes , the report said .\nSentence B: Buyers can now choose a Windows- and Office-loaded desktop for 12,390 baht ( US $ 298 ) , excluding taxes , the report said .",
+      "train_selected": {
+        "dataset": "nyu-mll/glue",
+        "task": "mrpc",
+        "split": "train",
+        "input_format": "sentence_fields_v2",
+        "max_length": 128,
+        "revision_requested": null,
+        "fingerprint": "f6c0d93b581e7bf9",
+        "ids_sha256": "a940f3bfa6734a97b0b2a346008010e98de6dda83046c6002f2af6bdac3fa5d7",
+        "label_names": [
+          "not_equivalent",
+          "equivalent"
+        ],
+        "label_counts": {
+          "1": 2226,
+          "0": 1075
+        }
+      }
+    },
+    "rte": {
+      "full_train_partition": 2241,
+      "calibration_partition": 249,
+      "full_validation": 277,
+      "disjoint_train_calibration": true,
+      "example_tokens": 96,
+      "decoded_example": "Sentence A: Two of Gianni Versace's favorite buzzwords were quality and future, so after the 50-year-old designer was murdered last July outside his Miami Beach, Fla. mansion, it was somehow inevitable that his family would have to go about putting those words together: They had to ask themselves how they could ensure the future of the company Versace had built without sacrificing its reputation for quality.\nSentence B: Gianni Versace is a designer.",
+      "train_selected": {
+        "dataset": "nyu-mll/glue",
+        "task": "rte",
+        "split": "train",
+        "input_format": "sentence_fields_v2",
+        "max_length": 128,
+        "revision_requested": null,
+        "fingerprint": "e5922bdc8e16ee7d",
+        "ids_sha256": "3d56a3c025bb6625d9e18de5d20d4edcf725260d9c7bc460d6cafcca0f390771",
+        "label_names": [
+          "entailment",
+          "not_entailment"
+        ],
+        "label_counts": {
+          "0": 1124,
+          "1": 1117
+        }
+      }
+    },
+    "cola": {
+      "full_train_partition": 7695,
+      "calibration_partition": 856,
+      "full_validation": 1043,
+      "disjoint_train_calibration": true,
+      "example_tokens": 16,
+      "decoded_example": "Text: Which temple did Athena contemplate the reason that her devotees had built?",
+      "train_selected": {
+        "dataset": "nyu-mll/glue",
+        "task": "cola",
+        "split": "train",
+        "input_format": "sentence_fields_v2",
+        "max_length": 128,
+        "revision_requested": null,
+        "fingerprint": "f4f7a100f1db9671",
+        "ids_sha256": "e5c84b281ce0e59b09b9ea9eabbbfa6bb182a672bf4f3fb6886f635a609fcef9",
+        "label_names": [
+          "unacceptable",
+          "acceptable"
+        ],
+        "label_counts": {
+          "0": 1206,
+          "1": 2890
+        }
+      }
+    }
+  }
+}

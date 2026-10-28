@@ -1,0 +1,20 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B",
+  "tasks": ["sst2", "mrpc", "rte", "cola"],
+  "base_seed": 9501,
+  "seeds": [42, 43, 44],
+  "rank": 8,
+  "alpha": 16,
+  "dropout": 0.05,
+  "target_modules": ["q_proj", "v_proj"],
+  "max_length": 128,
+  "train_samples": 512,
+  "eval_samples": 128,
+  "probe_samples_per_task": 16,
+  "calibration_fraction": 0.1,
+  "batch_size": 4,
+  "gradient_accumulation_steps": 4,
+  "epochs": 1,
+  "learning_rate": 0.0002,
+  "weight_decay": 0.01
+}

@@ -1,0 +1,14 @@
+{
+  "bytes": 335519,
+  "sha256": "df90f7d8a779bac6be90eb2df8c229a5bfb1581b4111021f350c382673164907",
+  "local": "../../.tools/csa-v1-2026-10-25.zip",
+  "checks": {
+    "crc_passed": true,
+    "sha256_passed": true,
+    "source_and_plan_exact_match": true,
+    "completed_pairs": 21,
+    "models": 42,
+    "skipped_pairs": 3
+  },
+  "sharing_note": "Checksum provenance only. Model/archive payloads remain in private local storage and are not included in Git."
+}

@@ -1,0 +1,137 @@
+{
+  "date": "2026-10-25",
+  "plan": {
+    "study": "protocol-v2 baselines and six pair diagnostics, seed 42",
+    "selection_split": "calibration",
+    "selection_samples_per_task": 256,
+    "selection_score": "macro mean of SST2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy, CoLA MCC; native scales",
+    "tie_break": "first candidate in declared order",
+    "candidates": [
+      {
+        "name": "average",
+        "method": "average",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      {
+        "name": "ta025",
+        "method": "task_arithmetic",
+        "scale": 0.25,
+        "density": 1.0
+      },
+      {
+        "name": "ta050",
+        "method": "task_arithmetic",
+        "scale": 0.5,
+        "density": 1.0
+      },
+      {
+        "name": "ta100",
+        "method": "task_arithmetic",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      {
+        "name": "ties020s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.2
+      },
+      {
+        "name": "ties020s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.2
+      },
+      {
+        "name": "ties050s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      {
+        "name": "ties050s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      {
+        "name": "dare090s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.9
+      },
+      {
+        "name": "dare090s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.9
+      },
+      {
+        "name": "dare090s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.9
+      },
+      {
+        "name": "dare050s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.5
+      },
+      {
+        "name": "dare050s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      {
+        "name": "dare050s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      {
+        "name": "dare010s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.1
+      },
+      {
+        "name": "dare010s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.1
+      },
+      {
+        "name": "dare010s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.1
+      }
+    ],
+    "merge_seed": 42,
+    "pair_merge": "equal mean of two materialized deltas; original task heads",
+    "primary_hypothesis": "delta activation cosine negatively correlates with mean pair accuracy drop",
+    "secondary_checks": [
+      "raw activation cosine",
+      "weight delta cosine",
+      "primary task score drop",
+      "four separate probe source pools",
+      "leave-one-pair-out Spearman stability"
+    ],
+    "inference_limit": "six overlapping task pairs from four tasks, one training seed; descriptive correlations only, no independence or significance claim",
+    "sources": [
+      "https://arxiv.org/abs/2306.01708",
+      "https://arxiv.org/abs/2311.03099"
+    ],
+    "variants": "TIES per-matrix top-k magnitude sign election and disjoint mean; DARE drop/rescale then task arithmetic"
+  },
+  "plan_sha256": "1065cff7ba27dba0352ad5c39206cfaf256e065620658a6105a1d17232e2b522",
+  "source_sha256": {
+    "engine.py": "6f4d8eea22259a5f6c3025c769c694021f6ef8021ac3c3251692e2b1ff808150",
+    "run.py": "982c7729cdcca15f1ae81021bd622a9f242791414dab58ae802687ca0d3ccd7e",
+    "test_engine.py": "c7daa3d57f5c1034fdd573a36cc8f61a20551b95477ecb165342518bcbe035aa"
+  },
+  "stage": "Plan frozen before calibration grid and new validation evaluations"
+}

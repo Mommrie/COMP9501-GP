@@ -1,0 +1,39 @@
+{
+  "runtime": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "torch": "2.11.0+cu130",
+    "cuda": true,
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "vram_gib": 39.4935302734375,
+    "previous_source_present": false
+  },
+  "tests": [
+    {
+      "script": "test_protocol.py",
+      "tests": 4,
+      "returncode": 0
+    },
+    {
+      "script": "test_math.py",
+      "tests": 5,
+      "returncode": 0
+    },
+    {
+      "script": "test_integration.py",
+      "tests": 1,
+      "returncode": 0
+    }
+  ],
+  "output": "V2_INSTALL_RETURN_CODE 0\nERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.\ngradio 6.30.0 requires huggingface-hub<3.0,>=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\ngradio-client 2.7.2 requires huggingface-hub<3.0,>=1.16.0, but you have huggingface-hub 0.36.2 which is incompatible.\ngcsfs 2025.12.0 requires fsspec==2025.12.0, but you have fsspec 2025.10.0 which is incompatible.\ndiffusers 0.41.0 requires huggingface-hub<2.0,>=1.32.0, but you have huggingface-hub 0.36.2 which is incompatible.\ndiffusers 0.41.0 requires safetensors>=0.8.0, but you have safetensors 0.7.0 which is incompatible.\n\nV2_TEST test_protocol.py RETURN_CODE 0\n\n....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n\nV2_TEST test_math.py RETURN_CODE 0\n\n.....\n----------------------------------------------------------------------\nRan 5 tests in 0.119s\n\nOK\n\nV2_TEST test_integration.py RETURN_CODE 0\ntrainable params: 512 || all params: 19,552 || trainable%: 2.6187\n{'loss': 0.7461, 'grad_norm': 2.184694528579712, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.716796875, 'eval_model_preparation_time': 0.001, 'eval_accuracy': 0.5, 'eval_f1': 0.0, 'eval_mcc': 0.0, 'eval_runtime': 0.0288, 'eval_samples_per_second': 277.367, 'eval_steps_per_second': 138.683, 'epoch': 0.25}\n{'train_runtime': 0.4606, 'train_samples_per_second': 4.342, 'train_steps_per_second': 2.171, 'train_loss': 0.74609375, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-rdiuwt2q/run/run.json\ntrainable params: 64 || all params: 19,552 || trainable%: 0.3273\n{'loss': 0.7461, 'grad_norm': 2.1760239601135254, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.716796875, 'eval_model_preparation_time': 0.001, 'eval_accuracy': 0.5, 'eval_f1': 0.0, 'eval_mcc': 0.0, 'eval_runtime': 0.0275, 'eval_samples_per_second': 291.084, 'eval_steps_per_second': 145.542, 'epoch': 0.25}\n{'train_runtime': 0.0652, 'train_samples_per_second': 30.697, 'train_steps_per_second': 15.349, 'train_loss': 0.74609375, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-rdiuwt2q/head-only/run.json\n\n`torch_dtype` is deprecated! Use `dtype` instead!\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 120.53it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.54it/s]\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.54it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.54it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 181.75it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.54it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.17it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 184.52it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 187.45it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 185.20it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n                                     \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 92.06it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 23.91it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 184.21it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 15.45it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 15.39it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 184.05it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 187.23it/s]\n.\n----------------------------------------------------------------------\nRan 1 test in 13.206s\n\nOK\n\nISOLATED_ENVIRONMENT /content/comp9501-v2-20261025/.venv 2.11.0+cu130 4.57.6 0.18.1\n\nPROTOCOL_V2_INTEGRATION_OK\n",
+  "source_sha256": {
+    "common.py": "f90740de7703508a7a1dd60a7c9de518aa9622c8f7cdacda146cf6c5bdf7d7be",
+    "evaluate.py": "611f1025be1f94f6b7c0b2bd91256912e1d96feea35e94818a6dd3eae6d94a5f",
+    "merge.py": "04328e83fd80eb5c57871ef4035eb3806f51692564b40ec996d6a4f994e1dfb9",
+    "probe.py": "5c37af5ebd0de4fc91208a48036c1a548c190d2615ee8c9bc60d9911cd9ce97a",
+    "test_integration.py": "7253148fe54dce80247cb0363022194c1f3f5ec1d0eeff5949fafada5d5909e6",
+    "test_math.py": "b751b9507e1eecd0d57fb99dfbef20dddb4e1d6d8172129ab6a4ae2579947a9c",
+    "test_protocol.py": "8840c45b0eea7848dcc1a318c9e32bd64bce01c44658514e91bb2b021d258a83",
+    "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+  },
+  "scope": "Engineering checks; real-model learning diagnostics saved separately."
+}

@@ -1,0 +1,10 @@
+{
+ "description":"Exploratory feature-only hard router; task head remains known",
+ "fit_samples_per_task":128,"total_calibration_samples":256,
+ "linear_C":[0.1,1.0,10.0],"router_seed":9501,
+ "selection":"source-task accuracy on second calibration half, never classification validation accuracy",
+ "features":"frozen base last hidden state, mask-aware token mean; standard scaler fit on first calibration half only",
+ "methods":["random","format","prototype","linear","task_id"],
+ "cost":"prototype/linear require an extra full base forward; other three select before adapter forward",
+ "limitations":"task heads still known; task_id is a privileged reference already feasible under current protocol; source routing is not per-example best-expert supervision; exploratory reused validation"
+}

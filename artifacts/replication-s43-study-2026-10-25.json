@@ -1,0 +1,1735 @@
+{
+  "state": "passed",
+  "config": {
+    "model": "Qwen/Qwen2.5-0.5B",
+    "tasks": [
+      "sst2",
+      "mrpc",
+      "rte",
+      "cola"
+    ],
+    "base_seed": 9501,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "input_format": "sentence_fields_v2",
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "max_length": 128,
+    "train_samples": 4096,
+    "eval_samples": 0,
+    "probe_samples_per_task": 32,
+    "calibration_fraction": 0.1,
+    "selection_split": "calibration",
+    "calibration_eval_samples": 256,
+    "select_best_on_calibration": true,
+    "diagnostics": true,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "head_learning_rate": 0.001,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "logging_steps": 32,
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987"
+  },
+  "plan": {
+    "study": "Frozen replication of seed-42 grid on training seeds 43 and 44; DARE mask seed remains 42",
+    "selection_split": "calibration",
+    "selection_samples_per_task": 256,
+    "selection_score": "macro mean of SST2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy, CoLA MCC; native scales",
+    "tie_break": "first candidate in declared order",
+    "candidates": [
+      {
+        "name": "average",
+        "method": "average",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      {
+        "name": "ta025",
+        "method": "task_arithmetic",
+        "scale": 0.25,
+        "density": 1.0
+      },
+      {
+        "name": "ta050",
+        "method": "task_arithmetic",
+        "scale": 0.5,
+        "density": 1.0
+      },
+      {
+        "name": "ta100",
+        "method": "task_arithmetic",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      {
+        "name": "ties020s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.2
+      },
+      {
+        "name": "ties020s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.2
+      },
+      {
+        "name": "ties050s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      {
+        "name": "ties050s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      {
+        "name": "dare090s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.9
+      },
+      {
+        "name": "dare090s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.9
+      },
+      {
+        "name": "dare090s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.9
+      },
+      {
+        "name": "dare050s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.5
+      },
+      {
+        "name": "dare050s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      {
+        "name": "dare050s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      {
+        "name": "dare010s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.1
+      },
+      {
+        "name": "dare010s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.1
+      },
+      {
+        "name": "dare010s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.1
+      }
+    ],
+    "merge_seed": 42,
+    "pair_merge": "equal mean of two materialized deltas; original task heads",
+    "primary_hypothesis": "delta activation cosine negatively correlates with mean pair accuracy drop",
+    "secondary_checks": [
+      "raw activation cosine",
+      "weight delta cosine",
+      "primary task score drop",
+      "four separate probe source pools",
+      "leave-one-pair-out Spearman stability"
+    ],
+    "inference_limit": "six overlapping task pairs from four tasks, one training seed; descriptive correlations only, no independence or significance claim",
+    "sources": [
+      "https://arxiv.org/abs/2306.01708",
+      "https://arxiv.org/abs/2311.03099"
+    ],
+    "variants": "TIES per-matrix top-k magnitude sign election and disjoint mean; DARE drop/rescale then task arithmetic"
+  },
+  "seed": 43,
+  "calibration": {
+    "average": {
+      "candidate": {
+        "name": "average",
+        "method": "average",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8046875,
+            "f1": 0.8563218390804598,
+            "mcc": 0.6015106373002975
+          },
+          "primary_score": 0.8046875,
+          "samples": 256,
+          "seconds": 1.2478980530004264
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7734375,
+            "f1": 0.8242424242424242,
+            "mcc": 0.5267628921224364
+          },
+          "primary_score": 0.7988399621212121,
+          "samples": 256,
+          "seconds": 2.5177400270004
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5943775100401606,
+            "f1": 0.7002967359050445,
+            "mcc": 0.2724266237612233
+          },
+          "primary_score": 0.5943775100401606,
+          "samples": 249,
+          "seconds": 3.174767849000091
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.71875,
+            "f1": 0.8285714285714286,
+            "mcc": 0.249191439603738
+          },
+          "primary_score": 0.249191439603738,
+          "samples": 256,
+          "seconds": 0.904160907000005
+        }
+      },
+      "macro_primary_score": 0.6117741029412777
+    },
+    "ta025": {
+      "candidate": {
+        "name": "ta025",
+        "method": "task_arithmetic",
+        "scale": 0.25,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8046875,
+            "f1": 0.8563218390804598,
+            "mcc": 0.6015106373002975
+          },
+          "primary_score": 0.8046875,
+          "samples": 256,
+          "seconds": 1.2631700360007017
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7734375,
+            "f1": 0.8242424242424242,
+            "mcc": 0.5267628921224364
+          },
+          "primary_score": 0.7988399621212121,
+          "samples": 256,
+          "seconds": 2.542111441999623
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5943775100401606,
+            "f1": 0.7002967359050445,
+            "mcc": 0.2724266237612233
+          },
+          "primary_score": 0.5943775100401606,
+          "samples": 249,
+          "seconds": 3.1604147569996712
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.71875,
+            "f1": 0.8285714285714286,
+            "mcc": 0.249191439603738
+          },
+          "primary_score": 0.249191439603738,
+          "samples": 256,
+          "seconds": 0.5156946789993526
+        }
+      },
+      "macro_primary_score": 0.6117741029412777
+    },
+    "ta050": {
+      "candidate": {
+        "name": "ta050",
+        "method": "task_arithmetic",
+        "scale": 0.5,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.84375,
+            "f1": 0.8823529411764706,
+            "mcc": 0.6821907921380255
+          },
+          "primary_score": 0.84375,
+          "samples": 256,
+          "seconds": 0.8387171610002042
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.6875,
+            "f1": 0.7315436241610739,
+            "mcc": 0.44048959572582236
+          },
+          "primary_score": 0.7095218120805369,
+          "samples": 256,
+          "seconds": 2.4532803660003992
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6265060240963856,
+            "f1": 0.7028753993610224,
+            "mcc": 0.2982388998307361
+          },
+          "primary_score": 0.6265060240963856,
+          "samples": 249,
+          "seconds": 3.400021889000527
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7421875,
+            "f1": 0.8405797101449275,
+            "mcc": 0.34198102700789673
+          },
+          "primary_score": 0.34198102700789673,
+          "samples": 256,
+          "seconds": 0.9156869230000666
+        }
+      },
+      "macro_primary_score": 0.6304397157962048
+    },
+    "ta100": {
+      "candidate": {
+        "name": "ta100",
+        "method": "task_arithmetic",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8515625,
+            "f1": 0.8869047619047619,
+            "mcc": 0.6954994974451396
+          },
+          "primary_score": 0.8515625,
+          "samples": 256,
+          "seconds": 0.8420939719999296
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.5,
+            "f1": 0.4576271186440678,
+            "mcc": 0.2895960811910188
+          },
+          "primary_score": 0.4788135593220339,
+          "samples": 256,
+          "seconds": 1.6825427820003824
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6144578313253012,
+            "f1": 0.6335877862595419,
+            "mcc": 0.23071334899994414
+          },
+          "primary_score": 0.6144578313253012,
+          "samples": 249,
+          "seconds": 3.2550557909999043
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.77734375,
+            "f1": 0.8463611859838275,
+            "mcc": 0.4537352249938775
+          },
+          "primary_score": 0.4537352249938775,
+          "samples": 256,
+          "seconds": 0.9652911210005186
+        }
+      },
+      "macro_primary_score": 0.5996422789103031
+    },
+    "ties020s050": {
+      "candidate": {
+        "name": "ties020s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.2
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.83203125,
+            "f1": 0.8731563421828908,
+            "mcc": 0.6542744421412581
+          },
+          "primary_score": 0.83203125,
+          "samples": 256,
+          "seconds": 0.9185817269999461
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7734375,
+            "f1": 0.823170731707317,
+            "mcc": 0.5321879721406304
+          },
+          "primary_score": 0.7983041158536586,
+          "samples": 256,
+          "seconds": 1.2710462919994825
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5542168674698795,
+            "f1": 0.6782608695652174,
+            "mcc": 0.17654441845837143
+          },
+          "primary_score": 0.5542168674698795,
+          "samples": 249,
+          "seconds": 2.9296182739999495
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7265625,
+            "f1": 0.8325358851674641,
+            "mcc": 0.28262253343359234
+          },
+          "primary_score": 0.28262253343359234,
+          "samples": 256,
+          "seconds": 0.9620907809994605
+        }
+      },
+      "macro_primary_score": 0.6167936916892827
+    },
+    "ties020s100": {
+      "candidate": {
+        "name": "ties020s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.2
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.859375,
+            "f1": 0.8895705521472392,
+            "mcc": 0.7057496235278453
+          },
+          "primary_score": 0.859375,
+          "samples": 256,
+          "seconds": 1.2096250539998437
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.67578125,
+            "f1": 0.71280276816609,
+            "mcc": 0.4488505546377541
+          },
+          "primary_score": 0.694292009083045,
+          "samples": 256,
+          "seconds": 1.6272953249999773
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5582329317269076,
+            "f1": 0.6686746987951807,
+            "mcc": 0.16064878693049037
+          },
+          "primary_score": 0.5582329317269076,
+          "samples": 249,
+          "seconds": 2.225136924000253
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.73046875,
+            "f1": 0.8253164556962025,
+            "mcc": 0.298090964480305
+          },
+          "primary_score": 0.298090964480305,
+          "samples": 256,
+          "seconds": 0.9193935889998102
+        }
+      },
+      "macro_primary_score": 0.6024977263225644
+    },
+    "ties050s050": {
+      "candidate": {
+        "name": "ties050s050",
+        "method": "ties",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8359375,
+            "f1": 0.8764705882352941,
+            "mcc": 0.6642899267436697
+          },
+          "primary_score": 0.8359375,
+          "samples": 256,
+          "seconds": 1.1949197699996148
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.796875,
+            "f1": 0.8452380952380952,
+            "mcc": 0.5635883433111917
+          },
+          "primary_score": 0.8210565476190477,
+          "samples": 256,
+          "seconds": 1.7140951619994667
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5542168674698795,
+            "f1": 0.6782608695652174,
+            "mcc": 0.17654441845837143
+          },
+          "primary_score": 0.5542168674698795,
+          "samples": 249,
+          "seconds": 3.317217480999716
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.72265625,
+            "f1": 0.8305489260143198,
+            "mcc": 0.26629733553731044
+          },
+          "primary_score": 0.26629733553731044,
+          "samples": 256,
+          "seconds": 0.9109604260002016
+        }
+      },
+      "macro_primary_score": 0.6193770626565595
+    },
+    "ties050s100": {
+      "candidate": {
+        "name": "ties050s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.85546875,
+            "f1": 0.8868501529051988,
+            "mcc": 0.6976793197870528
+          },
+          "primary_score": 0.85546875,
+          "samples": 256,
+          "seconds": 0.6727955289998135
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.71484375,
+            "f1": 0.762214983713355,
+            "mcc": 0.46847973719895464
+          },
+          "primary_score": 0.7385293668566775,
+          "samples": 256,
+          "seconds": 2.483435160999761
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5542168674698795,
+            "f1": 0.6706231454005934,
+            "mcc": 0.1582275845077812
+          },
+          "primary_score": 0.5542168674698795,
+          "samples": 249,
+          "seconds": 3.3809336949998396
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.75390625,
+            "f1": 0.8436724565756824,
+            "mcc": 0.3706052700587195
+          },
+          "primary_score": 0.3706052700587195,
+          "samples": 256,
+          "seconds": 0.9770266119994631
+        }
+      },
+      "macro_primary_score": 0.6297050635963192
+    },
+    "dare090s025": {
+      "candidate": {
+        "name": "dare090s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.9
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8046875,
+            "f1": 0.8563218390804598,
+            "mcc": 0.6015106373002975
+          },
+          "primary_score": 0.8046875,
+          "samples": 256,
+          "seconds": 0.6582511170008729
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.76953125,
+            "f1": 0.8217522658610272,
+            "mcc": 0.5154186893345537
+          },
+          "primary_score": 0.7956417579305136,
+          "samples": 256,
+          "seconds": 2.420359071000348
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6024096385542169,
+            "f1": 0.7044776119402985,
+            "mcc": 0.2886603705069384
+          },
+          "primary_score": 0.6024096385542169,
+          "samples": 249,
+          "seconds": 3.394292675999168
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.71875,
+            "f1": 0.8285714285714286,
+            "mcc": 0.249191439603738
+          },
+          "primary_score": 0.249191439603738,
+          "samples": 256,
+          "seconds": 0.9506097760004195
+        }
+      },
+      "macro_primary_score": 0.6129825840221171
+    },
+    "dare090s050": {
+      "candidate": {
+        "name": "dare090s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.9
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.82421875,
+            "f1": 0.8695652173913043,
+            "mcc": 0.6434763741741881
+          },
+          "primary_score": 0.82421875,
+          "samples": 256,
+          "seconds": 0.6451898830000573
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.70703125,
+            "f1": 0.7524752475247525,
+            "mcc": 0.46524660218502256
+          },
+          "primary_score": 0.7297532487623762,
+          "samples": 256,
+          "seconds": 2.3087475969996376
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6265060240963856,
+            "f1": 0.7028753993610224,
+            "mcc": 0.2982388998307361
+          },
+          "primary_score": 0.6265060240963856,
+          "samples": 249,
+          "seconds": 3.3825872019997405
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7421875,
+            "f1": 0.8398058252427184,
+            "mcc": 0.3375795289509096
+          },
+          "primary_score": 0.3375795289509096,
+          "samples": 256,
+          "seconds": 0.9715288070001407
+        }
+      },
+      "macro_primary_score": 0.6295143879524179
+    },
+    "dare090s100": {
+      "candidate": {
+        "name": "dare090s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.9
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.84765625,
+            "f1": 0.884272997032641,
+            "mcc": 0.6877001454112365
+          },
+          "primary_score": 0.84765625,
+          "samples": 256,
+          "seconds": 0.7705736939997223
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.58984375,
+            "f1": 0.5945945945945946,
+            "mcc": 0.38705856133891015
+          },
+          "primary_score": 0.5922191722972974,
+          "samples": 256,
+          "seconds": 2.140607594999892
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6265060240963856,
+            "f1": 0.6381322957198443,
+            "mcc": 0.253880667264172
+          },
+          "primary_score": 0.6265060240963856,
+          "samples": 249,
+          "seconds": 3.389804543000537
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.77734375,
+            "f1": 0.8446866485013624,
+            "mcc": 0.4586532795984251
+          },
+          "primary_score": 0.4586532795984251,
+          "samples": 256,
+          "seconds": 0.961465737999788
+        }
+      },
+      "macro_primary_score": 0.631258681498027
+    },
+    "dare050s025": {
+      "candidate": {
+        "name": "dare050s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8046875,
+            "f1": 0.8563218390804598,
+            "mcc": 0.6015106373002975
+          },
+          "primary_score": 0.8046875,
+          "samples": 256,
+          "seconds": 0.8954405610002141
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.76171875,
+            "f1": 0.8134556574923547,
+            "mcc": 0.5090698023074413
+          },
+          "primary_score": 0.7875872037461773,
+          "samples": 256,
+          "seconds": 2.083525665999332
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5742971887550201,
+            "f1": 0.6863905325443787,
+            "mcc": 0.2179171119819655
+          },
+          "primary_score": 0.5742971887550201,
+          "samples": 249,
+          "seconds": 3.365396659999533
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.71875,
+            "f1": 0.8285714285714286,
+            "mcc": 0.249191439603738
+          },
+          "primary_score": 0.249191439603738,
+          "samples": 256,
+          "seconds": 0.9752570150003521
+        }
+      },
+      "macro_primary_score": 0.6039408330262339
+    },
+    "dare050s050": {
+      "candidate": {
+        "name": "dare050s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8515625,
+            "f1": 0.8875739644970414,
+            "mcc": 0.6976458611497045
+          },
+          "primary_score": 0.8515625,
+          "samples": 256,
+          "seconds": 0.8791641880006864
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.6875,
+            "f1": 0.7315436241610739,
+            "mcc": 0.44048959572582236
+          },
+          "primary_score": 0.7095218120805369,
+          "samples": 256,
+          "seconds": 2.0263524889996916
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6224899598393574,
+            "f1": 0.6987179487179487,
+            "mcc": 0.2871942067548241
+          },
+          "primary_score": 0.6224899598393574,
+          "samples": 249,
+          "seconds": 3.3765339290002885
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.74609375,
+            "f1": 0.8426150121065376,
+            "mcc": 0.3556648514038679
+          },
+          "primary_score": 0.3556648514038679,
+          "samples": 256,
+          "seconds": 0.9640417450000314
+        }
+      },
+      "macro_primary_score": 0.6348097808309405
+    },
+    "dare050s100": {
+      "candidate": {
+        "name": "dare050s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.85546875,
+            "f1": 0.8902077151335311,
+            "mcc": 0.7053724237916096
+          },
+          "primary_score": 0.85546875,
+          "samples": 256,
+          "seconds": 0.998246103999918
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.58984375,
+            "f1": 0.6007604562737643,
+            "mcc": 0.3676412405124511
+          },
+          "primary_score": 0.5953021031368821,
+          "samples": 256,
+          "seconds": 1.914305475999754
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5823293172690763,
+            "f1": 0.559322033898305,
+            "mcc": 0.16509094569509108
+          },
+          "primary_score": 0.5823293172690763,
+          "samples": 249,
+          "seconds": 3.371947738000017
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.765625,
+            "f1": 0.8351648351648352,
+            "mcc": 0.4340968734902533
+          },
+          "primary_score": 0.4340968734902533,
+          "samples": 256,
+          "seconds": 0.9652543840002181
+        }
+      },
+      "macro_primary_score": 0.6167992609740529
+    },
+    "dare010s025": {
+      "candidate": {
+        "name": "dare010s025",
+        "method": "dare",
+        "scale": 0.25,
+        "density": 0.1
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8046875,
+            "f1": 0.8538011695906432,
+            "mcc": 0.5944625921533683
+          },
+          "primary_score": 0.8046875,
+          "samples": 256,
+          "seconds": 1.0452458429999751
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.66796875,
+            "f1": 0.7138047138047138,
+            "mcc": 0.40143108461994365
+          },
+          "primary_score": 0.6908867319023568,
+          "samples": 256,
+          "seconds": 1.8496376049997707
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5742971887550201,
+            "f1": 0.6918604651162791,
+            "mcc": 0.23641576896550837
+          },
+          "primary_score": 0.5742971887550201,
+          "samples": 249,
+          "seconds": 3.337307234999571
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7265625,
+            "f1": 0.8325358851674641,
+            "mcc": 0.28262253343359234
+          },
+          "primary_score": 0.28262253343359234,
+          "samples": 256,
+          "seconds": 0.957904908999808
+        }
+      },
+      "macro_primary_score": 0.5881234885227423
+    },
+    "dare010s050": {
+      "candidate": {
+        "name": "dare010s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.1
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.84765625,
+            "f1": 0.8828828828828829,
+            "mcc": 0.6841078937764673
+          },
+          "primary_score": 0.84765625,
+          "samples": 256,
+          "seconds": 1.126594584000486
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.53515625,
+            "f1": 0.5142857142857142,
+            "mcc": 0.3281402422999213
+          },
+          "primary_score": 0.5247209821428571,
+          "samples": 256,
+          "seconds": 1.2375471549994472
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.570281124497992,
+            "f1": 0.672782874617737,
+            "mcc": 0.1843608738354763
+          },
+          "primary_score": 0.570281124497992,
+          "samples": 249,
+          "seconds": 1.6549033269993743
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7265625,
+            "f1": 0.8214285714285714,
+            "mcc": 0.29012942659282975
+          },
+          "primary_score": 0.29012942659282975,
+          "samples": 256,
+          "seconds": 0.4964271210001243
+        }
+      },
+      "macro_primary_score": 0.5581969458084197
+    },
+    "dare010s100": {
+      "candidate": {
+        "name": "dare010s100",
+        "method": "dare",
+        "scale": 1.0,
+        "density": 0.1
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.84765625,
+            "f1": 0.884272997032641,
+            "mcc": 0.6877001454112365
+          },
+          "primary_score": 0.84765625,
+          "samples": 256,
+          "seconds": 0.6183883430003334
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.328125,
+            "f1": 0.07526881720430108,
+            "mcc": 0.10996847274296323
+          },
+          "primary_score": 0.20169690860215053,
+          "samples": 256,
+          "seconds": 1.575288114999239
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5863453815261044,
+            "f1": 0.5928853754940712,
+            "mcc": 0.1729503265503233
+          },
+          "primary_score": 0.5863453815261044,
+          "samples": 249,
+          "seconds": 3.3365105040002163
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.625,
+            "f1": 0.6712328767123288,
+            "mcc": 0.308964437654054
+          },
+          "primary_score": 0.308964437654054,
+          "samples": 256,
+          "seconds": 0.8860695860003034
+        }
+      },
+      "macro_primary_score": 0.48616574444557725
+    }
+  },
+  "validation": {
+    "individual": {
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.9185779816513762,
+            "f1": 0.9220636663007684,
+            "mcc": 0.8381132568440418
+          },
+          "primary_score": 0.9185779816513762,
+          "samples": 872,
+          "seconds": 4.854563157000484
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.8382352941176471,
+            "f1": 0.8865979381443299,
+            "mcc": 0.6125245879555679
+          },
+          "primary_score": 0.8624166161309885,
+          "samples": 408,
+          "seconds": 3.946585863999644
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.7617328519855595,
+            "f1": 0.7480916030534351,
+            "mcc": 0.5220642057931612
+          },
+          "primary_score": 0.7617328519855595,
+          "samples": 277,
+          "seconds": 3.8160845020001943
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.8092042186001918,
+            "f1": 0.8652674339878131,
+            "mcc": 0.5409097998588036
+          },
+          "primary_score": 0.5409097998588036,
+          "samples": 1043,
+          "seconds": 3.691758379000021
+        }
+      },
+      "macro_primary_score": 0.770909312406682
+    },
+    "average": {
+      "candidate": {
+        "name": "average",
+        "method": "average",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.838302752293578,
+            "f1": 0.8580060422960725,
+            "mcc": 0.6957360468959827
+          },
+          "primary_score": 0.838302752293578,
+          "samples": 872,
+          "seconds": 4.8651810109995495
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7450980392156863,
+            "f1": 0.8015267175572519,
+            "mcc": 0.45698236625431465
+          },
+          "primary_score": 0.773312378386469,
+          "samples": 408,
+          "seconds": 3.8631960539996726
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5487364620938628,
+            "f1": 0.6612466124661247,
+            "mcc": 0.1963382347031265
+          },
+          "primary_score": 0.5487364620938628,
+          "samples": 277,
+          "seconds": 3.749726023999756
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7056567593480345,
+            "f1": 0.8218224027858386,
+            "mcc": 0.1638524383778306
+          },
+          "primary_score": 0.1638524383778306,
+          "samples": 1043,
+          "seconds": 3.685978807000538
+        }
+      },
+      "macro_primary_score": 0.5810510077879352
+    },
+    "task_arithmetic": {
+      "candidate": {
+        "name": "ta050",
+        "method": "task_arithmetic",
+        "scale": 0.5,
+        "density": 1.0
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8784403669724771,
+            "f1": 0.8909465020576132,
+            "mcc": 0.7704839508423282
+          },
+          "primary_score": 0.8784403669724771,
+          "samples": 872,
+          "seconds": 3.8545008689998213
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.6813725490196079,
+            "f1": 0.7136563876651982,
+            "mcc": 0.45084114338401093
+          },
+          "primary_score": 0.697514468342403,
+          "samples": 408,
+          "seconds": 3.8628310049998618
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5740072202166066,
+            "f1": 0.6609195402298851,
+            "mcc": 0.21723172227033807
+          },
+          "primary_score": 0.5740072202166066,
+          "samples": 277,
+          "seconds": 3.700253848999637
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7181208053691275,
+            "f1": 0.8280701754385965,
+            "mcc": 0.22788485166375735
+          },
+          "primary_score": 0.22788485166375735,
+          "samples": 1043,
+          "seconds": 3.8519266309995146
+        }
+      },
+      "macro_primary_score": 0.594461726798811
+    },
+    "ties": {
+      "candidate": {
+        "name": "ties050s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.9013761467889908,
+            "f1": 0.907725321888412,
+            "mcc": 0.8064549318112446
+          },
+          "primary_score": 0.9013761467889908,
+          "samples": 872,
+          "seconds": 4.866218318000392
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7205882352941176,
+            "f1": 0.7605042016806722,
+            "mcc": 0.4882538670399566
+          },
+          "primary_score": 0.740546218487395,
+          "samples": 408,
+          "seconds": 3.8566292859995883
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5487364620938628,
+            "f1": 0.659400544959128,
+            "mcc": 0.19119667993523737
+          },
+          "primary_score": 0.5487364620938628,
+          "samples": 277,
+          "seconds": 3.823575413999606
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.738255033557047,
+            "f1": 0.8374032162001191,
+            "mcc": 0.3091815254117982
+          },
+          "primary_score": 0.3091815254117982,
+          "samples": 1043,
+          "seconds": 3.686678130000473
+        }
+      },
+      "macro_primary_score": 0.6249600881955117
+    },
+    "dare": {
+      "candidate": {
+        "name": "dare050s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.5
+      },
+      "tasks": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8772935779816514,
+            "f1": 0.8898043254376931,
+            "mcc": 0.7677935160618073
+          },
+          "primary_score": 0.8772935779816514,
+          "samples": 872,
+          "seconds": 4.861513599999853
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.6887254901960784,
+            "f1": 0.7245119305856833,
+            "mcc": 0.4511415358195435
+          },
+          "primary_score": 0.7066187103908809,
+          "samples": 408,
+          "seconds": 3.8321584860004805
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6101083032490975,
+            "f1": 0.6804733727810651,
+            "mcc": 0.2846091039113409
+          },
+          "primary_score": 0.6101083032490975,
+          "samples": 277,
+          "seconds": 3.6671374540001125
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.716203259827421,
+            "f1": 0.8271028037383178,
+            "mcc": 0.2188079380457607
+          },
+          "primary_score": 0.2188079380457607,
+          "samples": 1043,
+          "seconds": 3.9060839050007417
+        }
+      },
+      "macro_primary_score": 0.6032071324168476
+    }
+  },
+  "pairs": [
+    {
+      "tasks": [
+        "sst2",
+        "mrpc"
+      ],
+      "metrics": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8990825688073395,
+            "f1": 0.9069767441860465,
+            "mcc": 0.8047957995120617
+          },
+          "primary_score": 0.8990825688073395,
+          "samples": 872,
+          "seconds": 4.969056129999444
+        },
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7867647058823529,
+            "f1": 0.8361581920903954,
+            "mcc": 0.5388295058028402
+          },
+          "primary_score": 0.8114614489863742,
+          "samples": 408,
+          "seconds": 3.614224978000493
+        }
+      },
+      "accuracy_drop": {
+        "sst2": 0.019495412844036664,
+        "mrpc": 0.05147058823529416
+      },
+      "mean_accuracy_drop": 0.03548300053966541,
+      "worst_accuracy_drop": 0.05147058823529416,
+      "mean_primary_drop": 0.035225289994325504,
+      "delta_cosine": 0.3773556351661682,
+      "raw_cosine": 0.9691640734672546,
+      "weight_cosine": 0.011133672488266333,
+      "delta_cosine_by_probe_source": {
+        "sst2": 0.504702091217041,
+        "mrpc": 0.15533225238323212,
+        "rte": 0.10009019076824188,
+        "cola": 0.5209038257598877
+      },
+      "same_input_format_family": false
+    },
+    {
+      "tasks": [
+        "sst2",
+        "rte"
+      ],
+      "metrics": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.8830275229357798,
+            "f1": 0.893970893970894,
+            "mcc": 0.7765908457827663
+          },
+          "primary_score": 0.8830275229357798,
+          "samples": 872,
+          "seconds": 4.829980450999756
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6173285198555957,
+            "f1": 0.6918604651162791,
+            "mcc": 0.3133708909899788
+          },
+          "primary_score": 0.6173285198555957,
+          "samples": 277,
+          "seconds": 3.685282747000201
+        }
+      },
+      "accuracy_drop": {
+        "sst2": 0.03555045871559637,
+        "rte": 0.14440433212996384
+      },
+      "mean_accuracy_drop": 0.0899773954227801,
+      "worst_accuracy_drop": 0.14440433212996384,
+      "mean_primary_drop": 0.0899773954227801,
+      "delta_cosine": 0.4464685320854187,
+      "raw_cosine": 0.9840593338012695,
+      "weight_cosine": 0.014437429666590711,
+      "delta_cosine_by_probe_source": {
+        "sst2": 0.5619141459465027,
+        "mrpc": 0.2595409154891968,
+        "rte": 0.22454148530960083,
+        "cola": 0.5626455545425415
+      },
+      "same_input_format_family": false
+    },
+    {
+      "tasks": [
+        "sst2",
+        "cola"
+      ],
+      "metrics": {
+        "sst2": {
+          "metrics": {
+            "accuracy": 0.893348623853211,
+            "f1": 0.9007470651013874,
+            "mcc": 0.7912211839930305
+          },
+          "primary_score": 0.893348623853211,
+          "samples": 872,
+          "seconds": 4.879128139999921
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7344199424736337,
+            "f1": 0.8346268656716418,
+            "mcc": 0.29361269913134624
+          },
+          "primary_score": 0.29361269913134624,
+          "samples": 1043,
+          "seconds": 3.749316722000003
+        }
+      },
+      "accuracy_drop": {
+        "sst2": 0.025229357798165153,
+        "cola": 0.07478427612655802
+      },
+      "mean_accuracy_drop": 0.05000681696236159,
+      "worst_accuracy_drop": 0.07478427612655802,
+      "mean_primary_drop": 0.13626322926281126,
+      "delta_cosine": 0.33391910791397095,
+      "raw_cosine": 0.9810271263122559,
+      "weight_cosine": 0.015944113158706,
+      "delta_cosine_by_probe_source": {
+        "sst2": 0.27509182691574097,
+        "mrpc": 0.3276441991329193,
+        "rte": 0.47332000732421875,
+        "cola": 0.33945196866989136
+      },
+      "same_input_format_family": true
+    },
+    {
+      "tasks": [
+        "mrpc",
+        "rte"
+      ],
+      "metrics": {
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7843137254901961,
+            "f1": 0.8589743589743589,
+            "mcc": 0.46798258138908033
+          },
+          "primary_score": 0.8216440422322775,
+          "samples": 408,
+          "seconds": 3.736536129000342
+        },
+        "rte": {
+          "metrics": {
+            "accuracy": 0.6570397111913358,
+            "f1": 0.7076923076923077,
+            "mcc": 0.367029787512223
+          },
+          "primary_score": 0.6570397111913358,
+          "samples": 277,
+          "seconds": 2.7039085740007067
+        }
+      },
+      "accuracy_drop": {
+        "mrpc": 0.05392156862745101,
+        "rte": 0.10469314079422376
+      },
+      "mean_accuracy_drop": 0.07930735471083739,
+      "worst_accuracy_drop": 0.10469314079422376,
+      "mean_primary_drop": 0.0727328573464674,
+      "delta_cosine": 0.9680817127227783,
+      "raw_cosine": 0.9931378364562988,
+      "weight_cosine": 0.05822219188833893,
+      "delta_cosine_by_probe_source": {
+        "sst2": 0.9721545577049255,
+        "mrpc": 0.9611632823944092,
+        "rte": 0.9611881971359253,
+        "cola": 0.9749853610992432
+      },
+      "same_input_format_family": true
+    },
+    {
+      "tasks": [
+        "mrpc",
+        "cola"
+      ],
+      "metrics": {
+        "mrpc": {
+          "metrics": {
+            "accuracy": 0.7352941176470589,
+            "f1": 0.7768595041322314,
+            "mcc": 0.5040958272030908
+          },
+          "primary_score": 0.7560768108896452,
+          "samples": 408,
+          "seconds": 1.918323378000423
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7046979865771812,
+            "f1": 0.8213457076566125,
+            "mcc": 0.15833456940979748
+          },
+          "primary_score": 0.15833456940979748,
+          "samples": 1043,
+          "seconds": 2.056567423999695
+        }
+      },
+      "accuracy_drop": {
+        "mrpc": 0.1029411764705882,
+        "cola": 0.10450623202301057
+      },
+      "mean_accuracy_drop": 0.10372370424679939,
+      "worst_accuracy_drop": 0.10450623202301057,
+      "mean_primary_drop": 0.24445751784517472,
+      "delta_cosine": -0.3263455629348755,
+      "raw_cosine": 0.9471933245658875,
+      "weight_cosine": 0.01410169439875768,
+      "delta_cosine_by_probe_source": {
+        "sst2": -0.18180963397026062,
+        "mrpc": -0.5559134483337402,
+        "rte": -0.5371952056884766,
+        "cola": -0.17496618628501892
+      },
+      "same_input_format_family": false
+    },
+    {
+      "tasks": [
+        "rte",
+        "cola"
+      ],
+      "metrics": {
+        "rte": {
+          "metrics": {
+            "accuracy": 0.5631768953068592,
+            "f1": 0.6738544474393531,
+            "mcc": 0.2443941904960642
+          },
+          "primary_score": 0.5631768953068592,
+          "samples": 277,
+          "seconds": 1.8243283199999496
+        },
+        "cola": {
+          "metrics": {
+            "accuracy": 0.7123681687440077,
+            "f1": 0.8253783469150174,
+            "mcc": 0.2001234553239965
+          },
+          "primary_score": 0.2001234553239965,
+          "samples": 1043,
+          "seconds": 2.042469684000025
+        }
+      },
+      "accuracy_drop": {
+        "rte": 0.1985559566787003,
+        "cola": 0.0968360498561841
+      },
+      "mean_accuracy_drop": 0.1476960032674422,
+      "worst_accuracy_drop": 0.1985559566787003,
+      "mean_primary_drop": 0.26967115060675373,
+      "delta_cosine": -0.254650741815567,
+      "raw_cosine": 0.9702004194259644,
+      "weight_cosine": 0.008091412920266525,
+      "delta_cosine_by_probe_source": {
+        "sst2": -0.14006228744983673,
+        "mrpc": -0.436889111995697,
+        "rte": -0.4066782593727112,
+        "cola": -0.14410442113876343
+      },
+      "same_input_format_family": false
+    }
+  ],
+  "source_sha256": {
+    "run.py": "982c7729cdcca15f1ae81021bd622a9f242791414dab58ae802687ca0d3ccd7e",
+    "plot.py": "5c10acc3dd64a6191b3b2fb6d6076a3858f0d3f7d89f613ecdb79f60a2ded442",
+    "engine.py": "6f4d8eea22259a5f6c3025c769c694021f6ef8021ac3c3251692e2b1ff808150",
+    "test_engine.py": "c7daa3d57f5c1034fdd573a36cc8f61a20551b95477ecb165342518bcbe035aa",
+    "replicate.py": "b9c8c935cdb2d13a3a3ac80417a89078e7cdc1f3f8c4ce06c3c874b7472e8de0"
+  },
+  "current": null,
+  "wall_seconds": 290.4278969449997,
+  "parity": [
+    {
+      "task": "sst2",
+      "average": false,
+      "maximum_logit_error": 0.0
+    },
+    {
+      "task": "mrpc",
+      "average": false,
+      "maximum_logit_error": 0.0
+    },
+    {
+      "task": "rte",
+      "average": false,
+      "maximum_logit_error": 0.0
+    },
+    {
+      "task": "cola",
+      "average": false,
+      "maximum_logit_error": 0.0
+    },
+    {
+      "task": "sst2",
+      "average": true,
+      "maximum_logit_error": 7.867813110351562e-06
+    }
+  ],
+  "selection": {
+    "selected": {
+      "average": {
+        "name": "average",
+        "method": "average",
+        "scale": 1.0,
+        "density": 1.0
+      },
+      "task_arithmetic": {
+        "name": "ta050",
+        "method": "task_arithmetic",
+        "scale": 0.5,
+        "density": 1.0
+      },
+      "ties": {
+        "name": "ties050s100",
+        "method": "ties",
+        "scale": 1.0,
+        "density": 0.5
+      },
+      "dare": {
+        "name": "dare050s050",
+        "method": "dare",
+        "scale": 0.5,
+        "density": 0.5
+      }
+    },
+    "criterion": "macro mean of SST2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy, CoLA MCC; native scales",
+    "split": "calibration",
+    "plan_sha256": "16b2b3abeb59bfff3557da6e5a7158b3eece95785a8532bae636ce886b460460",
+    "locked_before_validation_load": true,
+    "locked_at_epoch": 1792932583.3308196
+  },
+  "correlations": {
+    "delta_cosine": {
+      "pearson": -0.566969740336566,
+      "spearman": -0.48571428571428577
+    },
+    "raw_cosine": {
+      "pearson": -0.25202771982049965,
+      "spearman": -0.14285714285714288
+    },
+    "weight_cosine": {
+      "pearson": -0.13839517550451422,
+      "spearman": -0.3714285714285715
+    },
+    "delta_vs_primary_drop": {
+      "pearson": -0.8559653390434321,
+      "spearman": -0.7714285714285715
+    },
+    "by_probe_source": {
+      "sst2": {
+        "pearson": -0.5440920483703396,
+        "spearman": -0.48571428571428577
+      },
+      "mrpc": {
+        "pearson": -0.546601084810396,
+        "spearman": -0.5428571428571429
+      },
+      "rte": {
+        "pearson": -0.5462999290564232,
+        "spearman": -0.5428571428571429
+      },
+      "cola": {
+        "pearson": -0.5787901621053817,
+        "spearman": -0.48571428571428577
+      }
+    },
+    "leave_one_pair_out": [
+      {
+        "omitted": [
+          "sst2",
+          "mrpc"
+        ],
+        "pearson": -0.6212829151861387,
+        "spearman": -0.6
+      },
+      {
+        "omitted": [
+          "sst2",
+          "rte"
+        ],
+        "pearson": -0.5925331878452148,
+        "spearman": -0.6
+      },
+      {
+        "omitted": [
+          "sst2",
+          "cola"
+        ],
+        "pearson": -0.5907058989837897,
+        "spearman": -0.6
+      },
+      {
+        "omitted": [
+          "mrpc",
+          "rte"
+        ],
+        "pearson": -0.7557872577273591,
+        "spearman": -0.6
+      },
+      {
+        "omitted": [
+          "mrpc",
+          "cola"
+        ],
+        "pearson": -0.5451405135226998,
+        "spearman": -0.19999999999999998
+      },
+      {
+        "omitted": [
+          "rte",
+          "cola"
+        ],
+        "pearson": -0.3037776855737193,
+        "spearman": -0.19999999999999998
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.6",
+      "peft": "0.18.1",
+      "datasets": "4.5.0",
+      "accelerate": "1.12.0",
+      "safetensors": "0.7.0"
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "vram_gib": 39.4935302734375,
+    "peak_allocated_gib": 3.8459014892578125,
+    "peak_reserved_gib": 4.099609375
+  }
+}

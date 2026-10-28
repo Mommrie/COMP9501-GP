@@ -1,0 +1,6 @@
+{
+  "seeds":[42,43,44],"profiles":["global_kl","layer_kl"],"steps":[0,30,60,90,120],
+  "uniform_gains":[1,2],"temperature":2.0,"fit_samples_per_task":128,"total_calibration_samples":256,
+  "selection":"minimum equal-task-mean KL(teacher || student) on the existing selection half, no added labels in the criterion",
+  "scope":"Post-hoc exploratory selection-label control on a fixed existing history; teacher training and original teacher checkpoint selection used labels. No independent new validation set and no novelty claim."
+}
