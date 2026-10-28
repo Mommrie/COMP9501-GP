@@ -1,0 +1,25 @@
+# Colab 使用入口
+
+[原有说明](README.md) · [中文首页](../README.zh-CN.md) · [扩展开发](../docs/EXTENDING.zh-CN.md)
+
+优先使用 [team_colab.zh-CN.ipynb](team_colab.zh-CN.ipynb)。它与 [英文版](team_colab.ipynb) 的代码 cell 完全一致，区别是说明文字；quickstart.ipynb 是需要已有 checkout 的简化入口。
+
+## 一次运行的顺序
+
+1. 用自己的已授权账号打开 private notebook；打不开时从 GitHub 下载 ipynb，再上传到 Colab。
+2. 执行源码校验/展开、依赖安装和离线检查 cell。内嵌的是固定代码快照，当前约 69 KB，不包含原数据或模型权重。
+3. 已有 checkpoint 时填 CHECKPOINT_ARCHIVE 恢复；只复评则设置 SEED/EVAL_TASK 并开启 RUN_EVALUATION。
+4. 新训练时选 GPU，设置自己的 MEMBER、SEED 与 RUN_TRAINING。每次 run 目录有独立随机标识。
+5. 开启 EXPORT_RESULTS，下载结果 ZIP 或选择自己已授权的 Drive 路径，离开临时 VM 前保存。
+
+默认开关关闭训练/评价/导出，Run all 不会自动启动完整 GPU 实验。私库访问、Google runtime、Drive 权限分别管理；组员不需安装 MCP。
+
+## 修改与排错
+
+不要在生成的 base64 cell 里改源代码。先在仓库分支修改 code/config，再运行 `python scripts/build_team_notebook.py` 重建中英两个文件，用 `--check` 验证同步。runtime 源码有本地改动时，bootstrap 会拒绝用不同内容覆盖。
+
+GPU 额度属于各自账号；可以由维护者集中跑 GPU、组员提交代码和分析。细节见仓库 COLLABORATION.md。恢复包的共享云位置仍待设置，不能假定拥有 repo 权限就已得到 Drive 权限。
+
+## 维护中英说明
+
+英文说明在生成器中，中文文字在 [team_notebook.zh-CN.json](team_notebook.zh-CN.json)。修改英文说明后，先审阅并更新中文翻译，再用 `python scripts/build_team_notebook.py --print-markdown-digest` 获取英文说明哈希，更新 JSON 的 source_markdown_sha256，最后重建两个 notebook。这样英文说明的变化不会被旧翻译静默覆盖。

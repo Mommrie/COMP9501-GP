@@ -1,5 +1,7 @@
 # Build and reproduction
 
+[中文版](BUILD.zh-CN.md)
+
 For the browser-first team workflow, use [COLLABORATION.md](COLLABORATION.md) and the [embedded source launcher](notebooks/team_colab.ipynb). It initializes the runtime without a separate authenticated clone. Source changes require `python scripts/build_team_notebook.py` before committing the regenerated launcher.
 
 Run commands from the repository root. Python 3.11 or newer is required for the training dependencies. Recorded GPU experiments used Python 3.13.16 and Colab's torch 2.11.0+cu130 on an A100 40 GB. Keep the runtime's torch/CUDA build. [Effective imported versions](artifacts/effective-runtime-2026-10-25.json) and [pinned dependencies](requirements.txt) document the run.
@@ -42,7 +44,7 @@ The following runners consume the recorded bank paths above. They resolve the ch
 python code/functional_merge/run_all.py
 python code/coefficient_merge/run_all.py
 python code/coefficient_merge/run_layer_ce_all.py
-python code/router_v1/run.py
+python code/router_v1/run.py --config configs/protocol-v2-a100.json --plan configs/router-v1.json --output outputs/router-v1
 python code/selection_control/run.py
 python code/transfer_check/run.py
 ```

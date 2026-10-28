@@ -1,5 +1,7 @@
 # Part 2 实验代码
 
+[中文使用指南](README.zh-CN.md)
+
 范围：Qwen2.5-0.5B + GLUE（SST-2 / MRPC / RTE / CoLA），q/v LoRA。
 
 - [functional_merge/](functional_merge/README.md)：task-conditioned 线性响应匹配与解析退化控制。

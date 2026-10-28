@@ -1,5 +1,7 @@
 # Contribution conventions
 
+[中文版](CONTRIBUTING.zh-CN.md)
+
 Maintainer attribution for this checkout: **lrtang**. Author and committer names for the initial local history are both `lrtang`. Repository-local Git configuration controls these names and leaves global settings unchanged.
 
 Do not append automated-tool author names, co-author trailers, sign-offs or generated-by banners. This concerns commit/byline attribution. Preserve scholarly citations, actual human contributions and any disclosures required by the course. Do not rewrite another contributor's history or claim work was unaided when that is untrue.

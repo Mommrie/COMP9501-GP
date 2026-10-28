@@ -14,6 +14,9 @@ def main():
     files=[p for p in ROOT.rglob('*') if p.is_file() and not (set(p.relative_to(ROOT).parts)&IGNORED)]
     errors=[];counts={'python':0,'json':0,'notebooks':0,'markdown':0}
     for p in files:
+        if p.name=='README.md' and not (p.parent/'README.zh-CN.md').is_file():
+            errors.append(p.relative_to(ROOT).as_posix()+': missing Chinese section guide')
+    for p in files:
         relative=p.relative_to(ROOT).as_posix()
         if p.suffix in {'.docx','.pt','.pth','.safetensors','.npz','.npy','.pkl','.zip'}:
             errors.append(relative+': data, model or member document outside an ignored directory')
@@ -53,10 +56,13 @@ def main():
             changed.append(name)
             if args.strict_import:errors.append(name+': shared source/provenance mismatch')
     if (ROOT/'notebooks/team_colab.ipynb').exists():
-        from build_team_notebook import build
+        from build_team_notebook import build,chinese_notebook
         notebook,record=build()
         if (ROOT/'notebooks/team_colab.ipynb').read_text(encoding='utf-8')!=notebook or (ROOT/'artifacts/team-launcher-2026-10-28.json').read_text(encoding='utf-8')!=record:
             errors.append('Team launcher is stale; run python scripts/build_team_notebook.py')
+        chinese_path=ROOT/'notebooks/team_colab.zh-CN.ipynb'
+        if not chinese_path.exists() or chinese_path.read_text(encoding='utf-8')!=chinese_notebook(notebook):
+            errors.append('Chinese team launcher is missing or stale; run python scripts/build_team_notebook.py')
     print(json.dumps({'checked_files':len(files),'counts':counts,'changed_since_archive_import':changed,'errors':errors},ensure_ascii=False,indent=2))
     return bool(errors)
 

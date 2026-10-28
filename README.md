@@ -1,5 +1,7 @@
 # COMP9501-GP
 
+[中文使用指南](README.zh-CN.md)
+
 Private codebase for Group Project of COMP9501
 
 Private working repository for COMP9501 Group 13. Maintainer: **lrtang**.

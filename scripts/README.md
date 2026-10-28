@@ -1,5 +1,7 @@
 # Repository utilities
 
+[中文使用指南](README.zh-CN.md)
+
 - `build_team_notebook.py` builds/checks the deterministic embedded source launcher.
 - `colab_bundle.py` validates source/checkpoint ZIPs, protects existing files and exports runs with metadata.
 - `test_colab_bundle.py` checks idempotence, conflicting workspaces, corruption/path traversal and export metadata.

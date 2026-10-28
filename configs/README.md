@@ -1,5 +1,7 @@
 # 实验配置
 
+[中文使用指南](README.zh-CN.md)
+
 `functional-v1.json`、`coefficient-v1.json`、`coefficient-ce-control.json` 和 `router-v1.json` 为本轮静态/动态原型的冻结方案；对应报告见 [PROTOTYPES](../PROTOTYPES-2026-10-25.md)。所有新方法 validation 均属前期基准后的探索，不是全新确认集。
 
 `merge-study-v2.json` 固定合并诊断的 17 组配置（其中 TA 0.25 与 average 等价）：Task Arithmetic 系数、TIES 每矩阵保留率/系数、DARE 保留率/系数。最多 256 条 calibration 按四任务主指标均值选参数，锁定后才评估 validation；六任务对相关性只作单 seed 描述。方案和源码指纹先归档到 artifacts。

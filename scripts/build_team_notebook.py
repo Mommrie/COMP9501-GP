@@ -100,9 +100,28 @@ if EXPORT_RESULTS:
     return json.dumps(notebook,ensure_ascii=False,indent=2)+'\n',json.dumps(record,indent=2)+'\n'
 
 
+def chinese_notebook(notebook):
+    value=json.loads(notebook)
+    translations=json.loads((ROOT/'notebooks/team_notebook.zh-CN.json').read_text(encoding='utf-8'))
+    markdown=[''.join(c['source']) for c in value['cells'] if c['cell_type']=='markdown']
+    digest=hashlib.sha256(json.dumps(markdown,ensure_ascii=False).encode('utf-8')).hexdigest()
+    if digest!=translations['source_markdown_sha256']:
+        raise ValueError('English instructions changed: review the Chinese translation and source_markdown_sha256')
+    headings={text.splitlines()[0] for text in markdown}
+    if headings!=set(translations['sections']):raise ValueError('Chinese notebook section coverage mismatch')
+    for cell in value['cells']:
+        if cell['cell_type']=='markdown':
+            heading=''.join(cell['source']).splitlines()[0]
+            cell['source']=translations['sections'][heading].splitlines(keepends=True)
+    return json.dumps(value,ensure_ascii=False,indent=2)+'\n'
+
+
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');args=p.parse_args();notebook,record=build()
-    targets={ROOT/'notebooks/team_colab.ipynb':notebook,ROOT/'artifacts/team-launcher-2026-10-28.json':record}
+    p=argparse.ArgumentParser();p.add_argument('--check',action='store_true');p.add_argument('--print-markdown-digest',action='store_true');args=p.parse_args();notebook,record=build()
+    if args.print_markdown_digest:
+        markdown=[''.join(c['source']) for c in json.loads(notebook)['cells'] if c['cell_type']=='markdown']
+        print(hashlib.sha256(json.dumps(markdown,ensure_ascii=False).encode('utf-8')).hexdigest());return
+    targets={ROOT/'notebooks/team_colab.ipynb':notebook,ROOT/'notebooks/team_colab.zh-CN.ipynb':chinese_notebook(notebook),ROOT/'artifacts/team-launcher-2026-10-28.json':record}
     if args.check:
         if any(not p.exists() or p.read_text(encoding='utf-8')!=text for p,text in targets.items()):raise SystemExit('Team launcher is stale. Run python scripts/build_team_notebook.py')
         print('TEAM_LAUNCHER_CURRENT')

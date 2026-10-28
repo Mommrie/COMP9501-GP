@@ -1,5 +1,7 @@
 # 合并基线与六任务对诊断
 
+[中文使用指南](README.zh-CN.md)
+
 运行入口为 `run.py`，仅使用已训练好的 protocol-v2 adapter 银行，不再训练模型。`engine.py` 在一个 float32 base model 上从保存的原始参数重建每个合并状态，并装入该任务原有分类头，避免连续加减造成漂移。`test_engine.py` 检查状态切换与任务头，并将真实模型输出与既有评估器交叉核验。
 
 参数网格和诊断方向先写入 [预定方案](../../configs/merge-study-v2.json)。只用 calibration 选择各方法参数，将选择结果写入磁盘后才评估完整 validation。TIES 沿用已有的每矩阵 top-k 版本；DARE 与 Task Arithmetic 组合。Task Arithmetic 系数 1/4 等于四任务平均。
