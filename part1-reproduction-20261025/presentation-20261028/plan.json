@@ -1,0 +1,17 @@
+{
+  "purpose": "Post-exploration teaching extension; not a fresh blind benchmark or reproduction of the original tables",
+  "dataset_url": "https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz",
+  "dataset_sha256": "731c5ac602752760c8e48fbffcf8c3b850d9dc2a2aedcf2cc48468fc17b673d1",
+  "seeds": [21, 22, 23],
+  "train_per_class": 30,
+  "test_per_class": 100,
+  "test_seed": 9501,
+  "side": 14,
+  "ranks": [1, 2, 3, 4, 5, 6, 7],
+  "max_sweeps": 100,
+  "tol": 1e-7,
+  "budget": "For N=300 represented training images, include shared mean D=196: CSA=N*r*r+28*r+D; PCA=(N+D)*d+D. Choose largest integer d with PCA storage <= CSA storage. Do not extrapolate to one new image or bytes on disk.",
+  "selection": "All grid points reported, no test-based winner selection. Gallery uses first native test ID of each digit within the fixed test subset. Reuses previously explored test set.",
+  "restarts": {"subset_seed": 21, "train_per_class": 3, "rank": 4, "random_initializations": [0, 1, 2, 3, 4, 5, 6, 7]},
+  "synthetic": {"seed": 9501, "shape": [12, 10, 6], "ranks": [3, 2, 2], "n_train": 50, "n_test": 20, "noise": 0.0}
+}

@@ -17,6 +17,7 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 - [Build and reproduction](BUILD.md): environment, checks, pipeline order and output paths.
 - [Part 2 code](code/README.md) and [frozen configurations](configs/README.md).
 - [Part 1 implementation and results](part1-reproduction-20261025/README.md), [presentation outline](part1-reproduction-20261025/PRESENTATION-OUTLINE.md).
+- [Part 1 code and presentation evidence pack](part1-reproduction-20261025/presentation-20261028/README.md): formula-to-code walkthrough, ten PNG/SVG figures, storage-budget experiments, original-paper evidence and Q&A.
 - [Colab starter](notebooks/quickstart.ipynb): use an authenticated private checkout or an uploaded repository ZIP.
 - [Contribution conventions](CONTRIBUTING.md) and [repository checks](scripts/README.md).
 

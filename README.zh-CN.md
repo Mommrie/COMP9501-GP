@@ -6,6 +6,8 @@
 
 项目想做什么、目前做到哪里，先看 [Proposal 与进度清单](PROPOSAL.md)：保留原始提案正文，逐项对照现有证据，尾部有建议 timeline、已完成和待办事项。
 
+**Part 1 代码与展示证据**：直接看 [CSA 材料包](part1-reproduction-20261025/presentation-20261028/README.md)，含公式对应、代码讲解、10 组图表、实验解释和 Q&A；可交给 PPT 制作者使用，CPU 即可复现。
+
 ## 第一次使用怎么走
 
 1. 阅读 [中文搭建与复现](BUILD.zh-CN.md)。想直接跑 Colab，可打开 [中文团队 notebook](notebooks/team_colab.zh-CN.ipynb)；private repo 的首次访问仍需本人授权。
@@ -13,7 +15,7 @@
 3. 运行完成后导出带 source snapshot、seed 和文件 SHA 的结果包；数据、权重、Drive 权限与 GitHub 代码分开管理。
 4. 开发时可以参考 [组员提交指南](CONTRIBUTING.zh-CN.md) 与 [扩展指南](docs/EXTENDING.zh-CN.md)，较大改动可开分支/PR 讨论。
 
-当前团队功能在 feat/team-colab，尚未合入 main。Notebook 中内嵌约 69 KB 源码包，不需 runtime GitHub token 或 MCP。共享 notebook 不共享其他账号的 GPU 额度或临时 VM，见 [协作说明](COLLABORATION.md)。
+当前团队功能在 feat/team-colab，尚未合入 main。Notebook 内嵌源码包，精确大小和 SHA 见 [快照记录](artifacts/team-launcher-2026-10-28.json)，不需 runtime GitHub token 或 MCP。共享 notebook 不共享其他账号的 GPU 额度或临时 VM，见 [协作说明](COLLABORATION.md)。
 
 ## 各板块中文入口
 

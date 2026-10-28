@@ -7,7 +7,7 @@
 ## 一次运行的顺序
 
 1. 用自己的已授权账号打开 private notebook；打不开时从 GitHub 下载 ipynb，再上传到 Colab。
-2. 执行源码校验/展开、依赖安装和离线检查 cell。内嵌的是固定代码快照，当前约 69 KB，不包含原数据或模型权重。
+2. 执行源码校验/展开、依赖安装和离线检查 cell。内嵌固定代码快照，大小与 SHA 见 [快照记录](../artifacts/team-launcher-2026-10-28.json)，不包含原数据或模型权重；Part 1 的新张量实现与方案已同步。
 3. 已有 checkpoint 时填 CHECKPOINT_ARCHIVE 恢复；只复评则设置 SEED/EVAL_TASK 并开启 RUN_EVALUATION。
 4. 新训练时选 GPU，设置自己的 MEMBER、SEED 与 RUN_TRAINING。每次 run 目录有独立随机标识。
 5. 开启 EXPORT_RESULTS，下载结果 ZIP 或选择自己已授权的 Drive 路径，离开临时 VM 前保存。

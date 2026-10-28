@@ -4,6 +4,8 @@
 
 本目录为独立的补充实验，不改原论文或旧导读卡。实现论文二维特例：中心化图像 `X`，列正交 `U,V`，core=`U.T @ X @ V`，重建=`U @ core @ V.T`。交替求条件协方差的主特征向量，对应原文 Theorem 1 / Procedure 1 的坐标更新。
 
+**2026-10-28 展示材料包**：[代码解释、论文证据、10 组 PNG/SVG、完整结果与问答](presentation-20261028/README.md)。新增通用张量 CSA 与 1/2/3D 数学测试；旧二维源码及结果保留。新的存储预算比较与旧的同 latent 比较分开报告，原文停止条件已看图核正。Part 1 可用独立 [requirements.txt](requirements.txt) 在 CPU 上运行，无需安装根目录的 LoRA 环境。
+
 - [冻结实验方案](plan.json)：运行前固定维数、数据与指标；不是 2008 年原表的数值复现。
 - [代码](code/README.md)：NumPy 实现、数值检查、MNIST 受控比较。
 - [结果与限制](RESULTS.md)、[原始凭据](artifacts/README.md)：21 组比较完成；没有显示 CSA 在该设置下普遍胜过 PCA。

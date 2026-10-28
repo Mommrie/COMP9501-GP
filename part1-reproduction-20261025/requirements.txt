@@ -1,0 +1,3 @@
+# Standalone Part 1 environment tested on Python 3.9. No torch or GPU needed.
+numpy==1.26.4
+matplotlib==3.9.2

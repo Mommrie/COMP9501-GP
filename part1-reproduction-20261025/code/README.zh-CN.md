@@ -4,6 +4,10 @@
 
 csa.py 包含二维 CSA 与向量 PCA，run.py 读取数据/方案并保存样本 ID、模型与数值结果，summarize.py 从归档 JSON 汇总图表，test_csa.py 做数学检查。依赖 NumPy，汇总绘图另需 Matplotlib。
 
+2026-10-28 新增 `csa_tensor.py`（通用张量 mode 投影、展开和条件特征分解）、`test_csa_tensor.py`（1/2/3D 与输入边界测试）、`prepare_presentation.py`（完整图表与证据生成）。详细见 [代码讲解](../presentation-20261028/CODE-WALKTHROUGH.zh-CN.md) 与 [运行入口](../presentation-20261028/README.md)。旧二维源码、runner 与结果保留。
+
+全部测试：`python -m unittest discover -s part1-reproduction-20261025/code -p "test_csa*.py" -v`。旧命令只运行旧二维的两个测试。
+
 ## 核心计算
 
 中心化 X 的 core=UᵀXV，重建=U core Vᵀ。固定 V 更新行协方差主特征向量，再用新 U 更新 V；记录每次坐标更新的 captured energy。代码使用 C-order，Kronecker 顺序与数组约定配套。

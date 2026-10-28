@@ -1,6 +1,6 @@
 {
-  "source_snapshot_sha256": "ab4709e33f1f8f92868558c0b505a1540f5a987d07189e261012be3c477f3ddb",
-  "zip_bytes": 68863,
+  "source_snapshot_sha256": "f9b7281705cb99964049d888a3868f9599eb850ccc31c40b8070156625a7a610",
+  "zip_bytes": 81263,
   "embedded_files": {
     "assets/checkpoints-2026-10-25.json": "9c1ae70c2db4a072f030438ecbcc5ca17fbc57d241fd0c4d176c97f1c9f25a38",
     "code/coefficient_merge/core.py": "98aee9ad10524f45344aa198764c01acf630320de721abb527cf969cdf498085",
@@ -44,10 +44,15 @@
     "configs/selection-control.json": "9b890a2449e511533ecdb6fc22a1c0c204e4e3db9561a9e3b913679bea33180a",
     "configs/transfer-check.json": "6f8df8693f3ae5ca055db9417dc66cf981afa1058778c48986256ba344a3c553",
     "part1-reproduction-20261025/code/csa.py": "b017be3ee02bc0876ab75ae124534c95b10a9ba0cdbaaac90828d95347dc1574",
+    "part1-reproduction-20261025/code/csa_tensor.py": "db8f3de68d0b9c2c61407f3b8dda20a03e46e787b6f1ed20baba084458a30e71",
+    "part1-reproduction-20261025/code/prepare_presentation.py": "c74c25ff7b0dc7d57b47aff42b5e830a765cdc77fc165fed988bdfb4d228b022",
     "part1-reproduction-20261025/code/run.py": "5e03fe011fa4e0b787a60e9e12e1ffd4ea592db2b4e974bbe8b7644be0dadee5",
     "part1-reproduction-20261025/code/summarize.py": "dfd30048b978c3ca7e9e8df72ed047994d423ebef72621b1a5550672005cb6e4",
     "part1-reproduction-20261025/code/test_csa.py": "76d4e3eca11d68f3c8a23034028eb0df32b65d22ccae1411408274259b4c32a3",
+    "part1-reproduction-20261025/code/test_csa_tensor.py": "c6ef1139254a47fb16559aa4172225b206dd29ac27dd24bd05808fa60664922a",
     "part1-reproduction-20261025/plan.json": "0c00f18a6581c86e9418fcc87cf6bd0b746347143bc8564e5ac4aeeeb734ce00",
+    "part1-reproduction-20261025/presentation-20261028/plan.json": "b2ee5ae820a915ee103fae9410b889b3c0d1bb410fa41323c51b29b5e805012a",
+    "part1-reproduction-20261025/requirements.txt": "e59fbb7b64e2178f3a7967e6ff0ba9d20cfa70b253bca7efc6268f6f0f3a12ef",
     "requirements.txt": "1aa895c9d021f88de25cdbb2be621c532ac6ae7473405f0a8cc788bd04a6a503",
     "scripts/colab_bundle.py": "63285657e6c57bdb5da9acb23bb0831068a58594c645b6b02150bf3059be8d1f",
     "scripts/test_colab_bundle.py": "afef8c7d2aefc5228d481662d25c1e4ac27b8f97bc636d7f70e01716e938c3bd"

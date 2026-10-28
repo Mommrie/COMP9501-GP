@@ -4,6 +4,8 @@
 
 这里用二维灰度 MNIST 演示 CSA 的条件特征分解、重建与识别。它不是原论文人脸/Gabor-MNIST 表格的严格复现。先读 RESULTS.md，再用 PRESENTATION-OUTLINE.md 准备讲解和问答。
 
+**新增：给代码讲解人与 PPT 制作者的 [完整材料包](presentation-20261028/README.md)**。包含公式→代码说明、原文证据、10 组 PNG/SVG、同 latent / 存储预算两类实验、初始化与三维验证、讲解路线与 Q&A。旧结果保留；新结果完整报告，不作普遍优势或严格复现原表的声明。独立 CPU 依赖见 [requirements.txt](requirements.txt)。
+
 ## 怎么运行
 
 从仓库根目录执行：

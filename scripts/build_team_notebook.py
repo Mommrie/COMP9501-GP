@@ -11,6 +11,8 @@ def bundle_files():
     paths+=[ROOT/'requirements.txt',ROOT/'scripts/colab_bundle.py',ROOT/'scripts/test_colab_bundle.py',ROOT/'assets/checkpoints-2026-10-25.json']
     paths+=[p for p in (ROOT/'part1-reproduction-20261025/code').glob('*.py')]
     paths+=[ROOT/'part1-reproduction-20261025/plan.json']
+    paths+=[ROOT/'part1-reproduction-20261025/requirements.txt',
+            ROOT/'part1-reproduction-20261025/presentation-20261028/plan.json']
     return {p.relative_to(ROOT).as_posix():p.read_bytes().replace(b'\r\n',b'\n') for p in sorted(set(paths))}
 
 
@@ -45,7 +47,7 @@ print('Project source verified:', SOURCE_SNAPSHOT)
 print('Runtime folder:', ROOT)
 '''.replace('HELPER_SHA',repr(hashlib.sha256(helper).hexdigest())).replace('HELPER',repr(base64.b64encode(helper).decode())).replace('DIGEST',repr(digest)).replace('PAYLOAD',repr(base64.b64encode(payload).decode()))),
 code('''subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'], check=True)
-'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('part1-reproduction-20261025/code', 'test_csa.py'), ('scripts', 'test_colab_bundle.py')]
+'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('part1-reproduction-20261025/code', 'test_csa*.py'), ('scripts', 'test_colab_bundle.py')]
 for folder, pattern in checks:
     subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', folder, '-p', pattern], check=True)
 '''),md('''## Optional: restore the existing 12 adapters

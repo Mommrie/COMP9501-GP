@@ -2,6 +2,12 @@
 
 [中文使用指南](README.zh-CN.md)
 
+2026-10-28 additions: `csa_tensor.py` implements per-mode CSA for real tensors;
+`test_csa_tensor.py` checks 1D/2D/3D algebra and input contracts;
+`prepare_presentation.py` generates the [presentation evidence pack](../presentation-20261028/README.md).
+The original 2D implementation and experiment runner below remain unchanged.
+Run all mathematical checks with `python -m unittest discover -s part1-reproduction-20261025/code -p "test_csa*.py" -v`.
+
 - `csa.py`：二维 CSA / PCA；训练均值中心化；Gauss–Seidel 式交替更新；显式保存每个坐标的 captured energy。
 - `test_csa.py`：正交性、单调性、能量恒等式、PCA 可行域下界与可分离数据精确重建检查。
 - `run.py`：校验原数据 SHA，按冻结方案比较训练重建 / 测试重建 / 1-NN，并保存实际样本 ID 与模型。
