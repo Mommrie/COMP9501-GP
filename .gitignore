@@ -21,7 +21,3 @@ datasets/
 *.pkl
 *.zip
 *.tar.gz
-*.docx
-*.pdf
-!artifacts/*.pdf
-!part1-reproduction-20261025/artifacts/*.pdf

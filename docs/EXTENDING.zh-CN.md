@@ -96,7 +96,7 @@ Teacher-KL 不用 fit 标签，不代表全流程无标签：原 teacher/head �
 
 ## 8 验证与提交
 
-新模块独立写 README.md 和 README.zh-CN.md，列清输入、输出、CLI、信息权限、默认路径、限制。只有受影响逻辑需要新增相应数值测试；文档修改运行链接/结构检查即可。按实际修改范围运行：
+新模块可以补一小段用途和运行方式；中英文说明按组内需要维护。只有受影响逻辑需要新增相应数值测试；文档修改运行链接/结构检查即可。按实际修改范围运行：
 
 ```bash
 python scripts/build_team_notebook.py
@@ -107,4 +107,4 @@ python -m unittest discover -s code -p test_protocol.py
 
 系数/functional/CSA/打包工具另有各自测试，见各板块中文指南。随机微型 Qwen 集成检查需要固定 transformers/peft 环境，但不等于新 GPU 实验通过。
 
-PR 附上配置、code commit/快照 SHA、数据版本和 ID、预算、seeds、选择/评价隔离、完整结果、失败记录及必要局限。模板见 [实验与 PR 清单](EXPERIMENT_TEMPLATE.zh-CN.md)。保留原 evidence 与 import manifest，不把新运行覆盖到 2026-10-25 记录中。
+较大的实验可以附上配置、版本、数据和 seed 等背景，方便组员接着跑。模板见 [实验与 PR 清单](EXPERIMENT_TEMPLATE.zh-CN.md)。保留原实验结果，不把新运行覆盖到 2026-10-25 记录中。

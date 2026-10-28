@@ -2,16 +2,16 @@
 
 [原有说明](README.md) · [扩展开发](docs/EXTENDING.zh-CN.md)
 
-本仓库是 COMP9501 Group 13 的共享工程。维护者署名为 **lrtang**；组员保留自己的真实提交身份。Part 1 是 CSA 论文讲解与二维补充复现，Part 2 是 LoRA adapter 合并研究。
+这里存放 COMP9501 Group 13 的共享代码与实验记录，大家可以按自己负责的部分使用和补充。Part 1 是 CSA 论文讲解与二维补充复现，Part 2 是 LoRA adapter 合并研究。
 
 ## 第一次使用怎么走
 
 1. 阅读 [中文搭建与复现](BUILD.zh-CN.md)。想直接跑 Colab，可打开 [中文团队 notebook](notebooks/team_colab.zh-CN.ipynb)；private repo 的首次访问仍需本人授权。
 2. 只复评时恢复共享 checkpoint，使用 notebook 的 RUN_EVALUATION；要新训练时选 GPU、设置自己的 MEMBER/SEED，并使用新的 run 目录。
 3. 运行完成后导出带 source snapshot、seed 和文件 SHA 的结果包；数据、权重、Drive 权限与 GitHub 代码分开管理。
-4. 开发前读 [组员提交指南](CONTRIBUTING.zh-CN.md) 与 [扩展指南](docs/EXTENDING.zh-CN.md)，从分支开始，再用 PR 集成。
+4. 开发时可以参考 [组员提交指南](CONTRIBUTING.zh-CN.md) 与 [扩展指南](docs/EXTENDING.zh-CN.md)，较大改动可开分支/PR 讨论。
 
-当前团队功能在 feat/team-colab，尚未合入 main。Notebook 中内嵌约 69 KB 源码包，不需 runtime GitHub token 或 MCP。共享 notebook 不共享维护者的 GPU 额度或临时 VM，见 [协作说明](COLLABORATION.md)。
+当前团队功能在 feat/team-colab，尚未合入 main。Notebook 中内嵌约 69 KB 源码包，不需 runtime GitHub token 或 MCP。共享 notebook 不共享其他账号的 GPU 额度或临时 VM，见 [协作说明](COLLABORATION.md)。
 
 ## 各板块中文入口
 

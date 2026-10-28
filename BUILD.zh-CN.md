@@ -37,7 +37,7 @@ python -m unittest discover -s code -p test_math.py
 python -m unittest discover -s code -p test_protocol.py
 ```
 
-仓库检查只用标准库，检查 JSON/notebook、链接、源码与凭据泄漏、中文指南覆盖以及 launcher 是否过期。数值检查需要 torch；各模块另有自己的测试。历史 import 的合法改动会列在 changed_since_archive_import 中，不代表自动失败；`--strict-import` 只用于要求原样检查归档导入内容的场景。
+仓库检查只用标准库，帮助查语法、JSON、链接和明显的凭据/路径问题；按需要运行即可，不作为协作格式门槛。数值检查需要 torch，各模块还有对应测试。
 
 ## 3 建立或恢复 adapter bank
 

@@ -18,7 +18,7 @@
 
 不要在生成的 base64 cell 里改源代码。先在仓库分支修改 code/config，再运行 `python scripts/build_team_notebook.py` 重建中英两个文件，用 `--check` 验证同步。runtime 源码有本地改动时，bootstrap 会拒绝用不同内容覆盖。
 
-GPU 额度属于各自账号；可以由维护者集中跑 GPU、组员提交代码和分析。细节见仓库 COLLABORATION.md。恢复包的共享云位置仍待设置，不能假定拥有 repo 权限就已得到 Drive 权限。
+GPU 额度属于各自账号；可以由有空闲 GPU 的组员集中跑实验、组员提交代码和分析。细节见仓库 COLLABORATION.md。恢复包的共享云位置仍待设置，不能假定拥有 repo 权限就已得到 Drive 权限。
 
 ## 维护中英说明
 

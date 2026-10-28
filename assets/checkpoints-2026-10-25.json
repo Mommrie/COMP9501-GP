@@ -116,13 +116,6 @@
     "outputs/selection-control/status.json": "6c4513c726686b6d5e08578c8c517d219c8800998d939e81062fc960eb2363d5",
     "outputs/selection-control/summary.json": "6c4513c726686b6d5e08578c8c517d219c8800998d939e81062fc960eb2363d5"
   },
-  "source_archive_sha256": {
-    "protocol-v2-adapters-2026-10-25.zip": "208046584cc8b85ab81caa2ea9111cf118aba32006ea6a2c24ab99454f328e07",
-    "replication-adapters-s43-s44-2026-10-25.zip": "0df4118a5593c074317471f4dba53be79fc36ba92a2d2404953197a347be2666",
-    "wave2-metadata-2026-10-25.zip": "b1901dee31e71254c9318e2ef28b95b5fe74f9331dd776a5a9c8f8f3f90a0ddf",
-    "coefficient-ce-control-2026-10-25.zip": "ef7bc2ad03f868ebf3dbc4392bb9eba471442f9f777d0d66509be79a4e0c5532",
-    "selection-control-2026-10-25.zip": "4f89e605999222968a4b4511da8b452a33784fec3363b91a7541f19bd8f46226"
-  },
   "adapters": 12,
   "seeds": [
     42,
@@ -130,5 +123,5 @@
     44
   ],
   "download_location": null,
-  "scope": "Original task adapters plus bank metadata and saved coefficient/selection histories. No base weights, raw datasets, unrelated course results or credentials. The payload remains outside Git; private distribution still needs an agreed storage location."
+  "scope": "Task adapters, bank metadata and coefficient/selection histories; shared separately from Git. Base model and datasets are downloaded from their publishers."
 }

@@ -4,7 +4,7 @@
 
 Private codebase for Group Project of COMP9501
 
-Private working repository for COMP9501 Group 13. Maintainer: **lrtang**.
+Shared code and experiment notes for COMP9501 Group 13.
 
 Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aware Merging of LoRA Adapters for Multi-Task Learning**. Implementation and recorded experiments are available. The activation signal's unique benefit and robust transfer remain unestablished.
 
@@ -40,5 +40,3 @@ The score averages SST-2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy and CoLA M
 ## Repository contents
 
 Source, configurations, derived result JSON and generated plots are included. Raw datasets, trained weights, runtime caches, local backups, course lecture files and original member documents stay outside Git. Download data through the original publishers and recreate weights using the build instructions, or arrange a separate authorized transfer.
-
-[Source provenance](artifacts/source-provenance-2026-10-28.json) records archived/shared file hashes. Training/evaluation Python text matches the archived implementation after LF normalization. LF normalization, documentation deduplication, publication-boundary links and backup-metadata path redaction are listed as sharing adaptations. No new GPU result is claimed by this repository setup.

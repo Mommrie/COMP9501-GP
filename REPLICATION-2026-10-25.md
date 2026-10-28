@@ -81,6 +81,6 @@
 - [三 seed 汇总 JSON](artifacts/replication-summary-2026-10-25.json)；[seed 42 study](artifacts/merge-study-summary-2026-10-25.json)。
 - Seed 43：[bank](artifacts/replication-s43-bank-2026-10-25.json) / [study](artifacts/replication-s43-study-2026-10-25.json)；seed 44：[bank](artifacts/replication-s44-bank-2026-10-25.json) / [study](artifacts/replication-s44-study-2026-10-25.json)。完整 calibration 候选、锁定参数、各任务指标、六对和相关性均保留。
 - [复现与汇总代码](code/merge_study/README.md)：`replicate.py` 启动独立 seed，`aggregate.py` 汇总并生成图表。
-- 新增 8 个 adapter（两个 seed×四任务，含原分类头）、probe features、清单、日志、配置和执行代码在 本地备份（private local archive; not distributed）；[SHA/CRC 与文件清单](artifacts/replication-backup-2026-10-25.json)。原 seed 42 与诊断权重仍在 原备份（private local archive; not distributed）。共 12 个任务训练 adapter，另有原来的四项诊断 adapter。
+- 新增 8 个 adapter（两个 seed×四任务，含原分类头）、probe features、清单、日志、配置和执行代码在 本地备份（private local archive; not distributed）；SHA/CRC 与文件清单（本地记录）。原 seed 42 与诊断权重仍在 原备份（private local archive; not distributed）。共 12 个任务训练 adapter，另有原来的四项诊断 adapter。
 
 新增权重归档 20,820,471 字节，已核对传输 SHA-256、ZIP CRC、训练/执行源码、checkpoint 模型 commit、各 seed 的 train/calibration ID 分离及三 seed 取样一致性。

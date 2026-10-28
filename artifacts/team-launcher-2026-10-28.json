@@ -1,8 +1,8 @@
 {
-  "source_snapshot_sha256": "92620b7ad5c1d2dfb2e665db93aee92e766409f8f42ef23e4047f066fc3ded1f",
-  "zip_bytes": 69211,
+  "source_snapshot_sha256": "ab4709e33f1f8f92868558c0b505a1540f5a987d07189e261012be3c477f3ddb",
+  "zip_bytes": 68863,
   "embedded_files": {
-    "assets/checkpoints-2026-10-25.json": "d0d264c430b57d119279715ff01cf949f68035457157c43a093ac7ed7c8fde20",
+    "assets/checkpoints-2026-10-25.json": "9c1ae70c2db4a072f030438ecbcc5ca17fbc57d241fd0c4d176c97f1c9f25a38",
     "code/coefficient_merge/core.py": "98aee9ad10524f45344aa198764c01acf630320de721abb527cf969cdf498085",
     "code/coefficient_merge/run.py": "8edd4b09a498c1a3b65735daef9f6683b95c86fb77b426db72737dc7dace8d62",
     "code/coefficient_merge/run_all.py": "a863d2c2fc6f09bed8fa3d671ecc3d83ad8397bc77066db684b8ce7bc43088be",
