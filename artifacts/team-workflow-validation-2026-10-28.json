@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-28",
+  "state": "passed",
+  "embedded_source_snapshot_sha256": "92620b7ad5c1d2dfb2e665db93aee92e766409f8f42ef23e4047f066fc3ded1f",
+  "bootstrap_executed_from_generated_notebook": true,
+  "restored_task_adapters": 12,
+  "restore_repeated_idempotently": true,
+  "offline_tests": 19,
+  "export_metadata_and_zip_verified": true,
+  "scope": "Local CPU execution of embedded source, checksum-verified checkpoint restore and run export. Does not verify Colab browser/GPU allocation or private cloud storage permissions. No new GPU result."
+}

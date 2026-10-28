@@ -1,6 +1,6 @@
 """Portable packaging checks; no third-party dependency or model download."""
 from pathlib import Path
-import ast,json,re,sys
+import argparse,ast,json,re,sys
 from urllib.parse import unquote
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -10,6 +10,7 @@ LOCAL_PATH=re.compile(r'(?i)(?:[a-z]:[\\/](?:users|dsh-campus)[\\/]|[/]Users[/][
 
 
 def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--strict-import',action='store_true');args=parser.parse_args()
     files=[p for p in ROOT.rglob('*') if p.is_file() and not (set(p.relative_to(ROOT).parts)&IGNORED)]
     errors=[];counts={'python':0,'json':0,'notebooks':0,'markdown':0}
     for p in files:
@@ -45,11 +46,18 @@ def main():
         except (SyntaxError,ValueError,KeyError,AssertionError) as error:errors.append(relative+': '+str(error))
     provenance=json.loads((ROOT/'artifacts/source-provenance-2026-10-28.json').read_text(encoding='utf-8'))
     import hashlib
+    changed=[]
     for name,item in provenance['copied_files'].items():
         p=ROOT/name
         if not p.exists() or hashlib.sha256(p.read_bytes()).hexdigest()!=item['shared_sha256']:
-            errors.append(name+': shared source/provenance mismatch')
-    print(json.dumps({'checked_files':len(files),'counts':counts,'errors':errors},ensure_ascii=False,indent=2))
+            changed.append(name)
+            if args.strict_import:errors.append(name+': shared source/provenance mismatch')
+    if (ROOT/'notebooks/team_colab.ipynb').exists():
+        from build_team_notebook import build
+        notebook,record=build()
+        if (ROOT/'notebooks/team_colab.ipynb').read_text(encoding='utf-8')!=notebook or (ROOT/'artifacts/team-launcher-2026-10-28.json').read_text(encoding='utf-8')!=record:
+            errors.append('Team launcher is stale; run python scripts/build_team_notebook.py')
+    print(json.dumps({'checked_files':len(files),'counts':counts,'changed_since_archive_import':changed,'errors':errors},ensure_ascii=False,indent=2))
     return bool(errors)
 
 

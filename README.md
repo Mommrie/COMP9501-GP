@@ -6,6 +6,9 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 
 ## Start here
 
+- [Team collaboration and Colab](COLLABORATION.md): embedded-source launcher, separate GPU accounts, checkpoint restore and run export.
+- [Team Colab launcher](notebooks/team_colab.ipynb): no runtime GitHub token or git clone. Private-notebook access still needs your own repository authorization.
+
 - [Build and reproduction](BUILD.md): environment, checks, pipeline order and output paths.
 - [Part 2 code](code/README.md) and [frozen configurations](configs/README.md).
 - [Part 1 implementation and results](part1-reproduction-20261025/README.md), [presentation outline](part1-reproduction-20261025/PRESENTATION-OUTLINE.md).
