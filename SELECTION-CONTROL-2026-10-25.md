@@ -16,5 +16,5 @@ Uniform 三次仍选 gain 2。Layer KL 三次均选 step 120，global KL 分别�
 
 执行耗时约 202 秒；三 seed 全部通过，JSON、锁定候选、执行源码和配置已本地备份并核验 SHA/CRC/源码一致性。原系数历史、原 GT 结果与代码保持原状。
 
-- [原始结果](artifacts/selection-control-2026-10-25.json)、[汇总](artifacts/selection-control-aggregate-2026-10-25.json)、[备份校验](artifacts/selection-control-backup-2026-10-25.json)。
+- [原始结果](artifacts/selection-control-2026-10-25.json)、[汇总](artifacts/selection-control-aggregate-2026-10-25.json)、备份校验（本地记录）。
 - [代码与信息边界](code/selection_control/README.md)、[固定候选方案](configs/selection-control.json)。

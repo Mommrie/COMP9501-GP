@@ -1,11 +1,9 @@
-# Contribution conventions
+# Working together
 
-Maintainer attribution for this checkout: **lrtang**. Author and committer names for the initial local history are both `lrtang`. Repository-local Git configuration controls these names and leaves global settings unchanged.
+Use your own account for commits. For a larger change, a branch and a short PR can make discussion easier; small fixes can follow whatever the group agrees.
 
-Do not append automated-tool author names, co-author trailers, sign-offs or generated-by banners. This concerns commit/byline attribution. Preserve scholarly citations, actual human contributions and any disclosures required by the course. Do not rewrite another contributor's history or claim work was unaided when that is untrue.
+Please include enough context to run changed code: the command, config and any useful result or limitation.
 
-GitHub account association and the commit display name are separate fields. Repository authentication uses the owner account; a noreply commit email keeps the personal email out of history.
+If runtime code or configs change, refresh the embedded Colab notebook so it runs the intended version. The repository checker is an optional convenience, not a team approval process.
 
-Before a commit, run the standard-library repository check and the tests affected by the change. Keep experimental definitions fixed before viewing new target results. Report negative seeds and limitations. Keep every new experiment in a fresh output directory.
-
-Local checkpoint archives and course attachments are deliberately absent. Do not add them, credentials, a complete environment folder or another course's material to a commit. Member names, submission status and presentation slots require verification rather than inference.
+Keep credentials and large data/model files out of code commits. Experiment outputs are easier to compare when saved under distinct run names.

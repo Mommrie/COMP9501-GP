@@ -79,6 +79,6 @@ Raw 与 Δactivation 的 Spearman 完全相同；ΔW cosine 也达到 −0.6。�
 
 - [完整结果 JSON](artifacts/merge-study-summary-2026-10-25.json)：17 组 calibration、5 组 validation（含 individual）、6 个任务对、logits 核验和相关性。
 - [代码与命令](code/merge_study/README.md)。在原银行上运行，不改变原 adapter；日志与原始 selection/manifests 随备份保存。
-- 本地实验归档（private local archive; not distributed）、[SHA/文件清单](artifacts/merge-study-backup-2026-10-25.json)。归档包含本轮执行代码、冻结配置、selection/manifests、结果、绘图代码与 PNG/PDF；引用前轮 8-adapter 备份，不重复打包权重。
+- 本地实验归档（private local archive; not distributed）、SHA/文件清单（本地记录）。归档包含本轮执行代码、冻结配置、selection/manifests、结果、绘图代码与 PNG/PDF；引用前轮 8-adapter 备份，不重复打包权重。
 
 本轮远端 wall time 176.8 秒，A100 上最高 PyTorch peak allocated 3.85 GiB（交叉核验时同时保留两个模型）。实验归档 183,911 字节，远端传输 SHA、最终本地归档 SHA、ZIP CRC、执行源码指纹及参数锁定指纹均已核对。

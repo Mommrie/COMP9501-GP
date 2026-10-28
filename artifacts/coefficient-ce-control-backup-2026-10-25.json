@@ -1,7 +1,0 @@
-{
-  "bytes": 119077,
-  "sha256": "ef7bc2ad03f868ebf3dbc4392bb9eba471442f9f777d0d66509be79a4e0c5532",
-  "archive": ".tools/coefficient-ce-control-2026-10-25.zip",
-  "verified": "SHA, ZIP CRC, source hashes and successful states",
-  "sharing_note": "Checksum provenance only. Model/archive payloads remain in private local storage and are not included in Git."
-}

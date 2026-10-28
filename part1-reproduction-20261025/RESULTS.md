@@ -22,4 +22,4 @@ CSA 的优势是本次设置中的投影矩阵存储：latent=4 时 56 vs 784 �
 
 训练 seed 21/22/23 对应三组嵌套训练子集；测试为固定、分层抽取的 1,000 张 native test 图像。误差棒是训练子集间 sample SD，不能解释为置信区间。降维只拟合训练图像，训练标签只用于 1-NN 参考与分层抽样。没有测试集选择配置；只有一次由行列协方差初始化的 CSA，不保证全局最优。
 
-完整数字见 [结果表](artifacts/table-2026-10-25.md)、[原始 JSON](artifacts/summary-2026-10-25.json)、[备份校验](artifacts/backup-2026-10-25.json)。
+完整数字见 [结果表](artifacts/table-2026-10-25.md)、[原始 JSON](artifacts/summary-2026-10-25.json)、备份校验（本地记录）。

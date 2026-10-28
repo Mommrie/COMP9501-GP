@@ -18,4 +18,4 @@ PAWS 子集正例比例为 40.625%，多数类基线 accuracy 为 **59.375%**；
 
 详细 mean±sample SD 见 [汇总](artifacts/transfer-check-aggregate-2026-10-25.json)，不是测试样本置信区间。任务头仍由已知任务提供。原研究的 calibration 标签使用、validation 探索和新颖性限制见 [原型](PROTOTYPES-2026-10-25.md) 与 [选择控制](SELECTION-CONTROL-2026-10-25.md)。
 
-执行约 110 秒；[固定方案](configs/transfer-check.json)、[代码](code/transfer_check/README.md)、[SHA/CRC 与源码校验](artifacts/transfer-check-backup-2026-10-25.json) 均已归档。原文不随代码重新分发；数据按发布方渠道加载。
+执行约 110 秒；[固定方案](configs/transfer-check.json)、[代码](code/transfer_check/README.md)、SHA/CRC 与源码校验（本地记录） 均已归档。原文不随代码重新分发；数据按发布方渠道加载。

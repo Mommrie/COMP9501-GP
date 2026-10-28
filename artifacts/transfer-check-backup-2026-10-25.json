@@ -1,8 +1,0 @@
-{
-  "bytes": 145032,
-  "sha256": "1eca5b5730bc4c4c89461ce85c702bc78a890226c869e56ba455d1e5cf58a5ef",
-  "local": "../.tools/transfer-check-2026-10-25.zip",
-  "sha_crc_passed": true,
-  "source_and_plan_exact_match": true,
-  "sharing_note": "Checksum provenance only. Model/archive payloads remain in private local storage and are not included in Git."
-}
