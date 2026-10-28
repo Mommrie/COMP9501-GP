@@ -6,6 +6,7 @@
 
 ## 文档地图
 
+- [Proposal 与进度](../PROPOSAL.md)：原始英文提案与中文整理、现有结果对应关系、尾部 timeline 和完成/待办清单。
 - [扩展开发指南](EXTENDING.zh-CN.md)：真实修改点、固定四任务/二类/层数假设、配置消融例子、新数据/算法/模型接入与验收。
 - [实验与 PR 模板](EXPERIMENT_TEMPLATE.zh-CN.md)：信息权限、预算、版本、ID、seeds、结果与提交清单。
 - [中文版运行说明](../BUILD.zh-CN.md)：环境、bank、各后续模块的依赖顺序与排错。

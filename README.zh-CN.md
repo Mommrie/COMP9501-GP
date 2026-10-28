@@ -4,6 +4,8 @@
 
 这里存放 COMP9501 Group 13 的共享代码与实验记录，大家可以按自己负责的部分使用和补充。Part 1 是 CSA 论文讲解与二维补充复现，Part 2 是 LoRA adapter 合并研究。
 
+项目想做什么、目前做到哪里，先看 [Proposal 与进度清单](PROPOSAL.md)：保留原始提案正文，逐项对照现有证据，尾部有建议 timeline、已完成和待办事项。
+
 ## 第一次使用怎么走
 
 1. 阅读 [中文搭建与复现](BUILD.zh-CN.md)。想直接跑 Colab，可打开 [中文团队 notebook](notebooks/team_colab.zh-CN.ipynb)；private repo 的首次访问仍需本人授权。

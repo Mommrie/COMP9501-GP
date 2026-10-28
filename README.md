@@ -10,6 +10,7 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 
 ## Start here
 
+- [Proposal, progress, timeline and TODO](PROPOSAL.md): original Part 2 text, Chinese overview and evidence-backed status.
 - [Team collaboration and Colab](COLLABORATION.md): embedded-source launcher, separate GPU accounts, checkpoint restore and run export.
 - [Team Colab launcher](notebooks/team_colab.ipynb): no runtime GitHub token or git clone. Private-notebook access still needs your own repository authorization.
 
