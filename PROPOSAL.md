@@ -1,6 +1,7 @@
 # Part 2 Proposal 与项目进度
 
-**Activation-Aware Merging of LoRA Adapters for Multi-Task Learning**  
+**Activation-Aware Merging of LoRA Adapters for Multi-Task Learning**
+
 COMP9501 · Group 13 · 进度更新：2026-10-28
 
 [中文首页](README.zh-CN.md) · [搭建与复现](BUILD.zh-CN.md) · [扩展开发](docs/EXTENDING.zh-CN.md)
