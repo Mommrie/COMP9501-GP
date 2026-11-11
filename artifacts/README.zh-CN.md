@@ -15,3 +15,5 @@ environment/runtime 记录帮助解释原运行条件；team-launcher 标识 Col
 新实验用新名字，附上配置、seed、运行命令和结果背景，后续需要再补详细分析即可。原始结果与负结果保留，避免比较时混用不同设置。
 
 Latest follow-up / 最新补强：[results and Q&A](../report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。
+
+Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。

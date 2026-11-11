@@ -1,7 +1,7 @@
 {
   "state": "passed",
-  "pdf_sha256": "26fae3e18b3f7fc0ecdbbecaceb8cb8ac95cff053f2f5e7ddd2a24c1e3e5c895",
-  "pages": 15,
-  "review": "All 15 rendered pages reviewed at page resolution; carried-over pages checked byte-identical. Tables, equations, figures, references and margins checked. Four standalone follow-up figures also reviewed.",
-  "date": "2026-11-11"
+  "pdf_sha256": "1b62e81e49e530fa626a53d1beadf6976dce10e9a9b8662b8a9c658f14707ea6",
+  "pages": 17,
+  "date": "2026-11-11",
+  "review": "All 17 rendered pages inspected at page resolution; equations, tables, references, margins and both standalone CSA figures checked. No clipping or overlap observed."
 }

@@ -132,3 +132,7 @@
 ## 路由图表的指标提醒
 
 `official-routing.png` 左图是 native task score：task-ID/gates 0.7618，expert 0.6571，oracle 0.8819。讲稿中的82.253%、75.647%、91.497%是另一个指标 task-macro accuracy，不能直接用作该图柱值。帮助/损害图也按任务宏平均，switch rate按样本加权。
+
+## 选文与Part1的直接桥接（新增）
+
+新增两页PPT安排、完整三seed结果、代码与论文公式对应、英文口述及12组追问见 [CSA桥接材料](CSA-BRIDGE-RESULTS.zh-CN.md)。这部分直接应用CSA压缩expert响应，原合并主线结论保持原样；response compression不等于weight compression或推理加速。

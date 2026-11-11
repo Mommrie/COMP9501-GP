@@ -27,8 +27,12 @@
 
 可以说：我们实现了一个小模型、多任务 LoRA 合并研究流程，在固定数据预算下比较功能输出监督与标签监督，并诊断相似度、数据权限、来源线索和部署成本。逐层混合、蒸馏、相似度诊断分别有先例；课程项目的贡献主要是明确假设、实现对照、报告证据和失败条件，尚无依据宣称 SOTA 或首创。
 
-Part 1 的 CSA 提供“在结构约束下选择子空间、明确存储预算”的理解背景。Part 2 当前没有调用 CSA 投影更新 LoRA，也没有证明 CSA 压缩可直接改善 LoRA merging；两部分的联系是研究动机与方法分析，不能说代码已经把 CSA 算法迁移进 LLM。若教授追问，可直接指向实际参数化：24 层四任务混合 logits 加一个 gain，而非 CSA mode basis。
+Part 1 的 CSA 提供“在结构约束下选择子空间、明确存储预算”的理解背景。原有 Part 2 合并器采用24层四任务混合 logits 加一个gain，没有调用CSA投影更新LoRA。11月11日新增响应压缩分支后，两部分已有直接算法联系：同一个TensorCSA作用于expert×feature响应矩阵；尚未证明该压缩可改善LoRA权重合并，也不把响应压缩称为LLM权重压缩。详见文末桥接结果。
 
 英文口答：
 
 > Layer-wise merging and functional matching already have established precedents. Our project studies a narrower empirical question: whether teacher-output matching helps under a fixed LoRA merging capacity and a separated data protocol. We also examine when similarity and routing evidence can be misleading. We distinguish our implementation choices from algorithmic novelty, and we report the outcomes even when the original hypothesis is not supported.
+
+## 2026-11-11：从概念联系推进到直接CSA应用
+
+原有LoRA合并主线没有执行CSA权重投影；本轮新增 [CSA功能响应桥接](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)，直接复用Part1 TensorCSA到expert×hidden response矩阵。三seed、七rank、等latent/计basis预算PCA、下游离线expert选择及重载审计完成。代表CSA2×8用148.1 KiB，PCA16用540.0 KiB，PCA3用124.0 KiB；final relative squared error分别0.4848/0.3843/0.5785。它建立算法与实验上的联系，但不称CSA权重合并、无标签路由或推理加速。整合报告17页，32项云端测试通过。

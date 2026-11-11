@@ -39,3 +39,5 @@ python code/train_lora.py --config configs/protocol-v2-a100.json --task sst2 --s
 新任务涉及 FIELDS、selected_raw、两类头部、metrics 和各原型 T=4 假设；换 backbone 还涉及 score head、模块名与层索引。新增合并方法要同时接入 CLI、engine 和 plan。详见中央扩展指南，勿只改 tasks/model 后跑完整实验。子目录都有独立中文说明。
 
 第二轮强化：`robustness_controls.py` 完成selection-only权重/保守gate选择、回退重载和去完整tuple重叠的官方validation复评；`summarize_robustness.py` 独立重算指标并生成表图。原activation配置默认行为保留，新配置才启用逐profile权重与缓存。具体预算与限制见 [协议](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md)。
+
+Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。

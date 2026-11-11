@@ -1,0 +1,11 @@
+\begin{table}[htbp]\centering\small
+\caption{Direct CSA transfer to expert-by-feature response matrices. Storage includes a fit mean, bases and 512 codes in float64. Reconstruction errors are relative squared errors on the previously explored internal final. Routing requires all four experts. Mean $\pm$ sample SD over three fixed teacher seeds.}
+\begin{tabular}{lrrrr}\toprule
+Representation & Latent & KiB & Rel. error & Native score \\ \midrule
+csa2x8 & 16 & 148.1 & 0.4848 & 0.7080 $\pm$ 0.0250 \\
+pca16 & 16 & 540.0 & 0.3843 & 0.7171 $\pm$ 0.0190 \\
+pca3 & 3 & 124.0 & 0.5785 & 0.6966 $\pm$ 0.0646 \\
+raw\_delta & -- & -- & -- & 0.6729 $\pm$ 0.0023 \\
+base & -- & -- & -- & 0.6559 $\pm$ 0.0098 \\
+task\_id & -- & -- & -- & 0.7695 $\pm$ 0.0114 \\
+\bottomrule\end{tabular}\end{table}

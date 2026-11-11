@@ -16,3 +16,5 @@ requirements and presentation experiment plan. The Part 1 offline check uses
 to generate figures. Figure assets and prose are viewed in GitHub, not embedded in the runtime snapshot.
 
 `quickstart.ipynb` installs the pinned training stack, sets runtime environment flags and shows a small check/training entry point. Start with an authenticated private clone or a locally downloaded repository ZIP unpacked to `/content/COMP9501-GP`. No access token is embedded.
+
+Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。

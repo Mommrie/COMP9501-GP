@@ -1,0 +1,3 @@
+# Direct CSA-to-LoRA response bridge
+
+The unchanged Part 1 TensorCSA is applied to expert-by-hidden response matrices. See the frozen [protocol](../../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md). Summary/CSV, per-seed predictions, role IDs, selection locks, sources and independent reload audit are included. Mean/basis/code storage and same-latent versus budget PCA are separate comparisons. All-expert features require all expert forwards; this is an offline response-cache diagnostic, not weight compression or deployment acceleration. Complete learned state and response caches are backed up separately; state-backup.json records their checksum.

@@ -10,7 +10,7 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 
 ## Start here
 
-- [Proposal-aligned course report and presentation package](report-20261109/README.md): 15-page compiled report with 28 passing cloud tests, loss-weight sensitivity, conservative gates and a 2,580-example filtered validation reevaluation, Chinese result explanations, slide-by-slide narration, Q&A, and complete audited L4 controls.
+- [Proposal-aligned course report and presentation package](report-20261109/README.md): 17-page compiled report with 32 passing cloud tests, loss-weight sensitivity, conservative gates and a 2,580-example filtered validation reevaluation, Chinese result explanations, slide-by-slide narration, Q&A, and complete audited L4 controls.
 - [Completed three-seed v3 results and presentation materials](PART2-RESULTS-V3-2026-11-09.zh-CN.md): 12 fresh teachers, matched CE/KL, fixed weight baselines, audited metrics, figures and verified checkpoint restoration; [raw evidence](artifacts/independent-v3-2026-11-09/README.md).
 - [Independent protocol v3](INDEPENDENT-PROTOCOL-V3.zh-CN.md): fresh teachers, five content-grouped partitions and matched-capacity CE/KL; [related-work boundaries](PART2-RELATED-WORK.zh-CN.md).
 - [Part 2 implementation walkthrough and 26 Q&A (Chinese/English)](PART2-IMPLEMENTATION-QA.zh-CN.md).
@@ -49,3 +49,5 @@ The score averages SST-2 accuracy, MRPC (accuracy+F1)/2, RTE accuracy and CoLA M
 Source, configurations, derived result JSON and generated plots are included. Raw datasets, trained weights, runtime caches, local backups, course lecture files and original member documents stay outside Git. Download data through the original publishers and recreate weights using the build instructions, or arrange a separate authorized transfer.
 
 Latest follow-up / 最新补强：[results and Q&A](report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。
+
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。

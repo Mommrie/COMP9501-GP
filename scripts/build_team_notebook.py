@@ -49,7 +49,7 @@ print('Project source verified:', SOURCE_SNAPSHOT)
 print('Runtime folder:', ROOT)
 '''.replace('HELPER_SHA',repr(hashlib.sha256(helper).hexdigest())).replace('HELPER',repr(base64.b64encode(helper).decode())).replace('DIGEST',repr(digest)).replace('PAYLOAD',repr(base64.b64encode(payload).decode()))),
 code('''subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'], check=True)
-'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code', 'test_independent_protocol.py'), ('code', 'test_activation_extension.py'), ('code', 'test_robustness_controls.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('code/merge_study', 'test_engine.py'), ('part1-reproduction-20261025/code', 'test_csa*.py'), ('scripts', 'test_colab_bundle.py')]
+'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code', 'test_independent_protocol.py'), ('code', 'test_activation_extension.py'), ('code', 'test_robustness_controls.py'), ('code', 'test_csa_bridge.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('code/merge_study', 'test_engine.py'), ('part1-reproduction-20261025/code', 'test_csa*.py'), ('scripts', 'test_colab_bundle.py')]
 for folder, pattern in checks:
     subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', folder, '-p', pattern], check=True)
 '''),md('''## Optional: restore the existing 12 adapters

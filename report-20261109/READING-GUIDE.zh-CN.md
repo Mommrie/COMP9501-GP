@@ -72,7 +72,7 @@ Worst-task accuracy先在每个seed的四任务里取最小值，再跨seed计�
 
 AdaMerging已有逐层系数，RegMean已有response/Gram统计指导合并，KnOTS直接研究LoRA表示对齐，FitNets早已使用hidden hints。我们应说明具体设置、目标和权限的区别，而不是把“activation-aware”这个名称当创新证明。
 
-Part1的CSA帮助理解结构化表示和资源预算；当前Part2代码没有用CSA的mode投影、交替特征分解或CSA重建目标。对教授可以说“conceptual motivation”，不能说“we implemented CSA inside the LLM”。
+原合并主线与Part1的联系是结构化表示和资源预算；新增 [CSA桥接](CSA-BRIDGE-RESULTS.zh-CN.md) 已直接复用Part1的mode投影、交替条件特征分解和重建目标，作用对象是expert×feature功能响应。对教授可说“we apply the same CSA implementation to expert-response matrices”；这仍不等于用CSA投影更新LLM权重。
 
 ## 10. 你负责讲代码时，最值得熟悉的五个入口
 
@@ -83,3 +83,5 @@ Part1的CSA帮助理解结构化表示和资源预算；当前Part2代码没有�
 5. `activation_extension.py`：hidden loss、shuffle、router目标、锁定选择后final，以及梯度/数值/ID检查。
 
 更多逐问英文短答见 [实现Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md)。新实验执行后，应把实际数值补入讲稿；任何尚未核验的内容保留“待核对”，不提前写成优势。
+
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。

@@ -20,7 +20,7 @@ def verify_manifest(folder):
 def main():
     counts = {}
     for name in ['independent-v3-2026-11-09', 'part2-followup-2026-11-09',
-                 'activation-strengthening-2026-11-11', 'robustness-v2-2026-11-11']:
+                 'activation-strengthening-2026-11-11', 'robustness-v2-2026-11-11', 'csa-bridge-2026-11-11']:
         folder = ROOT / 'artifacts' / name
         counts[name] = verify_manifest(folder)
     report = ROOT / 'report-20261109'

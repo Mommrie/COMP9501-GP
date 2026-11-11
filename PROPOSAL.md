@@ -10,7 +10,7 @@ COMP9501 · Group 13 · 进度更新：2026-11-11
 
 11 月 9 日完成 [新协议三 seed 结果与展示材料](PART2-RESULTS-V3-2026-11-09.zh-CN.md)：12 个新 teacher、同容量 CE/KL、固定权重基线、审计、图表和恢复验证。主指标 CE 0.7132、KL 0.6987、TIES 0.6146、individual 0.7695；学习系数改善当前固定基线，但 KL 未建立相对 CE 的平均优势。另见 [部署成本与标题诊断](PART2-FOLLOWUP-2026-11-09.zh-CN.md)、[独立五分区](INDEPENDENT-PROTOCOL-V3.zh-CN.md)、[相关工作](PART2-RELATED-WORK.zh-CN.md) 与 [实现 Q&A](PART2-IMPLEMENTATION-QA.zh-CN.md)。新最终区是原 train 的内部隔离分区，不是新外部盲测，不能与旧官方 validation 成绩直接作单因素归因。
 
-11月11日进一步完成 [完整课程报告与展示素材](report-20261109/README.md)：L4五个FP32目标、真实/shuffled配对控制、任务性能导向router、oracle和帮助/损害分析，全部三seed及保存预测独立审计通过；英文PDF现扩展为15页，代码/结果精讲和逐页素材齐备。原预期并非全部成立：hidden未增益于CE，expert router未超过task-ID。恢复重跑不增加独立seed，Part1 CSA联系仅为概念动机。
+11月11日进一步完成 [完整课程报告与展示素材](report-20261109/README.md)：L4五个FP32目标、真实/shuffled配对控制、任务性能导向router、oracle和帮助/损害分析，全部三seed及保存预测独立审计通过；英文PDF现扩展为17页，代码/结果精讲和逐页素材齐备。原预期并非全部成立：hidden未增益于CE，expert router未超过task-ID。恢复重跑不增加独立seed。原先与Part1 CSA仅有概念联系，现已增加直接复用TensorCSA的功能响应压缩实验，详见文末与报告第8节。
 
 来源为本地归档的 `COMP9501-Part2-Project-Proposal-Group13.docx`（2026-10-21 归档）。正文原文保留在下方，原 DOCX 与个人文件信息不随仓库分发。Proposal 是否已经正式提交、课程最终提交要求均（待核对）。
 
@@ -178,3 +178,7 @@ Part 1 与本文 Part 2 是不同交付；CSA 实验完成不等于 Part 1 已�
 - [ ] TinyLlama / ResNet / ViT / 图像路线仅在组内决定扩展时开展，不作为原 proposal 的全部必做项。
 
 - [x] 2026-11-11 第二轮补强完成：λ=0/.01/.1/1 matched aligned/shuffled、confidence/benefit gates、锁定后2,580条官方validation复评；完整预测审计与28项云端测试通过。CE 0.7050，selected aligned 0.7106，shuffled 0.7107；两类gate三seed均选always-own。未建立独特activation优势，保留历史探索边界。详见 [结果与解释](report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)。
+
+## 2026-11-11：从概念联系推进到直接CSA应用
+
+原有LoRA合并主线没有执行CSA权重投影；本轮新增 [CSA功能响应桥接](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)，直接复用Part1 TensorCSA到expert×hidden response矩阵。三seed、七rank、等latent/计basis预算PCA、下游离线expert选择及重载审计完成。代表CSA2×8用148.1 KiB，PCA16用540.0 KiB，PCA3用124.0 KiB；final relative squared error分别0.4848/0.3843/0.5785。它建立算法与实验上的联系，但不称CSA权重合并、无标签路由或推理加速。整合报告17页，32项云端测试通过。

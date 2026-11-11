@@ -1,0 +1,52 @@
+{
+  "description": "Exploratory direct CSA transfer to expert-by-feature activation tensors; freeze before computation. Earlier finals were already explored.",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "ranks": [
+    [
+      2,
+      4
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      4,
+      4
+    ],
+    [
+      2,
+      16
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      2,
+      32
+    ],
+    [
+      4,
+      16
+    ]
+  ],
+  "max_sweeps": 30,
+  "tolerance": 1e-06,
+  "router_C": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "storage_examples": 512,
+  "roles": [
+    "coefficient_fit",
+    "coefficient_selection",
+    "validation"
+  ],
+  "note": "All four expert responses are required at inference for this offline diagnostic. Storage counts cover the response representation only, not adapters, base model, logits or router. Bases are fit on coefficient_fit without labels; C uses selection labels. Final is previously explored internal final, not official validation. No teacher retraining or extra independent seeds."
+}

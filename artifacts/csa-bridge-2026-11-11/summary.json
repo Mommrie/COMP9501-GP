@@ -1,0 +1,366 @@
+{
+  "state": "passed",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "shape": [
+    4,
+    896
+  ],
+  "counts": {
+    "coefficient_fit": 512,
+    "coefficient_selection": 512,
+    "validation": 1024
+  },
+  "representations": {
+    "pca1": {
+      "storage": {
+        "mean": 3584,
+        "basis": 3584,
+        "codes": 512,
+        "total": 7680,
+        "raw": 1835008,
+        "latent": 1
+      },
+      "final_error_mean": 0.7410341722433568,
+      "final_error_sd": 0.02181221771456268,
+      "fit_error_mean": 0.7358114149304905
+    },
+    "pca2": {
+      "storage": {
+        "mean": 3584,
+        "basis": 7168,
+        "codes": 1024,
+        "total": 11776,
+        "raw": 1835008,
+        "latent": 2
+      },
+      "final_error_mean": 0.6230190557046525,
+      "final_error_sd": 0.02093025912006572,
+      "fit_error_mean": 0.6260740904357488
+    },
+    "pca3": {
+      "storage": {
+        "mean": 3584,
+        "basis": 10752,
+        "codes": 1536,
+        "total": 15872,
+        "raw": 1835008,
+        "latent": 3
+      },
+      "final_error_mean": 0.5785475531367581,
+      "final_error_sd": 0.022022838990939195,
+      "fit_error_mean": 0.5778466212303375
+    },
+    "pca5": {
+      "storage": {
+        "mean": 3584,
+        "basis": 17920,
+        "codes": 2560,
+        "total": 24064,
+        "raw": 1835008,
+        "latent": 5
+      },
+      "final_error_mean": 0.5186881713363182,
+      "final_error_sd": 0.024245851321848824,
+      "fit_error_mean": 0.5110657027631044
+    },
+    "pca7": {
+      "storage": {
+        "mean": 3584,
+        "basis": 25088,
+        "codes": 3584,
+        "total": 32256,
+        "raw": 1835008,
+        "latent": 7
+      },
+      "final_error_mean": 0.4809775699796557,
+      "final_error_sd": 0.02515213398284534,
+      "fit_error_mean": 0.46780159550917216
+    },
+    "pca8": {
+      "storage": {
+        "mean": 3584,
+        "basis": 28672,
+        "codes": 4096,
+        "total": 36352,
+        "raw": 1835008,
+        "latent": 8
+      },
+      "final_error_mean": 0.4662485150767785,
+      "final_error_sd": 0.025475015440295457,
+      "fit_error_mean": 0.4504053128979244
+    },
+    "pca11": {
+      "storage": {
+        "mean": 3584,
+        "basis": 39424,
+        "codes": 5632,
+        "total": 48640,
+        "raw": 1835008,
+        "latent": 11
+      },
+      "final_error_mean": 0.42683264198121357,
+      "final_error_sd": 0.025393194385267322,
+      "fit_error_mean": 0.4054248432812866
+    },
+    "pca15": {
+      "storage": {
+        "mean": 3584,
+        "basis": 53760,
+        "codes": 7680,
+        "total": 65024,
+        "raw": 1835008,
+        "latent": 15
+      },
+      "final_error_mean": 0.3915616122024812,
+      "final_error_sd": 0.024451315896836523,
+      "fit_error_mean": 0.36528263090764984
+    },
+    "pca16": {
+      "storage": {
+        "mean": 3584,
+        "basis": 57344,
+        "codes": 8192,
+        "total": 69120,
+        "raw": 1835008,
+        "latent": 16
+      },
+      "final_error_mean": 0.38429984303235915,
+      "final_error_sd": 0.024670954068385285,
+      "fit_error_mean": 0.3569205023954789
+    },
+    "pca32": {
+      "storage": {
+        "mean": 3584,
+        "basis": 114688,
+        "codes": 16384,
+        "total": 134656,
+        "raw": 1835008,
+        "latent": 32
+      },
+      "final_error_mean": 0.3149539736999565,
+      "final_error_sd": 0.021561268147422364,
+      "fit_error_mean": 0.2687735484468104
+    },
+    "pca64": {
+      "storage": {
+        "mean": 3584,
+        "basis": 229376,
+        "codes": 32768,
+        "total": 265728,
+        "raw": 1835008,
+        "latent": 64
+      },
+      "final_error_mean": 0.25639959588843364,
+      "final_error_sd": 0.017921723588795825,
+      "fit_error_mean": 0.18362061489451112
+    },
+    "csa2x4": {
+      "storage": {
+        "mean": 3584,
+        "basis": 3592,
+        "codes": 4096,
+        "total": 11272,
+        "raw": 1835008,
+        "latent": 8
+      },
+      "final_error_mean": 0.5768234361361562,
+      "final_error_sd": 0.01598076283885563,
+      "fit_error_mean": 0.5784306460422207
+    },
+    "csa2x8": {
+      "storage": {
+        "mean": 3584,
+        "basis": 7176,
+        "codes": 8192,
+        "total": 18952,
+        "raw": 1835008,
+        "latent": 16
+      },
+      "final_error_mean": 0.4847658409940116,
+      "final_error_sd": 0.016650855945035275,
+      "fit_error_mean": 0.47806451469377076
+    },
+    "csa4x4": {
+      "storage": {
+        "mean": 3584,
+        "basis": 3600,
+        "codes": 8192,
+        "total": 15376,
+        "raw": 1835008,
+        "latent": 16
+      },
+      "final_error_mean": 0.5625076192946947,
+      "final_error_sd": 0.018520265121667854,
+      "fit_error_mean": 0.5638241365153346
+    },
+    "csa2x16": {
+      "storage": {
+        "mean": 3584,
+        "basis": 14344,
+        "codes": 16384,
+        "total": 34312,
+        "raw": 1835008,
+        "latent": 32
+      },
+      "final_error_mean": 0.40119000052921977,
+      "final_error_sd": 0.013287060096850737,
+      "fit_error_mean": 0.38568489934613776
+    },
+    "csa4x8": {
+      "storage": {
+        "mean": 3584,
+        "basis": 7184,
+        "codes": 16384,
+        "total": 27152,
+        "raw": 1835008,
+        "latent": 32
+      },
+      "final_error_mean": 0.46108182197061426,
+      "final_error_sd": 0.021781153879262948,
+      "fit_error_mean": 0.45419700392664514
+    },
+    "csa2x32": {
+      "storage": {
+        "mean": 3584,
+        "basis": 28680,
+        "codes": 32768,
+        "total": 65032,
+        "raw": 1835008,
+        "latent": 64
+      },
+      "final_error_mean": 0.3316303178193145,
+      "final_error_sd": 0.010269509469051138,
+      "fit_error_mean": 0.3039092345200022
+    },
+    "csa4x16": {
+      "storage": {
+        "mean": 3584,
+        "basis": 14352,
+        "codes": 32768,
+        "total": 50704,
+        "raw": 1835008,
+        "latent": 64
+      },
+      "final_error_mean": 0.3675721802650827,
+      "final_error_sd": 0.020917596094802364,
+      "fit_error_mean": 0.3517716883853554
+    }
+  },
+  "routing": {
+    "pca1": {
+      "mean": 0.6936931238181847,
+      "sd": 0.06546327264994
+    },
+    "pca2": {
+      "mean": 0.6948549960908951,
+      "sd": 0.06507931639484085
+    },
+    "pca3": {
+      "mean": 0.6966279088185195,
+      "sd": 0.06458609164582531
+    },
+    "pca5": {
+      "mean": 0.6874667905809079,
+      "sd": 0.040651388717280176
+    },
+    "pca7": {
+      "mean": 0.6855259488446434,
+      "sd": 0.04162993273936267
+    },
+    "pca8": {
+      "mean": 0.6914548041753363,
+      "sd": 0.03752552608659509
+    },
+    "pca11": {
+      "mean": 0.7068747723628492,
+      "sd": 0.03774707199298302
+    },
+    "pca15": {
+      "mean": 0.7164827378163435,
+      "sd": 0.01929589183074693
+    },
+    "pca16": {
+      "mean": 0.7171191480946271,
+      "sd": 0.01903142271067309
+    },
+    "pca32": {
+      "mean": 0.695441340112989,
+      "sd": 0.01366944964142133
+    },
+    "pca64": {
+      "mean": 0.6807159424915795,
+      "sd": 0.0034458252686966734
+    },
+    "csa2x4": {
+      "mean": 0.7168945777369017,
+      "sd": 0.03141450693261983
+    },
+    "csa2x8": {
+      "mean": 0.7080449818076974,
+      "sd": 0.025044255842191374
+    },
+    "csa4x4": {
+      "mean": 0.707255671769839,
+      "sd": 0.023505378849423633
+    },
+    "csa2x16": {
+      "mean": 0.7219042569957598,
+      "sd": 0.010377828897581183
+    },
+    "csa4x8": {
+      "mean": 0.7069943636194066,
+      "sd": 0.01225521162478487
+    },
+    "csa2x32": {
+      "mean": 0.6844345084542116,
+      "sd": 0.02989960283096362
+    },
+    "csa4x16": {
+      "mean": 0.7041459050875566,
+      "sd": 0.0141897058779838
+    },
+    "raw_delta": {
+      "mean": 0.6729348361682748,
+      "sd": 0.002262274260221895
+    },
+    "base": {
+      "mean": 0.6558996476157515,
+      "sd": 0.009751836011899438
+    },
+    "task_id": {
+      "mean": 0.7694587410878339,
+      "sd": 0.011366962095093637
+    },
+    "oracle_GT": {
+      "mean": 0.8974150965182289,
+      "sd": 0.0027860562114557976
+    }
+  },
+  "audit": [
+    {
+      "seed": 42,
+      "state": "passed",
+      "projection_reconstruction_reload": true,
+      "router_reload_and_selection_score": true,
+      "ids_match_previous_roles": true
+    },
+    {
+      "seed": 43,
+      "state": "passed",
+      "projection_reconstruction_reload": true,
+      "router_reload_and_selection_score": true,
+      "ids_match_previous_roles": true
+    },
+    {
+      "seed": 44,
+      "state": "passed",
+      "projection_reconstruction_reload": true,
+      "router_reload_and_selection_score": true,
+      "ids_match_previous_roles": true
+    }
+  ]
+}

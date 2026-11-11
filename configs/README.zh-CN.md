@@ -27,3 +27,5 @@
 先运行完整仓库检查，再按目标 CLI 用新配置和新输出目录做小检查。runtime 配置变化后运行 scripts/build_team_notebook.py 更新中英 launcher。候选、选择集、tie-break 与预算在查看目标结果前固定，具体例子见扩展指南。
 
 `activation-sensitivity-v2.json` 固定较小hidden权重及配对shuffled网格；`routing-safety-v2.json` 固定confidence/benefit gate、always-own、selection约束和官方validation内容过滤。增加调参预算，不能直接称独特activation优势；见 [完整协议](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md)。
+
+Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。

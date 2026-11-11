@@ -73,3 +73,7 @@ expert router的task one-hot使用的是当前协议本来就提供的信息。s
 > We distinguish implementation success from hypothesis support. Learned static mixtures can improve the fixed weight-space grid in this case study, while matched controls determine whether the proposed functional signal adds anything beyond supervision, capacity or target distribution. We report the measured outcome and the conditions under which the original expectation fails.
 
 如果新对照真的有一致正结果，也只能在这套固定设置里报告；没有运行现代完整对齐基线、更多模型和独立外部目标，不能升级为SOTA结论。
+
+## 选文与Part1的直接桥接（新增）
+
+新增两页PPT安排、完整三seed结果、代码与论文公式对应、英文口述及12组追问见 [CSA桥接材料](CSA-BRIDGE-RESULTS.zh-CN.md)。这部分直接应用CSA压缩expert响应，原合并主线结论保持原样；response compression不等于weight compression或推理加速。

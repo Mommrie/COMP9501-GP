@@ -94,3 +94,7 @@ Confidence预测的是expert身份的置信度；benefit Ridge直接拟合expert
 ## 8. 一分钟英文总结
 
 > We investigate whether functional signals help merge task-specific LoRA updates. Learned static mixtures improve our fixed weight-space baselines on both the internal protocol and a larger, content-filtered official validation split. However, output KL does not beat CE on average, and a smaller hidden-loss grid is matched by its shuffled control. Two seeds choose no hidden penalty. Our conservative routers also select the known-task reference rather than useful new switches. The project therefore contributes a reproducible implementation and evidence separating capacity, calibration and functional proxies, with explicit limits on novelty, supervision and generalization.
+
+## 选文与Part1的直接桥接（新增）
+
+新增两页PPT安排、完整三seed结果、代码与论文公式对应、英文口述及12组追问见 [CSA桥接材料](CSA-BRIDGE-RESULTS.zh-CN.md)。这部分直接应用CSA压缩expert响应，原合并主线结论保持原样；response compression不等于weight compression或推理加速。
