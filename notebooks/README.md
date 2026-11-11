@@ -8,6 +8,8 @@
 
 Rebuild after source/config changes: `python scripts/build_team_notebook.py`. Verify without writing: `python scripts/build_team_notebook.py --check`.
 
+The final Part 2 cells optionally restore the v3 twelve-teacher ZIP or train a fresh independent study, then reproduce the five FP32 activation objectives and source/expert routing controls. All switches default to disabled. The extension needs at least 20 GiB CUDA VRAM; the recorded recovery used L4. Repeating the same three seeds does not create additional independent replications.
+
 The embedded snapshot includes the Part 1 tensor implementation, its independent
 requirements and presentation experiment plan. The Part 1 offline check uses
 `test_csa*.py`; see the [CPU presentation runner](../part1-reproduction-20261025/presentation-20261028/README.md)

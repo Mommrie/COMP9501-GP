@@ -4,6 +4,11 @@
 
 范围：Qwen2.5-0.5B + GLUE（SST-2 / MRPC / RTE / CoLA），q/v LoRA。
 
+- `activation_extension.py` / `test_activation_extension.py`：原proposal强化实验，FP32隐藏响应、真实/打乱配对与global/layer控制；另比较source/best-expert router及GT oracle。复用v3 teacher，最终区已有探索历史，见 [实验与主张映射](../report-20261109/EXPERIMENT-AND-CLAIM-MAP.zh-CN.md)。模型要求Colab CUDA GPU至少20GiB；A100未获分配时本轮使用L4，所有新控制保持同硬件。
+
+- 独立协议 v3：`independent_protocol.py` 生成五分区，`test_independent_protocol.py` 检查重复文本与跨任务信息边界；`run_independent_study.py` 依次重训三 seed teacher 并比较同容量 CE/KL；`independent_baselines.py` 运行固定权重基线；`summarize_independent_study.py` 审计、汇总 CSV 和生成图表。模型计算和绘图均放 Colab，详见 [协议](../INDEPENDENT-PROTOCOL-V3.zh-CN.md)。
+- `restore_independent_backup.py`：校验 checkpoint ZIP 的 CRC、逐文件 SHA 和路径，恢复到新目录，重建 bank/系数/选择记录并迁移 manifest 路径；不覆盖已有目录。
+
 - [functional_merge/](functional_merge/README.md)：task-conditioned 线性响应匹配与解析退化控制。
 - [coefficient_merge/](coefficient_merge/README.md)：冻结所有模型参数，只拟合全局/逐层混合系数；CE、teacher-KL 与同容量对照。
 - [router_v1/](router_v1/README.md)：输入特征、format/random 与 task-ID 路由参照；明确额外前向成本和已知任务头限制。
@@ -26,3 +31,10 @@
 Protocol v2 由配置显式启用：单句 Text 字段、句对 Sentence A/B 字段，长句对按内容长度截断并保留两个角色；不写入任务名或标签。训练脚本支持独立 calibration 选最佳 checkpoint、分类头独立学习率、训练/选择样本 ID 清单、学习前后诊断与 `--head-only` 控制。旧配置未指定 input_format 时保持 legacy 行为。
 
 在项目根目录运行脚本，详见 [执行说明](../BUILD.md)。
+
+2026-11-09 补充工具（均要求 CUDA，请在 Colab 运行）：
+
+- `benchmark_deployment.py`：固定输入、同步计时，比较静态合并与 CPU/GPU 缓存路由；记录逐次耗时、前向次数与实际缓存占用。
+- `diagnose_router_headers.py`：冻结已有 router，比较原标题、去标题和统一标题，保留内容 token 与样本 ID。
+
+命令、统计口径与限制见 [补充报告](../PART2-FOLLOWUP-2026-11-09.zh-CN.md)。

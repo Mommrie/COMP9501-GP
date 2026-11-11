@@ -9,6 +9,10 @@
 `merge-study-replication-v2.json` 用于训练 seeds 43/44 的重复，网格和诊断规则与 seed 42 一致，仅更新说明文字；各 seed 单独按 calibration 选择参数。DARE mask seed 继续固定 42。
 
 `pilot.json` 固定初步构建的模型、LoRA、训练及数据划分。JSON 可由 Python 标准库直接读取。
+
+`activation-strengthening-v1.json`：在v3 bank上固定五个FP32系数profile、hidden能量归一化、打乱响应及性能导向路由控制；必须将其结果作为已查看v3 final之后的探索扩展，不能改名成新盲测。见 [实验映射](../report-20261109/EXPERIMENT-AND-CLAIM-MAP.zh-CN.md)。
+
+`independent-v3.json` 与 `independent-coefficients-v3.json` 固定新 teacher 训练和同容量 CE/KL 对照，运行时生成内容分组的五分区 manifest 并锁定 SHA256。详见 [独立协议](../INDEPENDENT-PROTOCOL-V3.zh-CN.md)，不恢复旧 teacher。
 pilot 只用于验证流水线，正式实验需要扩大训练量并运行 3 个 seeds。
 
 `protocol-v2.json` 是下一阶段起始方案：显式句对边界、最长 128 tokens、每任务训练最多 4096 条（不足则取可用部分）、3 epochs、有效 batch 16；分类头 lr=1e-3、LoRA lr=2e-4、10% warmup。仅用原 train 内 calibration（最多 256 条）选 checkpoint；eval_samples=0 表示另行评估完整 GLUE validation。此配置是待测起点，不是已证实最优参数。诊断运行会生成独立的小预算配置并记录，不修改 pilot.json。

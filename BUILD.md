@@ -61,3 +61,8 @@ python part1-reproduction-20261025/code/run.py --data /path/to/mnist.npz --outpu
 ```
 
 The script verifies the dataset checksum. This is a 2D grayscale MNIST illustration, not an exact reproduction of the original face/Gabor-MNIST tables. See [results and limits](part1-reproduction-20261025/RESULTS.md).
+
+
+## Final Part 2 protocol and evidence (11 November)
+
+Use the [final report/materials](report-20261109/README.md), [v3 protocol](INDEPENDENT-PROTOCOL-V3.zh-CN.md), and updated team notebook v3/activation switches. Historical A100 results and new L4 FP32 controls stay separate. To verify published evidence without importing ML packages, run `python scripts/verify_part2_artifacts.py`. To check the cross-platform notebook ZIP regression, run `python -m unittest discover -s scripts -p test_team_notebook.py`. Model runs require Colab; local static checks do not load models.

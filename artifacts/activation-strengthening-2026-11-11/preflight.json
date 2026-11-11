@@ -1,0 +1,46 @@
+{
+  "state": "passed",
+  "checks": [
+    {
+      "folder": "code",
+      "pattern": "test_activation_extension.py",
+      "returncode": 0,
+      "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 3.023s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_independent_protocol.py",
+      "returncode": 0,
+      "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.083s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_math.py",
+      "returncode": 0,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.526s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_protocol.py",
+      "returncode": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "folder": "code/coefficient_merge",
+      "pattern": "test_core.py",
+      "returncode": 0,
+      "output": "/content/COMP9501-GP/code/coefficient_merge/test_core.py:10: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)\n  x=torch.randn(7,5);weight=base.weight.detach()+sum(float(coeff.weights()[0,i]*coeff.gain())*(b@a)*2 for i,(a,b) in enumerate(factors))\n.\n----------------------------------------------------------------------\nRan 1 test in 0.617s\n\nOK\n"
+    },
+    {
+      "folder": "code/merge_study",
+      "pattern": "test_engine.py",
+      "returncode": 0,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 7.709s\n\nOK\n"
+    }
+  ],
+  "source_sha256": {
+    "code/activation_extension.py": "87e63f93b3a7b78a7bfef791db2b28af62da0238c40946e355e6f0ff8dd67403",
+    "code/test_activation_extension.py": "eb84ab7833ea1daf5bd44e3f69a211a2b8432a507e3310361629d7584e771da4",
+    "configs/activation-strengthening-v1.json": "97275d61ec121bd1475a9fe729a36c27cbe961931c2aebfac75fce0ff8868579"
+  }
+}

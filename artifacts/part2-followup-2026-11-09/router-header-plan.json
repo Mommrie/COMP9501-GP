@@ -1,0 +1,20 @@
+{
+  "samples_per_task": 128,
+  "tasks": [
+    "sst2",
+    "mrpc",
+    "rte",
+    "cola"
+  ],
+  "sampling": "first N of protocol-v2 deterministic shuffled validation",
+  "variants": [
+    "original",
+    "headerless",
+    "common_header"
+  ],
+  "common_header": "Input: prepended to headerless token content",
+  "fitting": "none; archived scaler and source classifier remain frozen",
+  "scope": "source-task recognition only; classification heads and class labels not used",
+  "limitation": "Previously explored validation; header edits shift positions/lengths and are distribution shifts, not proof of sole reliance on formatting.",
+  "source_sha256": "fd12adbb6172855414f381fa1f2fbeadd77d6046a03def54b8748dba92e170b5"
+}

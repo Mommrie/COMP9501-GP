@@ -1,0 +1,88 @@
+{
+  "state": "passed",
+  "jobs": [
+    {
+      "name": "partitions",
+      "returncode": 0,
+      "seconds": 8.678287726000235
+    },
+    {
+      "name": "train-s42-sst2",
+      "returncode": 0,
+      "seconds": 207.84155063100025
+    },
+    {
+      "name": "train-s42-mrpc",
+      "returncode": 0,
+      "seconds": 131.91782989400008
+    },
+    {
+      "name": "train-s42-rte",
+      "returncode": 0,
+      "seconds": 94.33141151400014
+    },
+    {
+      "name": "train-s42-cola",
+      "returncode": 0,
+      "seconds": 206.0794032929998
+    },
+    {
+      "name": "coefficients-s42",
+      "returncode": 0,
+      "seconds": 173.86257634099957
+    },
+    {
+      "name": "train-s43-sst2",
+      "returncode": 0,
+      "seconds": 205.52025261500012
+    },
+    {
+      "name": "train-s43-mrpc",
+      "returncode": 0,
+      "seconds": 132.42878571600022
+    },
+    {
+      "name": "train-s43-rte",
+      "returncode": 0,
+      "seconds": 89.24551550099977
+    },
+    {
+      "name": "train-s43-cola",
+      "returncode": 0,
+      "seconds": 202.7210448109995
+    },
+    {
+      "name": "coefficients-s43",
+      "returncode": 0,
+      "seconds": 174.45843509000042
+    },
+    {
+      "name": "train-s44-sst2",
+      "returncode": 0,
+      "seconds": 205.80320037599995
+    },
+    {
+      "name": "train-s44-mrpc",
+      "returncode": 0,
+      "seconds": 130.5040012339996
+    },
+    {
+      "name": "train-s44-rte",
+      "returncode": 0,
+      "seconds": 89.35527566900055
+    },
+    {
+      "name": "train-s44-cola",
+      "returncode": 0,
+      "seconds": 204.63036432300032
+    },
+    {
+      "name": "coefficients-s44",
+      "returncode": 0,
+      "seconds": 177.34482618399943
+    }
+  ],
+  "started_epoch": 1794212624.672941,
+  "current": null,
+  "finished_epoch": 1794215059.42414
+}

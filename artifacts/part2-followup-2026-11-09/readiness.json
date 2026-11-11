@@ -1,0 +1,122 @@
+{
+  "state": "passed",
+  "tests": [
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code",
+        "-p",
+        "test_math.py"
+      ],
+      "returncode": 0,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 3.093s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code",
+        "-p",
+        "test_protocol.py"
+      ],
+      "returncode": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code/functional_merge",
+        "-p",
+        "test_maths.py"
+      ],
+      "returncode": 0,
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.576s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code/coefficient_merge",
+        "-p",
+        "test_core.py"
+      ],
+      "returncode": 0,
+      "output": "/content/COMP9501-GP/code/coefficient_merge/test_core.py:10: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)\n  x=torch.randn(7,5);weight=base.weight.detach()+sum(float(coeff.weights()[0,i]*coeff.gain())*(b@a)*2 for i,(a,b) in enumerate(factors))\n.\n----------------------------------------------------------------------\nRan 1 test in 0.527s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code/merge_study",
+        "-p",
+        "test_engine.py"
+      ],
+      "returncode": 0,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 7.568s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "code",
+        "-p",
+        "test_integration.py"
+      ],
+      "returncode": 0,
+      "output": "trainable params: 512 || all params: 19,552 || trainable%: 2.6187\n{'loss': 0.6992, 'grad_norm': 2.0555896759033203, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.669921875, 'eval_model_preparation_time': 0.0012, 'eval_accuracy': 1.0, 'eval_f1': 1.0, 'eval_mcc': 1.0, 'eval_runtime': 0.0301, 'eval_samples_per_second': 265.841, 'eval_steps_per_second': 132.92, 'epoch': 0.25}\n{'train_runtime': 0.5224, 'train_samples_per_second': 3.829, 'train_steps_per_second': 1.914, 'train_loss': 0.69921875, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-kxg6_ohs/run/run.json\ntrainable params: 64 || all params: 19,552 || trainable%: 0.3273\n{'loss': 0.6992, 'grad_norm': 2.0496771335601807, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.671875, 'eval_model_preparation_time': 0.001, 'eval_accuracy': 1.0, 'eval_f1': 1.0, 'eval_mcc': 1.0, 'eval_runtime': 0.0287, 'eval_samples_per_second': 278.525, 'eval_steps_per_second': 139.262, 'epoch': 0.25}\n{'train_runtime': 0.0674, 'train_samples_per_second': 29.689, 'train_steps_per_second': 14.845, 'train_loss': 0.69921875, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-kxg6_ohs/head-only/run.json\n`torch_dtype` is deprecated! Use `dtype` instead!\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 109.76it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.21it/s]\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.21it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.21it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 173.35it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  2.21it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  1.91it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 181.19it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 185.42it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 182.84it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n                                     \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 87.83it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 22.91it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 178.12it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 14.94it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 14.88it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 181.23it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 180.34it/s]\n.\n----------------------------------------------------------------------\nRan 1 test in 12.514s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/content/COMP9501-GP/.venv/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "part1-reproduction-20261025/code",
+        "-p",
+        "test_csa.py"
+      ],
+      "returncode": 0,
+      "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.038s\n\nOK\n"
+    }
+  ],
+  "current": "download-and-load-pinned-model",
+  "model_commit": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "4.57.6",
+      "peft": "0.18.1",
+      "datasets": "4.5.0",
+      "accelerate": "1.12.0",
+      "safetensors": "0.7.0"
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "vram_gib": 39.4935302734375,
+    "peak_allocated_gib": 0.0,
+    "peak_reserved_gib": 0.0
+  },
+  "model_parameters": 494034560
+}

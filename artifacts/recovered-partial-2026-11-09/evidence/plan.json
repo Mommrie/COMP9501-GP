@@ -1,0 +1,65 @@
+{
+  "description": "Proposal-aligned exploratory extension after inspecting v3 final scores; no confirmatory or pristine-test claim",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "steps": 120,
+  "student_precision": "float32",
+  "runtime_note": "A100 unavailable on retry; extension uses allocated Colab L4. All new matched controls share the same GPU; historical A100 timing and v3 results stay separate.",
+  "batch_size": 8,
+  "learning_rate": 0.03,
+  "penalty": 0.01,
+  "hidden_weight": 1.0,
+  "hidden_energy_floor": 0.0001,
+  "check_steps": [
+    0,
+    30,
+    60,
+    90,
+    120
+  ],
+  "profiles": [
+    {
+      "name": "layer_ce_fp32",
+      "layers": 24,
+      "ce": true,
+      "shuffle": false,
+      "hidden": false
+    },
+    {
+      "name": "layer_hidden",
+      "layers": 24,
+      "ce": false,
+      "shuffle": false
+    },
+    {
+      "name": "layer_ce_hidden",
+      "layers": 24,
+      "ce": true,
+      "shuffle": false
+    },
+    {
+      "name": "layer_ce_shuffled",
+      "layers": 24,
+      "ce": true,
+      "shuffle": true
+    },
+    {
+      "name": "global_hidden",
+      "layers": 1,
+      "ce": false,
+      "shuffle": false
+    }
+  ],
+  "router_C": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "router_max_iter": 800,
+  "selection": "Same coefficient_selection labels; macro native task score, first candidate wins ties; no final-driven tuning",
+  "hidden_signal": "Final hidden layer, attention-mask token mean, difference from frozen base; per-example MSE divided by target delta energy with a fixed floor",
+  "router_protocol": "Known task head for every expert. Expert-aware router uses base features plus task one-hot, fitted to minimum-GT-NLL expert on fit. Oracle uses final GT and is an analysis-only accuracy ceiling."
+}

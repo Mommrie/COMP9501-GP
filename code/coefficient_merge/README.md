@@ -1,5 +1,7 @@
 # End-to-end static coefficient fitting
 
+独立协议 v3 通过 cfg 的 `partition_manifest` 启用独立 teacher/fit/selection/final 数据权限，并拒绝 manifest SHA 不匹配的旧 teacher；原配置仍走下述探索性协议。见 [新协议说明](../../INDEPENDENT-PROTOCOL-V3.zh-CN.md)。
+
 [中文使用指南](README.zh-CN.md)
 
 这是本轮探索的第二个静态原型：只训练 adapter 的混合系数和一个公共 gain，base、LoRA A/B、分类头全部冻结。比较使用 calibration 标签的 CE 与匹配 individual teacher logits 的 KL；不声称系数学习或蒸馏本身是新方法。

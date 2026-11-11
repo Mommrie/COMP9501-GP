@@ -1,5 +1,7 @@
 # 端到端静态系数
 
+新 [独立协议 v3](../../INDEPENDENT-PROTOCOL-V3.zh-CN.md) 在配置中启用 `partition_manifest`，读取独立 fit/selection 分区并校验新 teacher 的 manifest SHA；不启用时保留原探索性协议。
+
 [原有说明](README.md) · [中文首页](../../README.zh-CN.md) · [扩展开发](../../docs/EXTENDING.zh-CN.md)
 
 冻结 base、LoRA A/B 与原任务头，只学习 softmax 混合系数和公共 gain。CE 使用 fit 标签，KL 使用 individual teacher logits；原版 checkpoint 选择使用后半区标签。global 为 5 个、24 层版本为 97 个可训练标量。

@@ -1,0 +1,28 @@
+{
+  "state": "passed",
+  "review_date": "2026-11-11",
+  "pages_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "pdf_sha256": "63e4ffed2e97006e78da282aeb8810c3c0718decb27d4d684ffbdf75de915e33",
+  "render_scale_to_pixels": 1250,
+  "checks": [
+    "All 11 final pages inspected at page resolution",
+    "Tables, equations and figures legible without clipping or overlap",
+    "Version hashes contained within page margins",
+    "All three new result figures inspected individually",
+    "Final compiler log has zero overfull warnings",
+    "PDF text extraction has no unresolved references"
+  ],
+  "scope": "Visual and layout review; independent prediction audit and scientific limitations are documented separately."
+}

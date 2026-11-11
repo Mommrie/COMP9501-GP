@@ -1,3 +1,9 @@
 * text=auto eol=lf
 *.png binary
 *.pdf binary
+*.npz binary
+# Preserve exact bytes in SHA256-covered scientific evidence.
+artifacts/independent-v3-2026-11-09/** -text
+artifacts/part2-followup-2026-11-09/** -text
+artifacts/activation-strengthening-2026-11-11/** -text
+artifacts/recovered-partial-2026-11-09/evidence/** -text

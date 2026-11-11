@@ -6,6 +6,10 @@
 
 ## 配置怎么选
 
+`activation-strengthening-v1.json` 用于原proposal强化：五种FP32系数目标、固定hidden权重/能量floor、source/expert router候选；输入为匹配v3 manifest的bank，属于探索性扩展，见 [主张映射](../report-20261109/EXPERIMENT-AND-CLAIM-MAP.zh-CN.md)。
+
+新实验采用 `independent-v3.json`（teacher）与 `independent-coefficients-v3.json`（同容量 CE/KL）。编排器生成固定版本数据的内容分组 manifest，配置锁定 SHA；旧配置的 v2 行为保持兼容。见 [独立协议](../INDEPENDENT-PROTOCOL-V3.zh-CN.md)。
+
 | 文件 | 用途 |
 |---|---|
 | pilot.json | 最早的低预算/旧输入协议记录 |

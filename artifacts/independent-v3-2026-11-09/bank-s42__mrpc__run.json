@@ -1,0 +1,121 @@
+{
+  "task": "mrpc",
+  "seed": 42,
+  "config": {
+    "description": "Frozen 2026-11-09 round: fresh teachers; content-grouped five-way train partitions; no use of old validation",
+    "model": "Qwen/Qwen2.5-0.5B",
+    "model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+    "tasks": [
+      "sst2",
+      "mrpc",
+      "rte",
+      "cola"
+    ],
+    "base_seed": 9501,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "input_format": "sentence_fields_v2",
+    "rank": 8,
+    "alpha": 16,
+    "dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "max_length": 128,
+    "train_samples": 4096,
+    "eval_samples": 0,
+    "selection_split": "calibration",
+    "calibration_eval_samples": 128,
+    "select_best_on_calibration": true,
+    "diagnostics": true,
+    "batch_size": 16,
+    "gradient_accumulation_steps": 1,
+    "epochs": 3,
+    "learning_rate": 0.0002,
+    "head_learning_rate": 0.001,
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "logging_steps": 32,
+    "partition_manifest": "/content/COMP9501-GP/outputs/independent-v3-20261109/partitions.json",
+    "partition_manifest_sha256": "526c3ae3aefebf36f651c0518d4a69b1c51d8c2e9d5145063f791b0b363386eb",
+    "dataset_revision": "bcdcba79d07bc864c1c254ccfcedcce55bcc9a8c"
+  },
+  "max_steps": -1,
+  "head_only": false,
+  "train_samples": 2391,
+  "selection_split": "calibration",
+  "selection_samples": 128,
+  "train_seconds": 115.36405023099996,
+  "train": {
+    "train_runtime": 115.0922,
+    "train_samples_per_second": 62.324,
+    "train_steps_per_second": 3.91,
+    "total_flos": 1390354932387840.0,
+    "train_loss": 0.653852620654636,
+    "epoch": 3.0
+  },
+  "selection": {
+    "eval_loss": 0.3562241792678833,
+    "eval_model_preparation_time": 0.0079,
+    "eval_accuracy": 0.84375,
+    "eval_f1": 0.8913043478260869,
+    "eval_mcc": 0.6141017344500672,
+    "eval_runtime": 0.4565,
+    "eval_samples_per_second": 280.383,
+    "eval_steps_per_second": 17.524,
+    "epoch": 3.0
+  },
+  "initial_selection": {
+    "initial_loss": 3.504639148712158,
+    "initial_model_preparation_time": 0.0079,
+    "initial_accuracy": 0.7109375,
+    "initial_f1": 0.8310502283105022,
+    "initial_mcc": 0.0,
+    "initial_runtime": 2.2355,
+    "initial_samples_per_second": 57.259,
+    "initial_steps_per_second": 3.579
+  },
+  "train_probe": {
+    "train_probe_loss": 0.3063775897026062,
+    "train_probe_model_preparation_time": 0.0079,
+    "train_probe_accuracy": 0.84375,
+    "train_probe_f1": 0.8901098901098901,
+    "train_probe_mcc": 0.6220871485654766,
+    "train_probe_runtime": 0.4554,
+    "train_probe_samples_per_second": 281.067,
+    "train_probe_steps_per_second": 17.567,
+    "epoch": 3.0
+  },
+  "parameter_change_from_initialization": {
+    "head_l2": 0.3470100440665916,
+    "lora_l2": 2.2973093386285477
+  },
+  "best_checkpoint": "/content/COMP9501-GP/outputs/independent-v3-20261109/bank-s42/mrpc/checkpoints/checkpoint-450",
+  "validation": null,
+  "resolved_model_revision": "060db6499f32faf8b98477b0a26969ef7d8b9987",
+  "source_sha256": {
+    "common.py": "58f3359daf6f363e634b71e6ff1acbb9125ed3b6c73d3a290d0f10ee66fbf6b7",
+    "train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700"
+  },
+  "environment": {
+    "python": "3.13.16",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.14.1+cu130",
+      "transformers": "4.57.6",
+      "peft": "0.18.1",
+      "datasets": "4.5.0",
+      "accelerate": "1.12.0",
+      "safetensors": "0.7.0"
+    },
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "vram_gib": 39.4935302734375,
+    "peak_allocated_gib": 2.2027711868286133,
+    "peak_reserved_gib": 2.53125
+  },
+  "classification_head": "task-specific; never merged"
+}

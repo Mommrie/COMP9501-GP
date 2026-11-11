@@ -30,10 +30,21 @@ def main():
     try:
         publish('data');tokenizer=tokenizer_for(cfg);fit={};select={};ids={}
         for t in tasks:
-            data=dataset_for(t,cfg,tokenizer,'calibration',plan['total_calibration_samples']);split=plan['fit_samples_per_task']
-            fit[t]=data.select(range(split));select[t]=data.select(range(split,len(data)))
-            m=dataset_manifest(t,cfg,'calibration',plan['total_calibration_samples'])
-            ids[t]={'fit':m['sample_ids'][:split],'selection':m['sample_ids'][split:]}
+            if cfg.get('partition_manifest'):
+                fit[t]=dataset_for(t,cfg,tokenizer,'coefficient_fit',0)
+                select[t]=dataset_for(t,cfg,tokenizer,'coefficient_selection',0)
+                ids[t]={'fit':dataset_manifest(t,cfg,'coefficient_fit',0)['sample_ids'],
+                        'selection':dataset_manifest(t,cfg,'coefficient_selection',0)['sample_ids']}
+                m={'sample_ids':ids[t]['fit']+ids[t]['selection']}
+                teacher_cfg=read_config(bank/t/'run.json')['config']
+                assert teacher_cfg.get('partition_manifest_sha256')==cfg['partition_manifest_sha256'], 'Fresh teachers from the same locked partition are required'
+                teacher_select=set(read_config(bank/t/'data-manifest.json')['selection']['sample_ids'])
+                assert teacher_select.isdisjoint(m['sample_ids'])
+            else:
+                data=dataset_for(t,cfg,tokenizer,'calibration',plan['total_calibration_samples']);split=plan['fit_samples_per_task']
+                fit[t]=data.select(range(split));select[t]=data.select(range(split,len(data)))
+                m=dataset_manifest(t,cfg,'calibration',plan['total_calibration_samples'])
+                ids[t]={'fit':m['sample_ids'][:split],'selection':m['sample_ids'][split:]}
             train_ids=set(read_config(bank/t/'data-manifest.json')['train']['sample_ids'])
             assert set(ids[t]['fit']).isdisjoint(ids[t]['selection']) and train_ids.isdisjoint(m['sample_ids'])
         write_json(out/'split-ids.json',ids);publish('teachers');engine=DeltaEvaluator.from_bank(cfg,bank)
@@ -105,6 +116,9 @@ def main():
             torch.cuda.empty_cache() if torch.cuda.is_available() else None
         write_json(out/'selection.json',{'selected':saved,'locked_before_validation':True,'plan_sha256':hashlib.sha256(Path(args.plan).read_bytes()).hexdigest()});status['selection']=saved
         publish('validation-after-lock');data={t:dataset_for(t,cfg,tokenizer,'validation',0) for t in tasks}
+        for t in tasks:
+            publish('validation:individual:'+t)
+            status.setdefault('individual',{})[t]=compact(engine.evaluate(t,engine.banks[t],data[t],tokenizer,cfg['batch_size']))
         for name,value in saved.items():
             publish('validation:'+name);status['validation'][name]=evaluate_delta(delta(torch.tensor(value['weights']),value['gain']),data)
         status.update(state='passed',environment=environment());publish(None);write_json(out/'summary.json',status)

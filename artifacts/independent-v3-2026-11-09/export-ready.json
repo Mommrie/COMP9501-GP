@@ -1,0 +1,11 @@
+{
+  "state": "passed",
+  "files": {
+    "main-comparison.png": "4a2fbf8bda4d2f50e8746190bd448c9619cbdf399038225e225c85e153eb8c07",
+    "paired-ce-kl.png": "1cb88ccb7a7288a7bda966c427604142e39f96187696a43b4b17f5b60a15c452",
+    "per-seed.csv": "900d02218ccf0fdb53d240ab73249d0d7fe3d80d675ca387166c1d7742d5c4e8",
+    "per-task.csv": "ac45dfa677594272c97adc9cee42ee4bc3776ee86034b3da7249dd88a15f86ec",
+    "summary.json": "07845b01c4ac9181d9efcfadc3b74d8a7573fe3609d2296ef7df25113546d515",
+    "task-accuracy.png": "e2f8dae783198bc73024c0e4baf9f2b2ac89188bb5c70c7a7aac746ebbafd187"
+  }
+}

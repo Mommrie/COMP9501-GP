@@ -1,0 +1,634 @@
+{
+  "state": "passed",
+  "aggregate": {
+    "expert_router": {
+      "macro_primary": {
+        "mean": 0.6558996476157515,
+        "sample_sd": 0.009751836011899438
+      },
+      "mean_accuracy": {
+        "mean": 0.755859375,
+        "sample_sd": 0.005074367600299445
+      },
+      "worst_accuracy": {
+        "mean": 0.6497395833333334,
+        "sample_sd": 0.023867581744561668
+      }
+    },
+    "global_hidden": {
+      "macro_primary": {
+        "mean": 0.5840642000694024,
+        "sample_sd": 0.029737179672890877
+      },
+      "mean_accuracy": {
+        "mean": 0.7298177083333334,
+        "sample_sd": 0.016639814998869868
+      },
+      "worst_accuracy": {
+        "mean": 0.60546875,
+        "sample_sd": 0.07684498270666407
+      }
+    },
+    "layer_ce_fp32": {
+      "macro_primary": {
+        "mean": 0.7130045091601118,
+        "sample_sd": 0.021149578864029257
+      },
+      "mean_accuracy": {
+        "mean": 0.7861328125,
+        "sample_sd": 0.0029296875
+      },
+      "worst_accuracy": {
+        "mean": 0.6901041666666666,
+        "sample_sd": 0.013718299157360336
+      }
+    },
+    "layer_ce_hidden": {
+      "macro_primary": {
+        "mean": 0.6397241546574154,
+        "sample_sd": 0.028121603373241766
+      },
+      "mean_accuracy": {
+        "mean": 0.7643229166666666,
+        "sample_sd": 0.01817386048464565
+      },
+      "worst_accuracy": {
+        "mean": 0.6927083333333334,
+        "sample_sd": 0.04065753905207291
+      }
+    },
+    "layer_ce_shuffled": {
+      "macro_primary": {
+        "mean": 0.619470523545963,
+        "sample_sd": 0.005595927233740232
+      },
+      "mean_accuracy": {
+        "mean": 0.7509765625,
+        "sample_sd": 0.019457869965987574
+      },
+      "worst_accuracy": {
+        "mean": 0.6640625,
+        "sample_sd": 0.06286514429465266
+      }
+    },
+    "layer_hidden": {
+      "macro_primary": {
+        "mean": 0.5900749384215479,
+        "sample_sd": 0.02588370450525049
+      },
+      "mean_accuracy": {
+        "mean": 0.728515625,
+        "sample_sd": 0.0009765625
+      },
+      "worst_accuracy": {
+        "mean": 0.58203125,
+        "sample_sd": 0.017026948998205758
+      }
+    },
+    "oracle": {
+      "macro_primary": {
+        "mean": 0.8974150965182289,
+        "sample_sd": 0.0027860562114557976
+      },
+      "mean_accuracy": {
+        "mean": 0.9254557291666666,
+        "sample_sd": 0.0024576283968980304
+      },
+      "worst_accuracy": {
+        "mean": 0.8684895833333334,
+        "sample_sd": 0.009021097956087902
+      }
+    },
+    "random": {
+      "macro_primary": {
+        "mean": 0.5787300866863704,
+        "sample_sd": 0.029767796694462164
+      },
+      "mean_accuracy": {
+        "mean": 0.6875,
+        "sample_sd": 0.02198892626796426
+      },
+      "worst_accuracy": {
+        "mean": 0.578125,
+        "sample_sd": 0.029491540762776366
+      }
+    },
+    "source_router": {
+      "macro_primary": {
+        "mean": 0.7683194759093726,
+        "sample_sd": 0.011925032898396273
+      },
+      "mean_accuracy": {
+        "mean": 0.8232421875,
+        "sample_sd": 0.00834375365753665
+      },
+      "worst_accuracy": {
+        "mean": 0.7447916666666666,
+        "sample_sd": 0.013718299157360336
+      }
+    },
+    "task_id": {
+      "macro_primary": {
+        "mean": 0.7694587410878339,
+        "sample_sd": 0.011366962095093637
+      },
+      "mean_accuracy": {
+        "mean": 0.8251953125,
+        "sample_sd": 0.00834375365753665
+      },
+      "worst_accuracy": {
+        "mean": 0.7486979166666666,
+        "sample_sd": 0.013718299157360336
+      }
+    }
+  },
+  "per_seed": [
+    {
+      "seed": 42,
+      "category": "static",
+      "method": "layer_ce_fp32",
+      "macro_primary": 0.6933135612974515,
+      "mean_accuracy": 0.7861328125,
+      "worst_accuracy": 0.703125
+    },
+    {
+      "seed": 42,
+      "category": "static",
+      "method": "layer_hidden",
+      "macro_primary": 0.5844628695564106,
+      "mean_accuracy": 0.7275390625,
+      "worst_accuracy": 0.58984375
+    },
+    {
+      "seed": 42,
+      "category": "static",
+      "method": "layer_ce_hidden",
+      "macro_primary": 0.638698768117807,
+      "mean_accuracy": 0.7666015625,
+      "worst_accuracy": 0.6796875
+    },
+    {
+      "seed": 42,
+      "category": "static",
+      "method": "layer_ce_shuffled",
+      "macro_primary": 0.6255576710611375,
+      "mean_accuracy": 0.76171875,
+      "worst_accuracy": 0.68359375
+    },
+    {
+      "seed": 42,
+      "category": "static",
+      "method": "global_hidden",
+      "macro_primary": 0.5765098085932958,
+      "mean_accuracy": 0.7197265625,
+      "worst_accuracy": 0.6171875
+    },
+    {
+      "seed": 42,
+      "category": "router",
+      "method": "task_id",
+      "macro_primary": 0.7675981659443623,
+      "mean_accuracy": 0.826171875,
+      "worst_accuracy": 0.76171875
+    },
+    {
+      "seed": 42,
+      "category": "router",
+      "method": "oracle",
+      "macro_primary": 0.8990580360897856,
+      "mean_accuracy": 0.92578125,
+      "worst_accuracy": 0.87890625
+    },
+    {
+      "seed": 42,
+      "category": "router",
+      "method": "random",
+      "macro_primary": 0.609823180415317,
+      "mean_accuracy": 0.712890625,
+      "worst_accuracy": 0.60546875
+    },
+    {
+      "seed": 42,
+      "category": "router",
+      "method": "source_router",
+      "macro_primary": 0.766751696736486,
+      "mean_accuracy": 0.82421875,
+      "worst_accuracy": 0.7578125
+    },
+    {
+      "seed": 42,
+      "category": "router",
+      "method": "expert_router",
+      "macro_primary": 0.6588712137640431,
+      "mean_accuracy": 0.7587890625,
+      "worst_accuracy": 0.67578125
+    },
+    {
+      "seed": 43,
+      "category": "static",
+      "method": "layer_ce_fp32",
+      "macro_primary": 0.7353601635588968,
+      "mean_accuracy": 0.7890625,
+      "worst_accuracy": 0.69140625
+    },
+    {
+      "seed": 43,
+      "category": "static",
+      "method": "layer_hidden",
+      "macro_primary": 0.5674576632504312,
+      "mean_accuracy": 0.7294921875,
+      "worst_accuracy": 0.5625
+    },
+    {
+      "seed": 43,
+      "category": "static",
+      "method": "layer_ce_hidden",
+      "macro_primary": 0.6683444272095985,
+      "mean_accuracy": 0.78125,
+      "worst_accuracy": 0.73828125
+    },
+    {
+      "seed": 43,
+      "category": "static",
+      "method": "layer_ce_shuffled",
+      "macro_primary": 0.6145496171189496,
+      "mean_accuracy": 0.7626953125,
+      "worst_accuracy": 0.71484375
+    },
+    {
+      "seed": 43,
+      "category": "static",
+      "method": "global_hidden",
+      "macro_primary": 0.5588328068730195,
+      "mean_accuracy": 0.720703125,
+      "worst_accuracy": 0.5234375
+    },
+    {
+      "seed": 43,
+      "category": "router",
+      "method": "task_id",
+      "macro_primary": 0.7816412072207602,
+      "mean_accuracy": 0.8330078125,
+      "worst_accuracy": 0.75
+    },
+    {
+      "seed": 43,
+      "category": "router",
+      "method": "oracle",
+      "macro_primary": 0.898988970421058,
+      "mean_accuracy": 0.927734375,
+      "worst_accuracy": 0.86328125
+    },
+    {
+      "seed": 43,
+      "category": "router",
+      "method": "random",
+      "macro_primary": 0.575873550137694,
+      "mean_accuracy": 0.6748046875,
+      "worst_accuracy": 0.546875
+    },
+    {
+      "seed": 43,
+      "category": "router",
+      "method": "source_router",
+      "macro_primary": 0.7809508530343883,
+      "mean_accuracy": 0.8310546875,
+      "worst_accuracy": 0.74609375
+    },
+    {
+      "seed": 43,
+      "category": "router",
+      "method": "expert_router",
+      "macro_primary": 0.6638200142093882,
+      "mean_accuracy": 0.7587890625,
+      "worst_accuracy": 0.64453125
+    },
+    {
+      "seed": 44,
+      "category": "static",
+      "method": "layer_ce_fp32",
+      "macro_primary": 0.7103398026239872,
+      "mean_accuracy": 0.783203125,
+      "worst_accuracy": 0.67578125
+    },
+    {
+      "seed": 44,
+      "category": "static",
+      "method": "layer_hidden",
+      "macro_primary": 0.618304282457802,
+      "mean_accuracy": 0.728515625,
+      "worst_accuracy": 0.59375
+    },
+    {
+      "seed": 44,
+      "category": "static",
+      "method": "layer_ce_hidden",
+      "macro_primary": 0.6121292686448407,
+      "mean_accuracy": 0.7451171875,
+      "worst_accuracy": 0.66015625
+    },
+    {
+      "seed": 44,
+      "category": "static",
+      "method": "layer_ce_shuffled",
+      "macro_primary": 0.618304282457802,
+      "mean_accuracy": 0.728515625,
+      "worst_accuracy": 0.59375
+    },
+    {
+      "seed": 44,
+      "category": "static",
+      "method": "global_hidden",
+      "macro_primary": 0.6168499847418918,
+      "mean_accuracy": 0.7490234375,
+      "worst_accuracy": 0.67578125
+    },
+    {
+      "seed": 44,
+      "category": "router",
+      "method": "task_id",
+      "macro_primary": 0.7591368500983791,
+      "mean_accuracy": 0.81640625,
+      "worst_accuracy": 0.734375
+    },
+    {
+      "seed": 44,
+      "category": "router",
+      "method": "oracle",
+      "macro_primary": 0.8941982830438432,
+      "mean_accuracy": 0.9228515625,
+      "worst_accuracy": 0.86328125
+    },
+    {
+      "seed": 44,
+      "category": "router",
+      "method": "random",
+      "macro_primary": 0.5504935295061,
+      "mean_accuracy": 0.6748046875,
+      "worst_accuracy": 0.58203125
+    },
+    {
+      "seed": 44,
+      "category": "router",
+      "method": "source_router",
+      "macro_primary": 0.7572558779572433,
+      "mean_accuracy": 0.814453125,
+      "worst_accuracy": 0.73046875
+    },
+    {
+      "seed": 44,
+      "category": "router",
+      "method": "expert_router",
+      "macro_primary": 0.6450077148738232,
+      "mean_accuracy": 0.75,
+      "worst_accuracy": 0.62890625
+    }
+  ],
+  "paired": [
+    {
+      "seed": 42,
+      "ce_hidden_minus_ce": -0.05461479317964446,
+      "ce_hidden_minus_shuffled": 0.013141097056669548,
+      "layer_hidden_minus_global": 0.007953060963114766,
+      "expert_router_minus_task_id_accuracy": -0.0673828125,
+      "oracle_minus_task_id_accuracy": 0.099609375
+    },
+    {
+      "seed": 43,
+      "ce_hidden_minus_ce": -0.06701573634929825,
+      "ce_hidden_minus_shuffled": 0.053794810090648904,
+      "layer_hidden_minus_global": 0.008624856377411727,
+      "expert_router_minus_task_id_accuracy": -0.07421875,
+      "oracle_minus_task_id_accuracy": 0.0947265625
+    },
+    {
+      "seed": 44,
+      "ce_hidden_minus_ce": -0.09821053397914647,
+      "ce_hidden_minus_shuffled": -0.006175013812961261,
+      "layer_hidden_minus_global": 0.0014542977159102133,
+      "expert_router_minus_task_id_accuracy": -0.06640625,
+      "oracle_minus_task_id_accuracy": 0.1064453125
+    }
+  ],
+  "partition_sha256": "526c3ae3aefebf36f651c0518d4a69b1c51d8c2e9d5145063f791b0b363386eb",
+  "audit": "Saved logits, labels, routes, helps/harms and oracle accuracy ceiling independently checked.",
+  "scope": "Exploratory extension on the previously inspected v3 final partition; one model, four tasks, three training seeds.",
+  "repeat_check": {
+    "execution_date": "2026-11-11",
+    "previous_csv_sha256": "d76da23b5decf8f38f752f53b62389b91e2a7582b3634d5ad39c45fe703268cb",
+    "max_absolute_metric_difference": 0.0,
+    "differences": [
+      {
+        "seed": 42,
+        "method": "layer_ce_fp32",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "layer_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "layer_ce_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "layer_ce_shuffled",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "global_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "task_id",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "oracle",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "random",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "source_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 42,
+        "method": "expert_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "layer_ce_fp32",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "layer_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "layer_ce_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "layer_ce_shuffled",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "global_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "task_id",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "oracle",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "random",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "source_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 43,
+        "method": "expert_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "layer_ce_fp32",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "layer_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "layer_ce_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "layer_ce_shuffled",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "global_hidden",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "task_id",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "oracle",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "random",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "source_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      },
+      {
+        "seed": 44,
+        "method": "expert_router",
+        "macro_primary": 0.0,
+        "mean_accuracy": 0.0,
+        "worst_accuracy": 0.0
+      }
+    ],
+    "scope": "Same teachers and training seeds; recovery rerun does not increase n beyond three."
+  }
+}

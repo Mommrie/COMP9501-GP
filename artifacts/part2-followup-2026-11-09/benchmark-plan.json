@@ -1,0 +1,22 @@
+{
+  "seed": 42,
+  "input_seed": 950109,
+  "dtype": "float32",
+  "batch_sizes": [
+    1,
+    4
+  ],
+  "sequence_lengths": [
+    32,
+    128
+  ],
+  "warmup": 5,
+  "repeats": 30,
+  "rounds": 3,
+  "task_head": "sst2 (known)",
+  "inputs": "fixed synthetic token IDs, all tokens valid",
+  "timing": "synchronized wall time; excludes tokenizer, H2D input transfer, model loading and one-time merge",
+  "router": "frozen base mean features -> archived linear source classifier -> expert groups; 1 + distinct experts forward calls per batch; known task head",
+  "scope": "single GPU, seed42 bank; not accuracy evaluation or multi-seed latency inference",
+  "source_sha256": "56d32897e29e669a12fe41be28d603a26b01d40348edbdaddec63297a57a0be1"
+}

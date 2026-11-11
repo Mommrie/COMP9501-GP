@@ -2,7 +2,7 @@
 
 [中文使用指南](README.zh-CN.md)
 
-Private codebase for Group Project of COMP9501
+Codebase for Group Project of COMP9501
 
 Shared code and experiment notes for COMP9501 Group 13.
 
@@ -10,6 +10,11 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 
 ## Start here
 
+- [Proposal-aligned course report and presentation package](report-20261109/README.md): 11-page compiled report, Chinese result explanations, slide-by-slide narration, Q&A, and complete audited L4 controls.
+- [Completed three-seed v3 results and presentation materials](PART2-RESULTS-V3-2026-11-09.zh-CN.md): 12 fresh teachers, matched CE/KL, fixed weight baselines, audited metrics, figures and verified checkpoint restoration; [raw evidence](artifacts/independent-v3-2026-11-09/README.md).
+- [Independent protocol v3](INDEPENDENT-PROTOCOL-V3.zh-CN.md): fresh teachers, five content-grouped partitions and matched-capacity CE/KL; [related-work boundaries](PART2-RELATED-WORK.zh-CN.md).
+- [Part 2 implementation walkthrough and 26 Q&A (Chinese/English)](PART2-IMPLEMENTATION-QA.zh-CN.md).
+- [2026-11-09 A100 follow-up report (Chinese)](PART2-FOLLOWUP-2026-11-09.zh-CN.md): measured deployment costs, frozen-router header diagnostic and presentation Q&A; [raw evidence and figures](artifacts/part2-followup-2026-11-09/README.md).
 - [Proposal, progress, timeline and TODO](PROPOSAL.md): original Part 2 text, Chinese overview and evidence-backed status.
 - [Team collaboration and Colab](COLLABORATION.md): embedded-source launcher, separate GPU accounts, checkpoint restore and run export.
 - [Team Colab launcher](notebooks/team_colab.ipynb): no runtime GitHub token or git clone. Private-notebook access still needs your own repository authorization.
@@ -21,7 +26,7 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 - [Colab starter](notebooks/quickstart.ipynb): use an authenticated private checkout or an uploaded repository ZIP.
 - [Contribution conventions](CONTRIBUTING.md) and [repository checks](scripts/README.md).
 
-## Recorded Part 2 findings
+## Historical protocol-v2 findings
 
 Qwen2.5-0.5B, q/v LoRA, four source tasks: SST-2, MRPC, RTE and CoLA. Three adapter seeds: 42/43/44. Every method uses the original, known task-specific classification head.
 

@@ -70,6 +70,22 @@ def selected_raw(task, cfg, split="train", limit=None):
     from datasets import load_dataset
     if task not in FIELDS:
         raise ValueError(f"Unsupported task: {task}")
+    if cfg.get('partition_manifest'):
+        from independent_protocol import validate_manifest
+        path = Path(cfg['partition_manifest'])
+        if hashlib.sha256(path.read_bytes()).hexdigest() != cfg['partition_manifest_sha256']:
+            raise ValueError('Partition manifest changed after configuration lock')
+        manifest = validate_manifest(read_config(path))
+        record = manifest['tasks'][task]
+        ids = record['partitions'][split]['sample_ids']
+        raw = load_dataset('nyu-mll/glue', task, split='train', revision=manifest['dataset_revision'])
+        if raw._fingerprint != record['fingerprint']:
+            raise ValueError('Source dataset fingerprint changed')
+        lookup = {int(idx): i for i, idx in enumerate(raw['idx'])}
+        raw = raw.select([lookup[idx] for idx in ids])
+        if limit:
+            raw = raw.select(range(min(limit, len(raw))))
+        return raw
     if split not in {"train", "calibration", "validation"}:
         raise ValueError(f"Unsupported split: {split}")
     raw = load_dataset("nyu-mll/glue", task, split="validation" if split == "validation" else "train",

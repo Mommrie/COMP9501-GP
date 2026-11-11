@@ -6,11 +6,13 @@
 
 ## 一次运行的顺序
 
-1. 用自己的已授权账号打开 private notebook；打不开时从 GitHub 下载 ipynb，再上传到 Colab。
+1. 从当前公开团队仓库打开 notebook，或下载 ipynb 上传到 Colab；运行时使用自己的 Google 账号。
 2. 执行源码校验/展开、依赖安装和离线检查 cell。内嵌固定代码快照，大小与 SHA 见 [快照记录](../artifacts/team-launcher-2026-10-28.json)，不包含原数据或模型权重；Part 1 的新张量实现与方案已同步。
 3. 已有 checkpoint 时填 CHECKPOINT_ARCHIVE 恢复；只复评则设置 SEED/EVAL_TASK 并开启 RUN_EVALUATION。
 4. 新训练时选 GPU，设置自己的 MEMBER、SEED 与 RUN_TRAINING。每次 run 目录有独立随机标识。
 5. 开启 EXPORT_RESULTS，下载结果 ZIP 或选择自己已授权的 Drive 路径，离开临时 VM 前保存。
+
+**Part 2 最终协议 v3**：新增两个可选部分。填写 `INDEPENDENT_CHECKPOINT_ARCHIVE` 可恢复 v3 的十二个 teacher；或开启 `RUN_FRESH_V3` 从头训练并运行固定基线。之后开启 `RUN_ACTIVATION_CONTROLS`，执行五种 FP32 目标和 source/expert router 对照，需要至少 20 GiB 的 CUDA GPU（实测 L4）。多 seed 导出记录会列出 42/43/44；复现已有 seed 不计为新增独立实验。默认不执行这些操作。
 
 默认开关关闭训练/评价/导出，Run all 不会自动启动完整 GPU 实验。私库访问、Google runtime、Drive 权限分别管理；组员不需安装 MCP。
 

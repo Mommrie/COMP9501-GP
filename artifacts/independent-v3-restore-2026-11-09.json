@@ -1,0 +1,13 @@
+{
+  "state": "passed",
+  "archive_sha256": "9e9f4c8bb622268f575f5021432d131821dec8682fad8dd00f463561644f51cf",
+  "restore_source_sha256": "23759ba61079d210518f4a9dfabaae141a3345fb8ee85d4f09f8bb80b330e9ad",
+  "verified_files": 131,
+  "adapter_count": 12,
+  "partition_sha256": "526c3ae3aefebf36f651c0518d4a69b1c51d8c2e9d5145063f791b0b363386eb",
+  "scope": "Weights and original experiment evidence restored; base/tokenizer downloaded separately at pinned Hub revision.",
+  "existing_directory_refused": true,
+  "unsafe-path_refused": true,
+  "bad-sha_refused": true,
+  "relocated_layout_verified": true
+}

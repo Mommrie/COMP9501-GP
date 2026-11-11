@@ -21,7 +21,9 @@ def build():
     buffer=io.BytesIO()
     with zipfile.ZipFile(buffer,'w',compression=zipfile.ZIP_DEFLATED) as z:
         for name,value in sorted({**files,'bundle-manifest.json':(json.dumps(manifest,sort_keys=True,indent=2)+'\n').encode()}.items()):
-            info=zipfile.ZipInfo(name,date_time=(2026,10,28,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,value)
+            info=zipfile.ZipInfo(name,date_time=(2026,10,28,0,0,0))
+            info.create_system=3;info.external_attr=0o100644<<16
+            info.compress_type=zipfile.ZIP_DEFLATED;z.writestr(info,value)
     payload=buffer.getvalue();digest=hashlib.sha256(payload).hexdigest();helper=files['scripts/colab_bundle.py']
     def md(text):return {'cell_type':'markdown','metadata':{},'source':text.splitlines(keepends=True)}
     def code(text):return {'cell_type':'code','execution_count':None,'metadata':{},'outputs':[],'source':text.splitlines(keepends=True)}
@@ -47,7 +49,7 @@ print('Project source verified:', SOURCE_SNAPSHOT)
 print('Runtime folder:', ROOT)
 '''.replace('HELPER_SHA',repr(hashlib.sha256(helper).hexdigest())).replace('HELPER',repr(base64.b64encode(helper).decode())).replace('DIGEST',repr(digest)).replace('PAYLOAD',repr(base64.b64encode(payload).decode()))),
 code('''subprocess.run([sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'], check=True)
-'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('part1-reproduction-20261025/code', 'test_csa*.py'), ('scripts', 'test_colab_bundle.py')]
+'''),code('''checks = [('code', 'test_math.py'), ('code', 'test_protocol.py'), ('code', 'test_independent_protocol.py'), ('code', 'test_activation_extension.py'), ('code/functional_merge', 'test_maths.py'), ('code/coefficient_merge', 'test_core.py'), ('code/merge_study', 'test_engine.py'), ('part1-reproduction-20261025/code', 'test_csa*.py'), ('scripts', 'test_colab_bundle.py')]
 for folder, pattern in checks:
     subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', folder, '-p', pattern], check=True)
 '''),md('''## Optional: restore the existing 12 adapters
@@ -82,6 +84,30 @@ if RUN_EVALUATION:
     RUN_DIR = ROOT / 'outputs' / RUN_NAME
     RUN_DIR.mkdir(parents=True)
     subprocess.run([sys.executable, 'code/evaluate.py', '--config', 'configs/protocol-v2-a100.json', '--task', EVAL_TASK, '--adapter', str(adapter), '--output', str(RUN_DIR / 'result.json')], check=True)
+'''),md('''## Optional: restore or train the independent v3 study
+
+For the final Part 2 protocol, use the separate v3 checkpoint ZIP rather than the older bank above. Set exactly one recovery/training path. Restoring verifies the archive's file manifest and relocates partition paths; it does not retrain teachers. A fresh study trains all twelve teachers and evaluates the fixed weight-space grid, so it needs substantially more GPU time. The default switches run neither operation.
+'''),code('''INDEPENDENT_CHECKPOINT_ARCHIVE = ''  # uploaded v3 checkpoint ZIP, or leave blank
+RUN_FRESH_V3 = False
+assert not (INDEPENDENT_CHECKPOINT_ARCHIVE and RUN_FRESH_V3), 'Choose restore or fresh training.'
+V3_RUN_NAME = MEMBER + '-v3-' + uuid.uuid4().hex[:8]
+V3_STUDY = ROOT / 'outputs' / V3_RUN_NAME
+if INDEPENDENT_CHECKPOINT_ARCHIVE:
+    subprocess.run([sys.executable, 'code/restore_independent_backup.py', '--archive', INDEPENDENT_CHECKPOINT_ARCHIVE, '--output', str(V3_STUDY)], check=True)
+elif RUN_FRESH_V3:
+    subprocess.run([sys.executable, 'code/run_independent_study.py', '--output', str(V3_STUDY)], check=True)
+    subprocess.run([sys.executable, 'code/independent_baselines.py', '--study', str(V3_STUDY)], check=True)
+if INDEPENDENT_CHECKPOINT_ARCHIVE or RUN_FRESH_V3:
+    RUN_NAME, RUN_DIR = V3_RUN_NAME, V3_STUDY
+'''),md('''## Optional: reproduce the direct activation and routing controls
+
+Enable this only after the v3 study above is restored or completed. All five static profiles and both learned routers use the locked fit/selection/final roles. The final task partition was previously explored; this is an exploratory reproduction, not a new blind test. This command requires a CUDA GPU with at least 20 GiB VRAM (the recorded recovery run used L4). Select a new output directory and export it before the temporary VM disappears.
+'''),code('''RUN_ACTIVATION_CONTROLS = False
+if RUN_ACTIVATION_CONTROLS:
+    assert (V3_STUDY / 'locked-config.json').exists(), 'Restore or train v3 first.'
+    RUN_NAME = MEMBER + '-activation-' + uuid.uuid4().hex[:8]
+    RUN_DIR = ROOT / 'outputs' / RUN_NAME
+    subprocess.run([sys.executable, 'code/activation_extension.py', '--study', str(V3_STUDY), '--plan', 'configs/activation-strengthening-v1.json', '--output', str(RUN_DIR)], check=True)
 '''),md('''## Export a completed run
 
 Set RUN_DIR to the completed outputs subdirectory if needed. The ZIP includes a file manifest, member label, source snapshot and seed. Download it before the temporary VM disappears, or set EXPORT_DIRECTORY to a folder in your own authorized Drive mount. Nothing uploads automatically to the group's account.
@@ -90,7 +116,8 @@ EXPORT_DIRECTORY = ROOT / 'outputs' / 'exports'
 DOWNLOAD_ZIP = True
 if EXPORT_RESULTS:
     from colab_bundle import export_run
-    metadata = {'member': MEMBER, 'seed': SEED, 'source_snapshot': SOURCE_SNAPSHOT, 'config': 'configs/protocol-v2-a100.json'}
+    is_v3 = bool(INDEPENDENT_CHECKPOINT_ARCHIVE or RUN_FRESH_V3 or RUN_ACTIVATION_CONTROLS)
+    metadata = {'member': MEMBER, 'seed': None if is_v3 else SEED, 'training_seeds': [42, 43, 44] if is_v3 else [SEED], 'source_snapshot': SOURCE_SNAPSHOT, 'scope': 'Inspect exported manifests for the exact protocol and configuration.'}
     export = export_run(ROOT, RUN_DIR, EXPORT_DIRECTORY / (RUN_NAME + '.zip'), metadata)
     print('Export SHA-256:', export['sha256'])
     if DOWNLOAD_ZIP:

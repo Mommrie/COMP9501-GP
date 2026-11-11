@@ -2,11 +2,15 @@
 
 **Activation-Aware Merging of LoRA Adapters for Multi-Task Learning**
 
-COMP9501 · Group 13 · 进度更新：2026-10-28
+COMP9501 · Group 13 · 进度更新：2026-11-11
 
 [中文首页](README.zh-CN.md) · [搭建与复现](BUILD.zh-CN.md) · [扩展开发](docs/EXTENDING.zh-CN.md)
 
 本文整理最初 proposal，随后对照现有实现与结果，末尾提供 timeline 和可继续更新的 TODO。最初 proposal 的预期不等于实验结论；代码可运行也不代表研究目标已经达到。
+
+11 月 9 日完成 [新协议三 seed 结果与展示材料](PART2-RESULTS-V3-2026-11-09.zh-CN.md)：12 个新 teacher、同容量 CE/KL、固定权重基线、审计、图表和恢复验证。主指标 CE 0.7132、KL 0.6987、TIES 0.6146、individual 0.7695；学习系数改善当前固定基线，但 KL 未建立相对 CE 的平均优势。另见 [部署成本与标题诊断](PART2-FOLLOWUP-2026-11-09.zh-CN.md)、[独立五分区](INDEPENDENT-PROTOCOL-V3.zh-CN.md)、[相关工作](PART2-RELATED-WORK.zh-CN.md) 与 [实现 Q&A](PART2-IMPLEMENTATION-QA.zh-CN.md)。新最终区是原 train 的内部隔离分区，不是新外部盲测，不能与旧官方 validation 成绩直接作单因素归因。
+
+11月11日进一步完成 [完整课程报告与展示素材](report-20261109/README.md)：L4五个FP32目标、真实/shuffled配对控制、任务性能导向router、oracle和帮助/损害分析，全部三seed及保存预测独立审计通过；英文PDF 11页，代码/结果精讲和逐页素材齐备。原预期并非全部成立：hidden未增益于CE，expert router未超过task-ID。恢复重跑不增加独立seed，Part1 CSA联系仅为概念动机。
 
 来源为本地归档的 `COMP9501-Part2-Project-Proposal-Group13.docx`（2026-10-21 归档）。正文原文保留在下方，原 DOCX 与个人文件信息不随仓库分发。Proposal 是否已经正式提交、课程最终提交要求均（待核对）。
 
@@ -81,7 +85,7 @@ COMP9501 · Group 13 · 进度更新：2026-10-28
 
 数值来自[三 seed 基线](REPLICATION-2026-10-25.md)、[原型](PROTOTYPES-2026-10-25.md)和[后续选择控制](SELECTION-CONTROL-2026-10-25.md)。CE 与 KL 的信息使用方式不同；不能仅凭上述均值宣称 KL 更好。逐层拟合仍低于 individual。源 validation 已在探索中反复查看；系数 fit/selection 半区隔离不等于 teacher 训练到最终选择的全流程独立 holdout。
 
-Δactivation 相似度与 pair merge accuracy 损失的 Spearman ρ 在三个 seed 分别为 **−0.6571 / −0.4857 / +0.0857**。六对共享 adapter，不能把三 seed 的 18 个观测当作 18 个独立任务对。Linear router 的来源识别率为 98.31%，但需要 base 特征和所选 adapter 共两次 backbone 前向；当前已知 task ID 直接选 adapter 只需一次。完整延迟、吞吐、显存测量仍待补充。
+Δactivation 相似度与 pair merge accuracy 损失的 Spearman ρ 在三个 seed 分别为 **−0.6571 / −0.4857 / +0.0857**。六对共享 adapter，不能把三 seed 的 18 个观测当作 18 个独立任务对。Linear router 的旧来源识别率为 98.31%；每批需一次 base 特征前向，再按不同 expert 分组执行，不能概括为永远两次。当前已知 task ID 直接选 adapter 只需一次。[11 月 9 日 A100 成本实测](PART2-FOLLOWUP-2026-11-09.zh-CN.md) 已补延迟、吞吐、显存与存储；GPU 缓存降低状态传输成本，但仍有额外前向与缓存开销，未建立当前协议下的部署优势。
 
 因此，目前可以报告“实现、对照、诊断与失败条件”，还不能将原 proposal 中“优于权重空间方法、改善最差任务、减少干扰”的预期整体记为完成。相关工作定位与最终主张需要一起收敛。
 
@@ -148,16 +152,19 @@ Part 1 与本文 Part 2 是不同交付；CSA 实验完成不等于 Part 1 已�
 - [x] 提供配置、结果 JSON、图表、中文说明与队友扩展入口。
 - [x] 完成 Colab 源码打包、checkpoint 恢复与结果导出的本地验证。
 
+- [x] 2026-11-11 完成直接hidden、shuffled、global/layer及best-expert/source路由对照，完整三seed预测、原始选择、图表、独立审计和恢复重复比较齐备。
+- [x] 2026-11-11 完成英文LaTeX/PDF报告、中文机制/数值精讲、逐页展示素材和机制Q&A；双语notebook增加v3入口并修复跨平台ZIP快照，21项代码测试通过。
+
 ### 优先补齐（交付与研究建议）
 
 - [ ] 核对 Group 13 的 Part 1/2 场次、proposal 提交状态及正式提交物要求。
 - [ ] 组内确定最终研究主线与分工：保留静态/动态哪些部分，如何呈现未支持的假设。
-- [ ] 核对直接相关工作与引用，说明现有方法的差异；不将 activation / routing 关键词当作新颖性。
-- [ ] 固定各方法的信息权限，明确已知任务头条件；若要研究未知任务路由，另定义头选择或统一输出协议。
-- [ ] 对最终主张补全流程独立的数据划分/验证方案，隔离 teacher 训练、系数拟合、选择与最终评估；不把旧 validation 当新盲测。
-- [ ] 优先完成区分 activation 信号、输入格式/来源风格与参数容量的关键消融，并记录其余未覆盖范围。
-- [ ] 汇总所有主方法的逐任务、mean / worst accuracy 与任务正式指标；定义并报告相对 individual 的性能下降，避免与顺序学习 forgetting 混淆。
-- [ ] 测量部署成本：延迟、吞吐、显存与 adapter/合并模型存储，计入 router 的额外前向。
+- [x] 2026-11-09 核对 AdaMerging、RegMean、KnOTS 的直接相关方法与引用，说明差异与未复现范围；见 [相关工作](PART2-RELATED-WORK.zh-CN.md)。
+- [x] 2026-11-09 固定本轮各方法的信息权限与 task-aware head；未知任务路由不纳入已完成主张，需要另定义输出/头协议。
+- [x] 2026-11-09 完成五分区、内容 tuple 分组与新 teacher 三 seed 重训，隔离训练、teacher 选择、系数拟合/选择和最终评价；不把旧 validation 或本轮内部最终区称新外部盲测。
+- [x] 2026-11-09 完成本轮已选控制：同容量同步数 CE/KL、冻结 router 标题扰动；隐藏层 activation 的独特贡献和完全去来源风格未建立，未覆盖范围写入报告。
+- [x] 2026-11-09 汇总 v3 八种方法逐任务、mean/worst accuracy、native 指标与相对 individual drop；三 seed CSV/JSON 与图表见 [结果报告](PART2-RESULTS-V3-2026-11-09.zh-CN.md)，不称顺序学习 forgetting。
+- [x] 2026-11-09 测量部署成本：A100 固定输入下的延迟、吞吐、显存与 adapter/合并模型存储，计入 router 的额外前向；见 [测量范围与结果](PART2-FOLLOWUP-2026-11-09.zh-CN.md)。
 - [ ] 设置 checkpoint 的授权共享位置，并由队友自己的账号完成一次 Colab 恢复和复评。
 - [ ] 完成 Part 2 正式幻灯片、结论/局限、计时演练与问答；按核实要求准备其他交付。
 - [ ] 完成 Part 1 正式幻灯片、实际分工与计时演练（独立于 Part 2）。

@@ -1,0 +1,23 @@
+{
+  "state": "compiled-and-rendered",
+  "pages": 11,
+  "pdf_sha256": "63e4ffed2e97006e78da282aeb8810c3c0718decb27d4d684ffbdf75de915e33",
+  "compiler": {
+    "tectonic_release": "tectonic@0.17.0",
+    "asset": "tectonic-0.17.0-x86_64-unknown-linux-musl.tar.gz",
+    "archive_sha256": "8533d07f9ccbd7a65824b9e0459041bca34af1eb33daba48f59215593753a3b7",
+    "binary_sha256": "a98aa59ad5c1df39a6c9e56cbfc5088f2b11d6c179c0130b97998e4bd46a46da",
+    "pdftoppm": "/usr/bin/pdftoppm"
+  },
+  "log_sha256": {
+    "course-finalizer-launch.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "course-pdfinfo.log": "974455b5e4bf6f219a937eb176e254fca4ce7144a59cc09dcf4d1df96f6dd899",
+    "course-render.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "course-audit-and-plots.log": "286631def5ed1f8445cdc1070df0e5433eaf21f9212298e1fa24f46703f0200c",
+    "course-pdftotext.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "course-latex.log": "e50be44d6d962d285acdbc7b5ea70749130364ad9e517d75f5405743620057f3",
+    "course-latex-reviewed.log": "426e32bba88df7f79e8f92196c0288de33560994bafd027f5d46ee2f021f0e73"
+  },
+  "note": "Visual review of the rendered pages remains required before delivery.",
+  "layout_overfull_warnings": 0
+}

@@ -1,0 +1,10 @@
+\begin{table}[H]\centering\small
+\caption{Exploratory direct-activation controls. All FP32. Layer methods have 97 scalars; global has five.}
+\begin{tabular}{lrrr}\toprule
+Method & Native score & Mean accuracy & Worst accuracy\\\midrule
+Layer CE (FP32) & 0.7130 $\pm$ 0.0211 & 0.7861 $\pm$ 0.0029 & 0.6901 $\pm$ 0.0137\\
+Layer hidden & 0.5901 $\pm$ 0.0259 & 0.7285 $\pm$ 0.0010 & 0.5820 $\pm$ 0.0170\\
+Layer CE + hidden & 0.6397 $\pm$ 0.0281 & 0.7643 $\pm$ 0.0182 & 0.6927 $\pm$ 0.0407\\
+Layer CE + shuffled & 0.6195 $\pm$ 0.0056 & 0.7510 $\pm$ 0.0195 & 0.6641 $\pm$ 0.0629\\
+Global hidden & 0.5841 $\pm$ 0.0297 & 0.7298 $\pm$ 0.0166 & 0.6055 $\pm$ 0.0768\\
+\bottomrule\end{tabular}\end{table}

@@ -1,0 +1,13 @@
+\begin{table}[H]\centering\small
+\caption{Frozen protocol-v3 results. Three training seeds; mean and sample SD. Native score is the macro task-specific metric, not official GLUE.}
+\begin{tabular}{lrrr}\toprule
+Method & Native score & Mean accuracy & Worst accuracy\\\midrule
+Individual & 0.7695 $\pm$ 0.0114 & 0.8252 $\pm$ 0.0083 & 0.7487 $\pm$ 0.0137\\
+Average & 0.5578 $\pm$ 0.0246 & 0.7080 $\pm$ 0.0068 & 0.5430 $\pm$ 0.0377\\
+Task Arithmetic & 0.5954 $\pm$ 0.0211 & 0.7152 $\pm$ 0.0132 & 0.5872 $\pm$ 0.0148\\
+TIES (our variant) & 0.6146 $\pm$ 0.0240 & 0.7152 $\pm$ 0.0096 & 0.5378 $\pm$ 0.0293\\
+DARE+TA & 0.6065 $\pm$ 0.0287 & 0.7077 $\pm$ 0.0131 & 0.5443 $\pm$ 0.0482\\
+Uniform, selected gain & 0.5889 $\pm$ 0.0256 & 0.7223 $\pm$ 0.0069 & 0.5768 $\pm$ 0.0328\\
+Layer CE (v3 BF16 fit) & 0.7132 $\pm$ 0.0225 & 0.7848 $\pm$ 0.0031 & 0.6875 $\pm$ 0.0141\\
+Layer KL (v3 BF16 fit) & 0.6987 $\pm$ 0.0080 & 0.7829 $\pm$ 0.0073 & 0.6719 $\pm$ 0.0273\\
+\bottomrule\end{tabular}\end{table}

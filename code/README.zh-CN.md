@@ -28,4 +28,12 @@ python code/train_lora.py --config configs/protocol-v2-a100.json --task sst2 --s
 
 ## 扩展前看这里
 
+`activation_extension.py` 与 `test_activation_extension.py` 补原proposal的直接hidden匹配、打乱配对、global/layer和best-expert路由对照；复用v3隔离teacher，但新增方法在已查看final后设计，属于探索扩展。使用 [强化配置](../configs/activation-strengthening-v1.json)，说明见 [实验映射](../report-20261109/EXPERIMENT-AND-CLAIM-MAP.zh-CN.md)。
+
+新独立协议入口：`independent_protocol.py` / `test_independent_protocol.py` 负责内容去重、分区与防泄漏检查，`run_independent_study.py` 负责三 seed 重训与 CE/KL，`independent_baselines.py` 重跑固定基线，`summarize_independent_study.py` 核验并输出统计与图表。按 [v3 协议](../INDEPENDENT-PROTOCOL-V3.zh-CN.md) 在 Colab 执行。
+
+`restore_independent_backup.py` 将完成后的 checkpoint ZIP 校验恢复到新目录，重建运行布局并迁移 manifest 路径；遇到已有目录或校验失败会拒绝操作。
+
+部署测量 `benchmark_deployment.py` 与冻结路由标题诊断 `diagnose_router_headers.py` 均要求 CUDA，在 Colab 执行。前者记录逐次耗时、前向次数和缓存，后者保持内容 token、仅改变字段标题。命令与结果解释见 [A100 补充报告](../PART2-FOLLOWUP-2026-11-09.zh-CN.md)。
+
 新任务涉及 FIELDS、selected_raw、两类头部、metrics 和各原型 T=4 假设；换 backbone 还涉及 score head、模块名与层索引。新增合并方法要同时接入 CLI、engine 和 plan。详见中央扩展指南，勿只改 tasks/model 后跑完整实验。子目录都有独立中文说明。

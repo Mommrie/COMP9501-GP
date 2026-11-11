@@ -41,6 +41,8 @@ python -m unittest discover -s code -p test_protocol.py
 
 ## 3 建立或恢复 adapter bank
 
+当前新增的独立协议 v3 使用 [专属入口](INDEPENDENT-PROTOCOL-V3.zh-CN.md)，会从头重训 teacher，禁止混用旧 bank。以下命令用于归档 v2 的复现。
+
 只想复评已有实验时，先按 [权重共享指南](assets/README.zh-CN.md) 恢复 12 个 adapter，使用 notebook 的 RUN_EVALUATION；无需重新训练全部任务。
 
 要从头训练，输出目录必须尚不存在：
@@ -89,3 +91,8 @@ python part1-reproduction-20261025/code/run.py --data /path/to/mnist.npz --outpu
 - 显存不足：先降低 batch，并记录梯度累积/有效 batch 的变化；不直接拿不同预算结果作方法优势。GPU 分配随账号与可用资源变化。
 - 缺 bank/history：先看上表依赖和 assets manifest；仅有 summary JSON 无法重新计算真实模型评价。
 - 新任务/模型/方法：先读 [扩展开发指南](docs/EXTENDING.zh-CN.md) 的固定假设表；不要直接改 tasks 后启动完整训练。
+
+
+## Final Part 2 protocol and evidence (11 November)
+
+Use the [final report/materials](report-20261109/README.md), [v3 protocol](INDEPENDENT-PROTOCOL-V3.zh-CN.md), and updated team notebook v3/activation switches. Historical A100 results and new L4 FP32 controls stay separate. To verify published evidence without importing ML packages, run `python scripts/verify_part2_artifacts.py`. To check the cross-platform notebook ZIP regression, run `python -m unittest discover -s scripts -p test_team_notebook.py`. Model runs require Colab; local static checks do not load models.

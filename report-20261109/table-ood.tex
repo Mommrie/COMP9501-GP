@@ -1,0 +1,10 @@
+\begin{table}[H]\centering\small
+\caption{Historical protocol-v2 fixed transfer check: accuracy mean and sample SD across three training seeds; 512 examples per target.}
+\begin{tabular}{lrr}\toprule
+Method & IMDb & PAWS\\\midrule
+Individual & 0.7090 $\pm$ 0.0237 & 0.4147 $\pm$ 0.0011\\
+Average & 0.6758 $\pm$ 0.0276 & 0.4258 $\pm$ 0.0135\\
+Uniform gain 2 & 0.7116 $\pm$ 0.0118 & 0.4316 $\pm$ 0.0220\\
+Layer CE & 0.7051 $\pm$ 0.0198 & 0.4167 $\pm$ 0.0074\\
+Layer KL (teacher-selected) & 0.6953 $\pm$ 0.0237 & 0.4167 $\pm$ 0.0041\\
+\bottomrule\end{tabular}\end{table}

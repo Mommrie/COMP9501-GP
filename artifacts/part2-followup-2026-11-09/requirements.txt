@@ -1,0 +1,7 @@
+# Python >=3.11. Keep Colab's preinstalled torch/CUDA build.
+transformers==4.57.6
+peft==0.18.1
+datasets==4.5.0
+accelerate==1.12.0
+safetensors==0.7.0
+scikit-learn==1.8.0
