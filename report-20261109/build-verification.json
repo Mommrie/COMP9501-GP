@@ -1,9 +1,9 @@
 {
   "state": "compiled-and-rendered",
-  "report_version": "direct-csa-bridge",
-  "pages": 17,
-  "pdf_sha256": "1b62e81e49e530fa626a53d1beadf6976dce10e9a9b8662b8a9c658f14707ea6",
-  "previous_published_pdf_sha256": "26fae3e18b3f7fc0ecdbbecaceb8cb8ac95cff053f2f5e7ddd2a24c1e3e5c895",
+  "report_version": "csa-discriminant",
+  "pages": 18,
+  "pdf_sha256": "9f0e2d66a48e7bb1071ec6583ba285190d973a990768fb8d44b4a977aef70499",
+  "previous_published_pdf_sha256": "1b62e81e49e530fa626a53d1beadf6976dce10e9a9b8662b8a9c658f14707ea6",
   "layout_overfull_warnings": 0,
   "compiler": {
     "tectonic_release": "tectonic@0.17.0",

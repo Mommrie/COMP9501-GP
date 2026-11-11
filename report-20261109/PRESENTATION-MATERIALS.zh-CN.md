@@ -1,5 +1,6 @@
 # 给PPT制作者：Part 2逐页素材、讲述与分工接口
 
+> 最新进展：[CSA＋LDA判别强化与8组QA](CSA-DISCRIMINANT-RESULTS.zh-CN.md)。原CSA压缩/logistic结果保留；新直接LDA已提升到0.7485 native、81.97% macro accuracy，gate全部回退不称额外增益。
 这份文档提供内容和讲解，不代替组员的正式幻灯片。以原proposal的三个问题为主线：相似度能否预测干扰、功能信号能否改善静态合并、动态路由能否选到更有用expert。不要沿用Part1的CSA/PCA实验结果作为Part2证据。
 
 建议12页主讲约10分20秒，另留40秒切换缓冲及4分钟QA，合计15分钟；这是演练方案，不是已确认的课程分配。若组内另有安排，按实际场次调整。

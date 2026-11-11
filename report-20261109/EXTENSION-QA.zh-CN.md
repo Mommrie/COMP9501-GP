@@ -1,5 +1,6 @@
 # 强化实验：教授最可能追问的机制问题
 
+> 最新进展：[CSA＋LDA判别强化与8组QA](CSA-DISCRIMINANT-RESULTS.zh-CN.md)。原CSA压缩/logistic结果保留；新直接LDA已提升到0.7485 native、81.97% macro accuracy，gate全部回退不称额外增益。
 数值口答以最终新增结果表为准；以下解释固定设计，不预设方法获胜。
 
 ## 1. 为什么又加FP32 CE？

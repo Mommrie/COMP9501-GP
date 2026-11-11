@@ -10,7 +10,7 @@ Part 1 studies **Concurrent Subspaces Analysis**. Part 2 studies **Activation-Aw
 
 ## Start here
 
-- [Proposal-aligned course report and presentation package](report-20261109/README.md): 17-page compiled report with 32 passing cloud tests, loss-weight sensitivity, conservative gates and a 2,580-example filtered validation reevaluation, Chinese result explanations, slide-by-slide narration, Q&A, and complete audited L4 controls.
+- [Proposal-aligned course report and presentation package](report-20261109/README.md): 18-page compiled report with 37 passing cloud tests, loss-weight sensitivity, conservative gates and a 2,580-example filtered validation reevaluation, Chinese result explanations, slide-by-slide narration, Q&A, and complete audited L4 controls.
 - [Completed three-seed v3 results and presentation materials](PART2-RESULTS-V3-2026-11-09.zh-CN.md): 12 fresh teachers, matched CE/KL, fixed weight baselines, audited metrics, figures and verified checkpoint restoration; [raw evidence](artifacts/independent-v3-2026-11-09/README.md).
 - [Independent protocol v3](INDEPENDENT-PROTOCOL-V3.zh-CN.md): fresh teachers, five content-grouped partitions and matched-capacity CE/KL; [related-work boundaries](PART2-RELATED-WORK.zh-CN.md).
 - [Part 2 implementation walkthrough and 26 Q&A (Chinese/English)](PART2-IMPLEMENTATION-QA.zh-CN.md).
@@ -50,4 +50,6 @@ Source, configurations, derived result JSON and generated plots are included. Ra
 
 Latest follow-up / 最新补强：[results and Q&A](report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。
 
-**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与37项云端测试通过。
+
+**Latest discriminative follow-up / 最新判别强化**：[CSA+LDA结果与8组QA](report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。固定CSA2×8的native从0.7080提高到0.7485，macro accuracy81.97% vs task-ID82.52%；gate回退与直接路由提升分开解释。37项云端测试，2,280个selection候选重载审计通过。

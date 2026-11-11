@@ -42,3 +42,5 @@ Protocol v2 由配置显式启用：单句 Text 字段、句对 Sentence A/B 字
 The follow-up uses `activation-sensitivity-v2.json` with optional per-profile hidden weights and role caches. `robustness_controls.py` locks lambda/gates using selection only, checks conservative routing and evaluates content-filtered official validation; `summarize_robustness.py` independently audits saved predictions and generates tables/figures. See [protocol](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md).
 
 Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。
+
+Regularized discriminant follow-up / CSA判别强化：[protocol](../report-20261109/CSA-DISCRIMINANT-PROTOCOL.zh-CN.md)、[results and QA](../report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。新增`csa_discriminant.py`、五项测试、独立候选重载审计；所有表示相同网格，中英notebook已同步。

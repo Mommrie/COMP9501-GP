@@ -31,3 +31,5 @@ pilot 只用于验证流水线，正式实验需要扩大训练量并运行 3 �
 `activation-sensitivity-v2.json` adds aligned/shuffled weights .01 and .1, reusing completed 0/1 endpoints. `routing-safety-v2.json` freezes fallback thresholds, Ridge grid, selection constraints and cleaned-official evaluation. These are exploratory extensions after earlier final inspection; see the [protocol](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md).
 
 Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。
+
+Regularized discriminant follow-up / CSA判别强化：[protocol](../report-20261109/CSA-DISCRIMINANT-PROTOCOL.zh-CN.md)、[results and QA](../report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。新增`csa_discriminant.py`、五项测试、独立候选重载审计；所有表示相同网格，中英notebook已同步。

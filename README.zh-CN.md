@@ -10,7 +10,7 @@
 
 ## 第一次使用怎么走
 
-**Part 2 最终材料已完成**：[报告与展示材料入口](report-20261109/README.md)。17页英文PDF/LaTeX、中文结果精讲、12页逐页素材、代码讲解及Q&A齐备；11月11日L4三seed对照、独立预测审计和32项代码测试通过。正式PPT由组员制作。
+**Part 2 最终材料已完成**：[报告与展示材料入口](report-20261109/README.md)。18页英文PDF/LaTeX、中文结果精讲、12页逐页素材、代码讲解及Q&A齐备；11月11日L4三seed对照、独立预测审计和37项代码测试通过。正式PPT由组员制作。
 
 **本轮完整交付**：[新协议三 seed 结果与展示材料](PART2-RESULTS-V3-2026-11-09.zh-CN.md)。12 个新 teacher、同容量 CE/KL、固定基线与审计已完成；三张图表、完整 CSV/JSON 及恢复验证齐备。结果支持本设置中学习系数改善固定权重基线，但未建立 KL 相对 CE 的平均优势；不是课程正式提交回执。
 
@@ -58,4 +58,6 @@ Part 2 新实验：[独立数据协议 v3](INDEPENDENT-PROTOCOL-V3.zh-CN.md)，�
 
 Latest follow-up / 最新补强：[results and Q&A](report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。
 
-**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与37项云端测试通过。
+
+**Latest discriminative follow-up / 最新判别强化**：[CSA+LDA结果与8组QA](report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。固定CSA2×8的native从0.7080提高到0.7485，macro accuracy81.97% vs task-ID82.52%；gate回退与直接路由提升分开解释。37项云端测试，2,280个selection候选重载审计通过。

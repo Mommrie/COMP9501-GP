@@ -41,3 +41,5 @@ python code/train_lora.py --config configs/protocol-v2-a100.json --task sst2 --s
 第二轮强化：`robustness_controls.py` 完成selection-only权重/保守gate选择、回退重载和去完整tuple重叠的官方validation复评；`summarize_robustness.py` 独立重算指标并生成表图。原activation配置默认行为保留，新配置才启用逐profile权重与缓存。具体预算与限制见 [协议](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md)。
 
 Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。
+
+Regularized discriminant follow-up / CSA判别强化：[protocol](../report-20261109/CSA-DISCRIMINANT-PROTOCOL.zh-CN.md)、[results and QA](../report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。新增`csa_discriminant.py`、五项测试、独立候选重载审计；所有表示相同网格，中英notebook已同步。

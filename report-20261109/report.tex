@@ -256,6 +256,7 @@ This is a small-backbone, four-task case study. The tasks are binary, share a fi
 The original merging study has a conceptual connection to the CSA paper selected for Part~1. Section~\ref{sec:csa-bridge} strengthens that connection with direct reuse of the CSA implementation on expert-response matrices. It compresses functional-response objects, rather than LoRA weight updates, and retains separate reconstruction and downstream-utility checks.
 
 \input{csa-bridge-section.tex}
+\input{csa-discriminant-section.tex}
 \section{Conclusion}
 We implemented a reproducible, task-aware LoRA merging study with weight-space baselines, supervised and functional coefficient objectives, explicit data boundaries, and routing diagnostics. The v3 mean native task scores are 0.7695 for individual, 0.7132 for layer CE, 0.6987 for layer KL, and 0.6146 for our TIES variant. Learned coefficients recover part of the averaging loss, while teacher-output KL has no average advantage over its matched-capacity CE control. \ConclusionExtension\ \ConclusionVtwo\ The defensible outcome is evidence about the utility and failure conditions of functional proxies in this setting, together with measured implementation trade-offs and a reproducible pipeline.
 

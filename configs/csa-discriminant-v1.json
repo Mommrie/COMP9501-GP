@@ -1,0 +1,14 @@
+{
+  "description": "Exploratory follow-up frozen after inspecting CSA reconstruction/router results. No pristine-final claim.",
+  "seeds": [42, 43, 44],
+  "representations": "All seven frozen CSA rank pairs, all matched-latent/budget PCA ranks, raw_delta, base; identical classifier/gate grids.",
+  "lda_shrinkage": [0.1, 0.5, 0.9],
+  "prior_margins": [0.0, 0.05, 0.1, 0.2, 0.4, 0.7],
+  "benefit_thresholds": [0.0, 0.02, 0.05, 0.1, 0.2],
+  "worst_accuracy_tolerance": 0.01,
+  "selection": "LDA direct: maximize native score, ties prefer larger shrinkage. Prior/benefit gates: include always-own; require native and macro accuracy at least task-ID, worst accuracy at most .01 below; maximize native, then macro accuracy, then fewer switches; remaining ties prefer always-own, then larger shrinkage and larger margin. Gate selection constraints do not guarantee final safety.",
+  "benefit_target": "For each alternative expert, predict help (+1), tie (0), harm (-1) relative to own expert using regularized LDA; exclude its own-task rows from that expert's fit. Expected benefit = P(help)-P(harm). Switch only above the frozen threshold.",
+  "task_prior": "Predict min-GT-NLL expert probabilities with LDA; switch only if best alternative probability exceeds own probability by the frozen margin, otherwise keep task-ID.",
+  "roles": "512 coefficient_fit for scalers, classes and discriminants; 512 selection for hyperparameters; lock all choices before reading 1024 internal final. Reuse frozen response bases without refitting. Earlier finals are already explored.",
+  "scope": "Offline all-expert response information probe; no additional teacher seeds, no weight compression or serving acceleration claim. Publish nonzero switch/help/harm and full rank grid; no final-selected best rank."
+}

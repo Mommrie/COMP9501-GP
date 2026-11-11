@@ -1,6 +1,6 @@
 # Part 2 report and presentation materials
 
-The verified English [report PDF](report.pdf) contains 17 pages; [LaTeX source](report.tex) and generated tables are included. This is a research-material package, not a course submission receipt. Model work, plotting, compilation and rendering ran in Colab.
+The verified English [report PDF](report.pdf) contains 18 pages; [LaTeX source](report.tex) and generated tables are included. This is a research-material package, not a course submission receipt. Model work, plotting, compilation and rendering ran in Colab.
 
 Start with [latest results and ten additional Q&A](ROBUSTNESS-RESULTS.zh-CN.md), then [slide-by-slide Chinese/English material](PRESENTATION-MATERIALS.zh-CN.md) and [implementation reading guide](READING-GUIDE.zh-CN.md). The [frozen follow-up protocol](ROBUSTNESS-PROTOCOL.zh-CN.md) explains commands, selection budgets, loss weights, routing gates and data filtering.
 
@@ -9,8 +9,10 @@ The follow-up reuses 12 teachers from three training seeds. It adds 12 coefficie
 - [Latest immutable evidence and four figures](../artifacts/robustness-v2-2026-11-11/README.md): 52 checksummed files, saved predictions, selection locks and filtered sample IDs.
 - [Original activation-stage results](ACTUAL-RESULTS.zh-CN.md), [mechanism Q&A](EXTENSION-QA.zh-CN.md), and [proposal/claim map](EXPERIMENT-AND-CLAIM-MAP.zh-CN.md) preserve earlier findings and limitations.
 - [Original v3 results](../PART2-RESULTS-V3-2026-11-09.zh-CN.md) and [26 implementation Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md) explain the teacher training and merge implementation.
-- [Follow-up summarizer](../code/summarize_robustness.py), [cloud finalizer](finalize_robustness_cloud.py), [code validation](code-validation.json), [PDF build verification](build-verification.json) and [visual review](visual-review.json) record the audit. All 32 cloud code tests passed. The five scientific manifests cover 222 files; run `python scripts/verify_part2_artifacts.py` from the repository root to check them and the final PDF.
+- [Follow-up summarizer](../code/summarize_robustness.py), [cloud finalizer](finalize_robustness_cloud.py), [code validation](code-validation.json), [PDF build verification](build-verification.json) and [visual review](visual-review.json) record the audit. All 37 cloud code tests passed. The six scientific manifests cover 251 files; run `python scripts/verify_part2_artifacts.py` from the repository root to check them and the final PDF.
 
 For slides, select the key rows and figures rather than copying every backup table. Native task score, task-macro accuracy and sample-weighted switching rate are different metrics. The actual PPTX, team rehearsal and course submission remain team tasks.
 
-**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与37项云端测试通过。
+
+**Latest discriminative follow-up / 最新判别强化**：[CSA+LDA结果与8组QA](CSA-DISCRIMINANT-RESULTS.zh-CN.md)。固定CSA2×8的native从0.7080提高到0.7485，macro accuracy81.97% vs task-ID82.52%；gate回退与直接路由提升分开解释。37项云端测试，2,280个selection候选重载审计通过。

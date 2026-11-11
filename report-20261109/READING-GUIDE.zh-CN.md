@@ -84,4 +84,6 @@ AdaMerging已有逐层系数，RegMean已有response/Gram统计指导合并，Kn
 
 更多逐问英文短答见 [实现Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md)。新实验执行后，应把实际数值补入讲稿；任何尚未核验的内容保留“待核对”，不提前写成优势。
 
-**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与32项云端测试通过。
+**Direct connection to CSA / 选文直接联系**：[CSA桥接结果、代码对应与12组QA](CSA-BRIDGE-RESULTS.zh-CN.md)。直接复用Part1 TensorCSA到expert×feature响应；新增两图、双预算PCA、独立参数重载审计，三seed结果与37项云端测试通过。
+
+**Latest discriminative follow-up / 最新判别强化**：[CSA+LDA结果与8组QA](CSA-DISCRIMINANT-RESULTS.zh-CN.md)。固定CSA2×8的native从0.7080提高到0.7485，macro accuracy81.97% vs task-ID82.52%；gate回退与直接路由提升分开解释。37项云端测试，2,280个selection候选重载审计通过。

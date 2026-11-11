@@ -27,3 +27,5 @@ GPU 额度属于各自账号；可以由有空闲 GPU 的组员集中跑实验�
 英文说明在生成器中，中文文字在 [team_notebook.zh-CN.json](team_notebook.zh-CN.json)。修改英文说明后，先审阅并更新中文翻译，再用 `python scripts/build_team_notebook.py --print-markdown-digest` 获取英文说明哈希，更新 JSON 的 source_markdown_sha256，最后重建两个 notebook。这样英文说明的变化不会被旧翻译静默覆盖。
 
 Direct CSA bridge / CSA直接迁移：[protocol and commands](../report-20261109/CSA-BRIDGE-PROTOCOL.zh-CN.md)、[results and 12 Q&A](../report-20261109/CSA-BRIDGE-RESULTS.zh-CN.md)。`code/csa_bridge.py`直接导入Part1 TensorCSA；`configs/csa-bridge-v1.json`固定网格；新源码/数学检查已纳入双语notebook。
+
+Regularized discriminant follow-up / CSA判别强化：[protocol](../report-20261109/CSA-DISCRIMINANT-PROTOCOL.zh-CN.md)、[results and QA](../report-20261109/CSA-DISCRIMINANT-RESULTS.zh-CN.md)。新增`csa_discriminant.py`、五项测试、独立候选重载审计；所有表示相同网格，中英notebook已同步。

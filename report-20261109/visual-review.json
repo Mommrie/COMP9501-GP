@@ -1,7 +1,7 @@
 {
   "state": "passed",
-  "pdf_sha256": "1b62e81e49e530fa626a53d1beadf6976dce10e9a9b8662b8a9c658f14707ea6",
-  "pages": 17,
+  "pages": 18,
+  "pdf_sha256": "9f0e2d66a48e7bb1071ec6583ba285190d973a990768fb8d44b4a977aef70499",
   "date": "2026-11-11",
-  "review": "All 17 rendered pages inspected at page resolution; equations, tables, references, margins and both standalone CSA figures checked. No clipping or overlap observed."
+  "review": "Pages 1-14 byte-identical to the already reviewed 17-page report. Changed pages 15-18 inspected individually at page resolution; both standalone new figures checked. No clipping or overlap observed."
 }

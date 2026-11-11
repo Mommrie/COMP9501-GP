@@ -1,0 +1,33 @@
+{
+  "files": {
+    "README.md": "fc7ff18980331336d7d30679def50eb87b8e6fc80d14b29bf4d541f939bc36eb",
+    "code-validation.json": "080989fcdb8b01c674c59de2ccea09b5e3ef11c6b86588a3aec099fc8cb4a2e5",
+    "discriminant-quality.png": "c65956c4bdbcce0738ca59c682c7abbad3838e17f2afc06af627174f48134aae",
+    "discriminant-switch-impact.png": "39f9c38661f8ed1e7c678e4199d88950b68682283ca5b5458d6ad79f62538937",
+    "per-seed.csv": "d7e6fe2c0c4db62c3c7489719f065605bdd8bdfa34b1b9a522735bad0b31c2f2",
+    "plan.json": "970432598a3a11be9377c28b42734e32f5d629f5734054fb72f851eae0807355",
+    "seed42-predictions.npz": "ffeee7ab102ea0ef11c6d8ee42c5139172f77b07eb004db0557ed66c1ca099e1",
+    "seed42-selection-lock.json": "2256e577a1775cb962fb17c12901eed4de94c7de771b9678e6e91239e7c9516e",
+    "seed42-split-ids.json": "cacba23f698287e1ee11cc902b2913a03d3ede2c85d5234755d0f5cb20f0557d",
+    "seed42-status.json": "fc3b9817edfef9e369732a97255f433f3d6784f51162bb9dc7e042ea97ec0e2c",
+    "seed42-summary.json": "c7d2e759decd3fc247ffa781ee9d6588d7e4ddf78fa8c16ac9cbecc92638e3f9",
+    "seed43-predictions.npz": "02ca07889f376cf022de4d6c57f96deff28c8c9337c75753bec4616a7534c06a",
+    "seed43-selection-lock.json": "680dc77120e00fad874026674525a5005fcbe366627a9834a3da75651d143377",
+    "seed43-split-ids.json": "cacba23f698287e1ee11cc902b2913a03d3ede2c85d5234755d0f5cb20f0557d",
+    "seed43-status.json": "8f94650d136caa0e97e019a5428eae3d0b320cc8776b043a48b194564cb73aed",
+    "seed43-summary.json": "22aeb2044f5c81601d6884b96eff2c83d51464e91019a84ec425a5917b3f3e19",
+    "seed44-predictions.npz": "e02aae396da9874f7547531dfd343c65ea892cb34f033971499e8701517f4890",
+    "seed44-selection-lock.json": "627b1dd1f5fab3b69d0a8f20deb9b38960b14c63d73825043d837680e7967bf9",
+    "seed44-split-ids.json": "cacba23f698287e1ee11cc902b2913a03d3ede2c85d5234755d0f5cb20f0557d",
+    "seed44-status.json": "49360b6f6968760f2f7f58f2c31eac596322d2de0401079c6b30f8879185e7c3",
+    "seed44-summary.json": "bbfee03e6bbdc8e83c226c73f5aa396e6ab70512f21a38589f9fa350ad385320",
+    "source-csa_discriminant.py": "e271494c6dc1788a1b040ba8dad1c0d84ce905f4db2851fe62c03b83ae97988d",
+    "source-sha256.json": "9d5a02ba3aec988e2547fb03605234563151d8374169dc7482d303a1782736bc",
+    "source-summarize_csa_discriminant.py": "3263781abb1aaa6eaee7d1c8c57f16c89462ebb06075861c8f028c3ab5b18e5a",
+    "source-test_csa_discriminant.py": "8b87400770a23ee623ca8d7ea85ae48f19dd6b5f6910c4e908ba99686b4cd8f4",
+    "state-backup.json": "8df4e1d22b508e00d30a565d7c64cdaf476fa40bb137edb3d8718cc15817f806",
+    "status.json": "d6810e5ae78c9be4204db77e06a9689b0e9abd16a4b6e0ec69ecfc38559c8c47",
+    "summary.json": "7b2024e41f548f3d88c1dc081cf64c307f10c2750bbbc0421553d917d886ce6c",
+    "table-csa-discriminant.tex": "9b788c57eec9bd2da19dc98e4d4244b88b6263ce22277e7dc45eac45ebb27405"
+  }
+}

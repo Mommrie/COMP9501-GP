@@ -1,0 +1,13 @@
+\begin{table}[htbp]\centering\scriptsize
+\caption{Discriminative follow-up on the same internal final, three fixed teacher seeds. All candidates use matched grids across representations. Switch/help/harm are mean percentages; native score is mean $\pm$ sample SD. Own is the number of seeds selecting always-own.}
+\begin{tabular}{llrrrrr}\toprule
+Features & Method & Native & Switch & Help & Harm & Own \\ \midrule
+task\_id & reference & 0.7695 $\pm$ 0.0114 & 0.00 & 0.00 & 0.00 & 3/3 \\
+csa2x8 & previous\_logistic & 0.7080 $\pm$ 0.0250 & 19.43 & 1.30 & 3.71 & 0/3 \\
+csa2x8 & direct\_lda & 0.7485 $\pm$ 0.0290 & 11.49 & 0.65 & 1.20 & 0/3 \\
+csa2x8 & task\_prior & 0.7695 $\pm$ 0.0114 & 0.00 & 0.00 & 0.00 & 3/3 \\
+csa2x8 & benefit\_lda & 0.7695 $\pm$ 0.0114 & 0.00 & 0.00 & 0.00 & 3/3 \\
+pca16 & benefit\_lda & 0.7652 $\pm$ 0.0177 & 0.39 & 0.07 & 0.20 & 2/3 \\
+pca3 & benefit\_lda & 0.7662 $\pm$ 0.0161 & 0.42 & 0.03 & 0.13 & 2/3 \\
+raw\_delta & benefit\_lda & 0.7695 $\pm$ 0.0114 & 0.00 & 0.00 & 0.00 & 3/3 \\
+\bottomrule\end{tabular}\end{table}

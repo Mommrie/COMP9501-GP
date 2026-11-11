@@ -1,5 +1,6 @@
 # 选文—Part 1—Part 2：直接 CSA 桥接、结果与答辩
 
+> 最新进展：[CSA＋LDA判别强化与8组QA](CSA-DISCRIMINANT-RESULTS.zh-CN.md)。原CSA压缩/logistic结果保留；新直接LDA已提升到0.7485 native、81.97% macro accuracy，gate全部回退不称额外增益。
 2026-11-11。现在的联系已进入实际代码：Part 2 直接导入 Part 1 的 `TensorCSA`，用于压缩同一输入在多个 LoRA expert 下的功能响应。原有 LoRA 权重合并实验保留为主线；新增的是功能表示分支，不把它说成 CSA 权重合并。
 
 ## 1. Presentation 主线怎么讲

@@ -10,3 +10,5 @@ artifacts/recovered-partial-2026-11-09/evidence/** -text
 artifacts/robustness-v2-2026-11-11/** -text
 
 artifacts/csa-bridge-2026-11-11/** -text
+
+artifacts/csa-discriminant-2026-11-11/** -text
