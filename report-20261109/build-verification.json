@@ -1,7 +1,10 @@
 {
   "state": "compiled-and-rendered",
-  "pages": 11,
-  "pdf_sha256": "63e4ffed2e97006e78da282aeb8810c3c0718decb27d4d684ffbdf75de915e33",
+  "report_version": "robustness-v2",
+  "pages": 15,
+  "pdf_sha256": "26fae3e18b3f7fc0ecdbbecaceb8cb8ac95cff053f2f5e7ddd2a24c1e3e5c895",
+  "previous_published_pdf_sha256": "63e4ffed2e97006e78da282aeb8810c3c0718decb27d4d684ffbdf75de915e33",
+  "layout_overfull_warnings": 0,
   "compiler": {
     "tectonic_release": "tectonic@0.17.0",
     "asset": "tectonic-0.17.0-x86_64-unknown-linux-musl.tar.gz",
@@ -10,14 +13,14 @@
     "pdftoppm": "/usr/bin/pdftoppm"
   },
   "log_sha256": {
-    "course-finalizer-launch.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "course-pdfinfo.log": "974455b5e4bf6f219a937eb176e254fca4ce7144a59cc09dcf4d1df96f6dd899",
-    "course-render.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "course-audit-and-plots.log": "286631def5ed1f8445cdc1070df0e5433eaf21f9212298e1fa24f46703f0200c",
-    "course-pdftotext.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "course-latex.log": "e50be44d6d962d285acdbc7b5ea70749130364ad9e517d75f5405743620057f3",
-    "course-latex-reviewed.log": "426e32bba88df7f79e8f92196c0288de33560994bafd027f5d46ee2f021f0e73"
+    "robustness-pipeline.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robustness-audit-plots.log": "43c6782f8935074027a3d307ad05349dfca4bc4965493afd2764934f59c6f96e",
+    "robustness-materials-launch.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robustness-pdftotext.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robustness-latex.log": "e161e63fa96c8b797c6f11bdbfb631b32d98e1e63fa76667ae0acb34e575bc78",
+    "robustness-render.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "robustness-controls-launch.log": "e385c32b6bb618bab9c995619cb59a03c472bd51323efc611291fa6716ba3d82",
+    "robustness-latex-reviewed.log": "68965d62dc795e744b3d1eba0d0860da2de890aa66b07c976a064674996bd444"
   },
-  "note": "Visual review of the rendered pages remains required before delivery.",
-  "layout_overfull_warnings": 0
+  "note": "All final pages still require visual inspection before publication."
 }

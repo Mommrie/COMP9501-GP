@@ -25,3 +25,5 @@
 复制为新名字并记录协议版本，不覆盖归档配置。检查新键确实被脚本读取：例如部分 run_all.py 固定 seeds 42/43/44 和输出路径，JSON 写入新 seeds 并不会自动改变所有脚本。coefficient 的 24 层、四任务维数与二分类也不是模型名字变化后自动适配。
 
 先运行完整仓库检查，再按目标 CLI 用新配置和新输出目录做小检查。runtime 配置变化后运行 scripts/build_team_notebook.py 更新中英 launcher。候选、选择集、tie-break 与预算在查看目标结果前固定，具体例子见扩展指南。
+
+`activation-sensitivity-v2.json` 固定较小hidden权重及配对shuffled网格；`routing-safety-v2.json` 固定confidence/benefit gate、always-own、selection约束和官方validation内容过滤。增加调参预算，不能直接称独特activation优势；见 [完整协议](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md)。

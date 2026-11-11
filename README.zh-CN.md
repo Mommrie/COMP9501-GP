@@ -10,7 +10,7 @@
 
 ## 第一次使用怎么走
 
-**Part 2 最终材料已完成**：[报告与展示材料入口](report-20261109/README.md)。11页英文PDF/LaTeX、中文结果精讲、12页逐页素材、代码讲解及Q&A齐备；11月11日L4三seed对照、独立预测审计和21项代码测试通过。正式PPT由组员制作。
+**Part 2 最终材料已完成**：[报告与展示材料入口](report-20261109/README.md)。15页英文PDF/LaTeX、中文结果精讲、12页逐页素材、代码讲解及Q&A齐备；11月11日L4三seed对照、独立预测审计和28项代码测试通过。正式PPT由组员制作。
 
 **本轮完整交付**：[新协议三 seed 结果与展示材料](PART2-RESULTS-V3-2026-11-09.zh-CN.md)。12 个新 teacher、同容量 CE/KL、固定基线与审计已完成；三张图表、完整 CSV/JSON 及恢复验证齐备。结果支持本设置中学习系数改善固定权重基线，但未建立 KL 相对 CE 的平均优势；不是课程正式提交回执。
 
@@ -55,3 +55,5 @@ Part 2 新实验：[独立数据协议 v3](INDEPENDENT-PROTOCOL-V3.zh-CN.md)，�
 ## 队友想扩展项目
 
 可以先做独立配置消融，再扩展方法、数据或模型。当前四任务/二分类/24 层等固定假设已逐项列在 [扩展开发指南](docs/EXTENDING.zh-CN.md)，并配有最小实验示例、修改点和验证清单。新结果放新目录，旧证据、真实贡献和引用保留。
+
+Latest follow-up / 最新补强：[results and Q&A](report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。

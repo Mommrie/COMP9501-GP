@@ -1,10 +1,16 @@
 import unittest
 import numpy as np
 import torch
-from activation_extension import pooled,hidden_loss,derangement,best_expert
+from activation_extension import pooled,hidden_loss,derangement,best_expert,profile_hidden_weight
 
 
 class ActivationChecks(unittest.TestCase):
+    def test_weight_override_preserves_old_default_and_disabled_control(self):
+        self.assertEqual(profile_hidden_weight({'hidden_weight':1.},{}),1.)
+        self.assertEqual(profile_hidden_weight({'hidden_weight':1.},{'hidden_weight':.01}),.01)
+        self.assertEqual(profile_hidden_weight({'hidden_weight':1.},{'hidden':False,'hidden_weight':4.}),0.)
+        with self.assertRaises(ValueError):profile_hidden_weight({'hidden_weight':-1.},{})
+
     def test_mask_and_loss(self):
         h=torch.tensor([[[2.,4.],[4.,8.],[900.,900.]]],requires_grad=True)
         p=pooled(h,torch.tensor([[1,1,0]]))

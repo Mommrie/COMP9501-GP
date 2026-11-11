@@ -1,0 +1,16 @@
+{
+  "description": "Freeze before new evaluation; exploratory, after original final inspection.",
+  "seeds": [42, 43, 44],
+  "confidence_thresholds": [0.0, 0.5, 0.7, 0.9, null],
+  "ridge_alphas": [1.0, 100.0, 10000.0],
+  "benefit_thresholds": [0.0, 0.02, 0.05, 0.1],
+  "selection_worst_accuracy_tolerance": 0.01,
+  "selection_rule": "Include always-own. Eligible candidates have selection native score and mean accuracy at least task-ID, and worst accuracy at most .01 lower. Maximize native score, then mean accuracy, then minimize switching; baseline wins remaining ties. This is a selection constraint, not a final safety guarantee.",
+  "benefit_target": "For each expert, expert correctness minus own-expert correctness on fit labels. Ridge predicts four gains from standardized frozen base features plus known task one-hot. Set own gain to zero and route only above a fixed threshold.",
+  "lambda_grid": [0.0, 0.01, 0.1, 1.0],
+  "lambda_ties": "Prefer the smaller lambda; use frozen per-lambda step selected on coefficient_selection.",
+  "official_validation": "Pinned full GLUE validation, per-task deduplicated and filtered against normalized full text tuples from ALL original train examples across the four tasks. Selection is locked first. Official validation was explored historically and is not a pristine blind test. Near duplicates and pretraining contamination are not ruled out.",
+  "official_static_methods": ["ce_fp32", "selected_hidden", "selected_shuffled", "average", "task_arithmetic", "ties", "dare"],
+  "official_routing_methods": ["task_id", "source_router", "expert_router", "confidence_gate", "benefit_gate", "oracle"],
+  "deployment": "Cached expert logits are offline analysis. Extra feature pass/grouped expert forwards remain; no latency advantage is claimed without a new same-device serving benchmark."
+}

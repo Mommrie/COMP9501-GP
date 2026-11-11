@@ -1,0 +1,62 @@
+{
+  "description": "Exploratory sensitivity extension after inspecting v3 and first-extension final results. Freeze this plan before new computation; original results stay unchanged.",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "steps": 120,
+  "student_precision": "float32",
+  "batch_size": 8,
+  "learning_rate": 0.03,
+  "penalty": 0.01,
+  "hidden_weight": 1.0,
+  "hidden_energy_floor": 0.0001,
+  "check_steps": [
+    0,
+    30,
+    60,
+    90,
+    120
+  ],
+  "save_role_cache": true,
+  "profiles": [
+    {
+      "name": "ce_h001",
+      "layers": 24,
+      "ce": true,
+      "shuffle": false,
+      "hidden_weight": 0.01
+    },
+    {
+      "name": "ce_s001",
+      "layers": 24,
+      "ce": true,
+      "shuffle": true,
+      "hidden_weight": 0.01
+    },
+    {
+      "name": "ce_h010",
+      "layers": 24,
+      "ce": true,
+      "shuffle": false,
+      "hidden_weight": 0.1
+    },
+    {
+      "name": "ce_s010",
+      "layers": 24,
+      "ce": true,
+      "shuffle": true,
+      "hidden_weight": 0.1
+    }
+  ],
+  "router_C": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "router_max_iter": 800,
+  "selection": "Select coefficients/steps on the existing coefficient_selection role. A later locked combiner selects lambda from 0, .01, .1, 1 using selection only. CE and lambda1 endpoints reuse the completed original extension.",
+  "runtime_note": "Reuse the current Colab L4 and the original twelve frozen v3 teachers. Same FP32, sample order, initialization and fitting schedule.",
+  "scope": "Extra lambda candidates increase selection budget; paired shuffled grid has the same budget. No pristine-test or universal-activation claim. Recovery repeats do not increase n."
+}

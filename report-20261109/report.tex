@@ -15,6 +15,7 @@
 \newcommand{\method}[1]{\textsc{#1}}
 \newcommand{\std}[2]{#1\,$\pm$\,#2}
 \input{generated-results.tex}
+\input{robustness-results.tex}
 \title{Activation-Aware Merging of LoRA Adapters\newline for Multi-Task Learning\\[5pt]
 \large A controlled study of similarity, functional objectives, and routing}
 \author{COMP9501 Advanced Machine Learning\\Group 13}
@@ -23,7 +24,7 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-Combining task-specific low-rank adaptations can reduce the need to manage distinct weight states, but averaging updates can introduce interference. We investigate whether functional information can predict or mitigate this interference in a small, reproducible multi-task setting. Four Qwen2.5-0.5B adapters are trained on SST-2, MRPC, RTE, and CoLA. A content-grouped five-way protocol separates teacher training, teacher checkpoint selection, merge fitting, merge selection, and final evaluation. Across three training seeds, learned layer-wise coefficients achieve a mean native task score of 0.7132 with cross-entropy (CE), compared with 0.5578 for averaging and 0.6146 for our TIES baseline. Teacher-logit KL reaches 0.6987 and does not outperform the matched-capacity CE control on average. We further test hidden-response matching, shuffled-response controls, and performance-oriented routing. \AbstractExtension\ The study identifies the distinction between source recognition and useful expert selection, and measures routing overhead on an A100. Its contribution is a controlled implementation and analysis of the original hypothesis; it does not establish a new state-of-the-art merging algorithm or robust out-of-domain generalization.
+Combining task-specific low-rank adaptations can reduce the need to manage distinct weight states, but averaging updates can introduce interference. We investigate whether functional information can predict or mitigate this interference in a small, reproducible multi-task setting. Four Qwen2.5-0.5B adapters are trained on SST-2, MRPC, RTE, and CoLA. A content-grouped five-way protocol separates teacher training, teacher checkpoint selection, merge fitting, merge selection, and final evaluation. Across three training seeds, learned layer-wise coefficients achieve a mean native task score of 0.7132 with cross-entropy (CE), compared with 0.5578 for averaging and 0.6146 for our TIES baseline. Teacher-logit KL reaches 0.6987 and does not outperform the matched-capacity CE control on average. Our initial unit-weight extension tests hidden-response matching, shuffled-response controls, and performance-oriented routing. \AbstractExtension\ \AbstractVtwo\ The study identifies the distinction between source recognition and useful expert selection, and measures routing overhead on an A100. Its contribution is a controlled implementation and analysis of the original hypothesis; it does not establish a new state-of-the-art merging algorithm or robust out-of-domain generalization.
 \end{abstract}
 
 \section{Introduction and research questions}
@@ -105,6 +106,25 @@ A source router predicts the input dataset using frozen base mean features. Our 
 
 Both routers select logistic-regression $C\in\{0.1,1,10\}$ using the same merge-selection task metric. We compare them with direct task-ID selection and seeded random routing. An analysis-only oracle selects the final-set expert with highest true-class probability. It gives an accuracy ceiling for this bank/head protocol, using final labels, and cannot be deployed. Agreement with its minimum-NLL expert identity is distinct from task accuracy.
 
+
+\subsection{Loss-weight sensitivity and conservative gates}
+The unit hidden-loss weight is a fixed design choice, not an established optimum. A follow-up grid uses $\lambda\in\{0,0.01,0.1,1\}$ with the same 97 scalars, FP32, initialization, update count and sampled examples. We reuse the completed zero (CE) and unit-weight endpoints and fit the two intermediate weights for aligned and shuffled targets. Each lambda first selects its step on the original merge-selection role; the grid then selects lambda by that role's native metric, preferring smaller lambda on ties. Aligned and shuffled grids have equal candidate budgets, but both offer more selection candidates than the single CE trajectory.
+
+A confidence gate reuses the frozen expert-ID classifier and switches only above maximum-probability thresholds $0,0.5,0.7,0.9$, or chooses always-own. A benefit gate instead fits four Ridge regressions to fit-set correctness differences,
+\begin{equation}
+ y_j(x)=\mathbf{1}[\hat y_j(x)=y]-\mathbf{1}[\hat y_{\rm own}(x)=y].
+\end{equation}
+Its inputs are standardized base features and known task one-hot. Ridge strengths are $1,100,10000$; predicted-gain thresholds are $0,0.02,0.05,0.1$. The own expert has fixed reference gain zero. These are uncalibrated regression scores, not probabilities of benefit. Fitting uses class labels and all experts' offline predictions; its capacity and information budget differ from static coefficient fitting.
+
+Both gate families include always-own. Eligible selection candidates must have native score and macro accuracy at least task ID, and worst-task accuracy no more than 0.01 lower. We then maximize native score, macro accuracy, and finally minimize switching; remaining ties retain the baseline. These constraints concern selection data only and do not guarantee final safety. Serialized scalers and coefficients are reloaded and checked against the in-memory routes. An always-own choice can bypass feature extraction at serving, but represents rejection of the new router rather than a new routing gain.
+
+The combiner uses only selection fields to choose lambda and gates, then writes choices before reading cached final prediction arrays or loading official validation. Earlier final metrics already coexist in run files and had informed this follow-up design; this order does not create a pristine-test claim.
+
+\subsection{A larger, content-filtered evaluation split}
+We additionally evaluate pinned GLUE official validation after selection is locked. We remove normalized complete text tuples found in \emph{any original training example} across the four tasks, then deduplicate tuples within each validation task. Filtering uses text only, not labels. Exact IDs, content hashes, fingerprints and removal counts are recorded. Near duplicates, sentence reuse within different pairs and pretraining contamination remain possible. Official validation was explored historically with earlier teachers, so this is a larger separate-split check, not a new blind benchmark or proof of OOD robustness.
+
+The locked comparison includes task ID, source/expert routers, the two gates, GT oracle, FP32 CE, selected aligned/shuffled grids, and the original v3 selection-locked Average/TA/TIES/DARE variants. Tasks have different retained sample counts: accuracy is macro-averaged over tasks, whereas switching fraction counts individual inputs. Three teacher seeds still give three replications; repeated coefficient fits do not increase this number.
+
 \section{Experimental protocol}
 \subsection{Data and information boundaries}
 We use SST-2, MRPC, RTE, and CoLA from GLUE~\cite{glue}. Protocol v3 splits the original training data into five content-grouped roles. Normalized complete field tuples receive a fixed hash-based role independent of class labels; duplicates share a role, including across tasks. One representative per normalized tuple is retained. Dataset revision, source fingerprint, IDs, and manifest SHA are saved.
@@ -162,6 +182,17 @@ Individual remains the available task-aware quality reference. CE mean accuracy 
 
 The selected coefficient checkpoints are also evaluated on the aligned hidden-fit objective. This is a diagnostic, not an additional selection criterion. Reduction of a response surrogate is meaningful only alongside task quality and the shuffled control; optimizing a representation proxy can preserve irrelevant features or conflict with classification requirements.
 
+
+\subsection{Follow-up: is unit hidden weight too strong?}
+\input{table-sensitivity-v2.tex}
+\SensitivityVtwo
+
+Both families select $\lambda=0.01$ for seed 42 and CE ($\lambda=0$) for seeds 43 and 44. On cleaned official validation, the shuffled grid is descriptively slightly higher than the aligned grid (0.7107 versus 0.7106). Thus the small grid-selected gain over CE does not isolate a benefit of correct input-response correspondence; two seeds use no hidden target at all. Generic regularization or additional selection opportunities are possible explanations, not mechanisms established by these data.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{../artifacts/robustness-v2-2026-11-11/lambda-sensitivity.png}
+\caption{Predeclared lambda sensitivity. Selection and previously explored internal-final metrics are shown separately. Aligned and shuffled grids share budgets; zero is the CE reference, not a functional-method improvement.}
+\end{figure}
+
 \subsection{RQ3: routing useful experts}
 \input{table-routing.tex}
 \RouterConclusion
@@ -172,6 +203,22 @@ The selected coefficient checkpoints are also evaluated on the aligned hidden-fi
 \end{figure}
 
 We report the fractions of inputs helped and harmed relative to the own-task expert. Their difference equals the accuracy change, providing a direct interpretation of routing decisions. Source accuracy describes how often a route agrees with task identity; it does not establish that the choice improves prediction. The expert router additionally uses fit class labels and known task information, which must be included in its information budget.
+
+
+\subsection{Follow-up: conservative gates and cleaned official validation}
+\OfficialVtwo
+\input{table-official-v2.tex}
+\GatesVtwo
+
+Both gate families select always-own in all three seeds. The zero final gain records the selection and tie rules preferring the available baseline over learned alternatives. Some strongly regularized benefit candidates satisfy the selection floors but tie the reference; fewer switches or the baseline tie preference decides between them. This is not successful learning of useful switches. It avoids the original expert router's harms by retaining the existing task-ID reference. This is not a new routing accuracy advantage.
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{../artifacts/robustness-v2-2026-11-11/official-static.png}
+\caption{Locked static pipelines on cleaned official validation. Extra lambda candidates change the tuning budget. All methods use the known task head; tasks and the official split were historically explored.}
+\end{figure}
+\begin{figure}[H]\centering
+\includegraphics[width=\linewidth]{../artifacts/robustness-v2-2026-11-11/official-routing.png}
+\caption{Actual final quality after conservative selection. A selection floor is not a final guarantee. Oracle uses final GT and is an analysis-only ceiling in this binary-task protocol.}
+\end{figure}
 
 \section{Deployment and external-transfer diagnostics}
 \subsection{Measured cost of the current implementation}
@@ -209,7 +256,7 @@ This is a small-backbone, four-task case study. The tasks are binary, share a fi
 Our course project's Part 1 studies CSA. It informs interest in structured representations and explicit storage budgets, but current Part 2 code does not apply CSA mode projections to LoRA updates. The connection is conceptual rather than an implemented CSA-to-LLM transfer. A full proposal-aligned report can therefore state both what was implemented and which original expectations remain unsupported.
 
 \section{Conclusion}
-We implemented a reproducible, task-aware LoRA merging study with weight-space baselines, supervised and functional coefficient objectives, explicit data boundaries, and routing diagnostics. The v3 mean native task scores are 0.7695 for individual, 0.7132 for layer CE, 0.6987 for layer KL, and 0.6146 for our TIES variant. Learned coefficients recover part of the averaging loss, while teacher-output KL has no average advantage over its matched-capacity CE control. \ConclusionExtension\ The defensible outcome is evidence about the utility and failure conditions of functional proxies in this setting, together with measured implementation trade-offs and a reproducible pipeline.
+We implemented a reproducible, task-aware LoRA merging study with weight-space baselines, supervised and functional coefficient objectives, explicit data boundaries, and routing diagnostics. The v3 mean native task scores are 0.7695 for individual, 0.7132 for layer CE, 0.6987 for layer KL, and 0.6146 for our TIES variant. Learned coefficients recover part of the averaging loss, while teacher-output KL has no average advantage over its matched-capacity CE control. \ConclusionExtension\ \ConclusionVtwo\ The defensible outcome is evidence about the utility and failure conditions of functional proxies in this setting, together with measured implementation trade-offs and a reproducible pipeline.
 
 \appendix
 \section{Reproducibility and implementation checks}
@@ -229,6 +276,8 @@ The pinned research stack uses a system-site-packages virtual environment. Inher
 Checks cover merge arithmetic, masked pooling, a shuffled target's lack of fixed points, oracle invariance to additive logit shifts, nonzero coefficient gradients, no gradients on frozen parameters, low-rank/dense logit parity, task-ID/individual metric parity, and split permissions. The extension additionally audits saved predictions independently of model fitting. Versioned results preserve exploratory stages instead of overwriting earlier outcomes.
 
 The v3 checkpoint backup contains 12 adapters and 131 verified files. Restoration was tested into a new directory with relocated manifest paths; corrupt SHA, unsafe archive paths, and overwriting an existing directory were rejected. The shared base/tokenizer are obtained separately at pinned Hub revisions. The runtime connection client is closed after exports have been downloaded and verified; closing it is distinct from releasing the cloud VM.
+
+The follow-up checks cover scalar-weight overrides, fallback behavior without feature extraction, selection rejection and tie rules, label-blind content filtering, stored classifier probabilities, selection-only lambda choice, cached split/label alignment, and reload parity of the selected gates. Saved official predictions are audited independently for every method and task. All experiments use frozen teacher banks; feature caches and raw text stay outside the published evidence archive.
 
 \subsection{Execution overview}
 \small

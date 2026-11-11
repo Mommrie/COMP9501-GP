@@ -37,3 +37,5 @@ python code/train_lora.py --config configs/protocol-v2-a100.json --task sst2 --s
 部署测量 `benchmark_deployment.py` 与冻结路由标题诊断 `diagnose_router_headers.py` 均要求 CUDA，在 Colab 执行。前者记录逐次耗时、前向次数和缓存，后者保持内容 token、仅改变字段标题。命令与结果解释见 [A100 补充报告](../PART2-FOLLOWUP-2026-11-09.zh-CN.md)。
 
 新任务涉及 FIELDS、selected_raw、两类头部、metrics 和各原型 T=4 假设；换 backbone 还涉及 score head、模块名与层索引。新增合并方法要同时接入 CLI、engine 和 plan。详见中央扩展指南，勿只改 tasks/model 后跑完整实验。子目录都有独立中文说明。
+
+第二轮强化：`robustness_controls.py` 完成selection-only权重/保守gate选择、回退重载和去完整tuple重叠的官方validation复评；`summarize_robustness.py` 独立重算指标并生成表图。原activation配置默认行为保留，新配置才启用逐profile权重与缓存。具体预算与限制见 [协议](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md)。

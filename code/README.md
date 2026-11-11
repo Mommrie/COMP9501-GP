@@ -38,3 +38,5 @@ Protocol v2 由配置显式启用：单句 Text 字段、句对 Sentence A/B 字
 - `diagnose_router_headers.py`：冻结已有 router，比较原标题、去标题和统一标题，保留内容 token 与样本 ID。
 
 命令、统计口径与限制见 [补充报告](../PART2-FOLLOWUP-2026-11-09.zh-CN.md)。
+
+The follow-up uses `activation-sensitivity-v2.json` with optional per-profile hidden weights and role caches. `robustness_controls.py` locks lambda/gates using selection only, checks conservative routing and evaluates content-filtered official validation; `summarize_robustness.py` independently audits saved predictions and generates tables/figures. See [protocol](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md).

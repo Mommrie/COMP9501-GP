@@ -1,0 +1,116 @@
+{
+  "state": "passed",
+  "test_count": 28,
+  "checks": [
+    {
+      "folder": "code",
+      "pattern": "test_math.py",
+      "returncode": 0,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.497s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_protocol.py",
+      "returncode": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_independent_protocol.py",
+      "returncode": 0,
+      "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.081s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_activation_extension.py",
+      "returncode": 0,
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.609s\n\nOK\n"
+    },
+    {
+      "folder": "code/coefficient_merge",
+      "pattern": "test_core.py",
+      "returncode": 0,
+      "output": "/content/COMP9501-GP/code/coefficient_merge/test_core.py:10: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)\n  x=torch.randn(7,5);weight=base.weight.detach()+sum(float(coeff.weights()[0,i]*coeff.gain())*(b@a)*2 for i,(a,b) in enumerate(factors))\n.\n----------------------------------------------------------------------\nRan 1 test in 0.602s\n\nOK\n"
+    },
+    {
+      "folder": "code/merge_study",
+      "pattern": "test_engine.py",
+      "returncode": 0,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 4.332s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_robustness_controls.py",
+      "returncode": 0,
+      "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.004s\n\nOK\n"
+    },
+    {
+      "folder": "scripts",
+      "pattern": "test_colab_bundle.py",
+      "returncode": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.010s\n\nOK\n"
+    },
+    {
+      "folder": "scripts",
+      "pattern": "test_team_notebook.py",
+      "returncode": 0,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 0.038s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_integration.py",
+      "returncode": 0,
+      "output": "trainable params: 512 || all params: 19,552 || trainable%: 2.6187\n{'loss': 0.6953, 'grad_norm': 2.1377804279327393, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.671875, 'eval_model_preparation_time': 0.001, 'eval_accuracy': 1.0, 'eval_f1': 1.0, 'eval_mcc': 1.0, 'eval_runtime': 0.0298, 'eval_samples_per_second': 268.032, 'eval_steps_per_second': 134.016, 'epoch': 0.25}\n{'train_runtime': 0.3152, 'train_samples_per_second': 6.346, 'train_steps_per_second': 3.173, 'train_loss': 0.6953125, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-6igi4n8v/run/run.json\ntrainable params: 64 || all params: 19,552 || trainable%: 0.3273\n{'loss': 0.6953, 'grad_norm': 2.1322178840637207, 'learning_rate': 0.002, 'epoch': 0.25}\n{'eval_loss': 0.671875, 'eval_model_preparation_time': 0.001, 'eval_accuracy': 1.0, 'eval_f1': 1.0, 'eval_mcc': 1.0, 'eval_runtime': 0.0286, 'eval_samples_per_second': 279.308, 'eval_steps_per_second': 139.654, 'epoch': 0.25}\n{'train_runtime': 0.0673, 'train_samples_per_second': 29.724, 'train_steps_per_second': 14.862, 'train_loss': 0.6953125, 'epoch': 0.25}\nRUN_COMPLETE: /tmp/comp9501-tiny-6igi4n8v/head-only/run.json\n`torch_dtype` is deprecated! Use `dtype` instead!\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 156.41it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  3.97it/s]\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  3.97it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  3.97it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 175.48it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  3.97it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00,  3.17it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 185.02it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 186.10it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 181.53it/s]\n\n  0%|          | 0/1 [00:00<?, ?it/s]\n                                     \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 89.60it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\u001b[A\n                                             \n\n                                     \n\u001b[A\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 23.04it/s]\n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 178.24it/s]\u001b[A\n\n                                              \u001b[A\n                                             \n\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 14.95it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1/1 [00:00<00:00, 14.88it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 180.87it/s]\n\n  0%|          | 0/4 [00:00<?, ?it/s]\n100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 4/4 [00:00<00:00, 186.41it/s]\n.\n----------------------------------------------------------------------\nRan 1 test in 8.295s\n\nOK\n"
+    },
+    {
+      "command": "scripts/build_team_notebook.py --check",
+      "returncode": 0,
+      "output": "TEAM_LAUNCHER_CURRENT\n"
+    }
+  ],
+  "tested_source_sha256": {
+    "code/test_independent_protocol.py": "76b78da9e5be1c87a53abd3d249208d656512fe82ba5bc66915aeaa4ede3d111",
+    "code/run_diagnostics.py": "e8ae776c60be324794ded2fb7adb6161ef131fe96daf18364f33f2593233d8a1",
+    "code/test_protocol.py": "8840c45b0eea7848dcc1a318c9e32bd64bce01c44658514e91bb2b021d258a83",
+    "code/probe.py": "5c37af5ebd0de4fc91208a48036c1a548c190d2615ee8c9bc60d9911cd9ce97a",
+    "code/test_activation_extension.py": "d876ca3b845d0ff1a82e9c068eb9ea65d6f61dd5ae86ec5736a4b0bff81e71ac",
+    "code/common.py": "58f3359daf6f363e634b71e6ff1acbb9125ed3b6c73d3a290d0f10ee66fbf6b7",
+    "code/restore_independent_backup.py": "23759ba61079d210518f4a9dfabaae141a3345fb8ee85d4f09f8bb80b330e9ad",
+    "code/robustness_controls.py": "67c07a1e74d7b41979083b05bd6482bdde1d597567ed4f46346cd80049abc9e0",
+    "code/summarize_independent_study.py": "af109c6d9356278fbd8f30e24c496d3f082387ee8f5f5c5685ee3cd6a3d217f1",
+    "code/independent_baselines.py": "fdd5391ff32eed815438b0bd4b849d1e87931fad3bcf6a723da2597a5504a831",
+    "code/independent_protocol.py": "fbb3314f6b5ab631ee612ad7201d3c88d6b010460e1fa49f632274b0c4af89c3",
+    "code/run_bank.py": "dc83f26bf8ccc8db299e79efdb4d9bb77e0e0b9856ce1f3d627620ccf6262597",
+    "code/test_robustness_controls.py": "53b2ee4b3c209f9f34b5328f3947aca5ddba0bec762b8ba0e6c003a3fb07907a",
+    "code/test_math.py": "b751b9507e1eecd0d57fb99dfbef20dddb4e1d6d8172129ab6a4ae2579947a9c",
+    "code/test_integration.py": "7253148fe54dce80247cb0363022194c1f3f5ec1d0eeff5949fafada5d5909e6",
+    "code/summarize_robustness.py": "0022a09d1b66dc804b14f3bf2a1594b05658ec243643b13e1644e5d0b892c5b1",
+    "code/activation_extension.py": "e4cbca747a7f716de1a9225a3c71244da268abe287b2d24e7a8881fb139341d5",
+    "code/evaluate.py": "611f1025be1f94f6b7c0b2bd91256912e1d96feea35e94818a6dd3eae6d94a5f",
+    "code/diagnose_router_headers.py": "fd12adbb6172855414f381fa1f2fbeadd77d6046a03def54b8748dba92e170b5",
+    "code/run_independent_study.py": "0b581117425299f0a86597868a98bbb177e2bf95f689b3e920ae2936f708b0d5",
+    "code/merge.py": "04328e83fd80eb5c57871ef4035eb3806f51692564b40ec996d6a4f994e1dfb9",
+    "code/train_lora.py": "2bd9f3fc07dfdff618474603fd2d217b3a29d44aaa2f3112b9366862e2da6700",
+    "code/benchmark_deployment.py": "56d32897e29e669a12fe41be28d603a26b01d40348edbdaddec63297a57a0be1",
+    "code/functional_merge/run_all.py": "04b3ce1b03fe4198c6890fb2b1d701328474cb35dc2db0ba0991823d1dcc3249",
+    "code/functional_merge/test_maths.py": "d33ebb5043e443957acd28725db0f6a56866749e2a27b3006c428fe04c74b299",
+    "code/functional_merge/run.py": "4abc000bead428cf759e2df444b5d4c7ce7ed3dc379603b8f1c54d7019cab706",
+    "code/functional_merge/maths.py": "646d4aab9eceaafe70157fb4d7c5c0da104927edc83da6db57e4853e6827f59e",
+    "code/transfer_check/summarize.py": "3f7b723c9cb39243b1a004e6443ecfee31a8fb4f4918a99094a4ae3f19ff191e",
+    "code/transfer_check/run.py": "d2b032247b1108b601dcc11510c0bd1145b8e4cf80b2997749154efe9d665455",
+    "code/router_v1/run.py": "c5c550d4a0dea0970aa0d205e2f763179f925d80832e70abd7dc6bf0de8f0544",
+    "code/selection_control/run.py": "bb770ea7330c1a94c2034682ee187f37ef5d916cb3a4560780feaf67f842be13",
+    "code/merge_study/plot.py": "5c10acc3dd64a6191b3b2fb6d6076a3858f0d3f7d89f613ecdb79f60a2ded442",
+    "code/merge_study/run.py": "982c7729cdcca15f1ae81021bd622a9f242791414dab58ae802687ca0d3ccd7e",
+    "code/merge_study/test_engine.py": "c7daa3d57f5c1034fdd573a36cc8f61a20551b95477ecb165342518bcbe035aa",
+    "code/merge_study/engine.py": "6f4d8eea22259a5f6c3025c769c694021f6ef8021ac3c3251692e2b1ff808150",
+    "code/merge_study/aggregate.py": "44c5e8db1e2cd3dc676e350656fab054c95b84f83e737c336f62c55be39bb06d",
+    "code/merge_study/replicate.py": "b9c8c935cdb2d13a3a3ac80417a89078e7cdc1f3f8c4ce06c3c874b7472e8de0",
+    "code/coefficient_merge/run_all.py": "a863d2c2fc6f09bed8fa3d671ecc3d83ad8397bc77066db684b8ce7bc43088be",
+    "code/coefficient_merge/run.py": "738b0764ee53e5230f8cac3b9fccbc49cf899684d459ea69ddbffa0cd11cc94b",
+    "code/coefficient_merge/core.py": "98aee9ad10524f45344aa198764c01acf630320de721abb527cf969cdf498085",
+    "code/coefficient_merge/test_core.py": "7ebb20c0a6d06168fa5c997fe63d9ff76b74bf6424fc0288ecf28b7f18014a1b",
+    "code/coefficient_merge/run_layer_ce_all.py": "c29088ac9d5b466b1deeff3302ec2d9fc82bd1bad3960dc6b607997c908ab0be",
+    "scripts/build_team_notebook.py": "6fc6aed896e4bede79f538cc8d90365cecc1d77aee49595278c54479a635943c"
+  }
+}

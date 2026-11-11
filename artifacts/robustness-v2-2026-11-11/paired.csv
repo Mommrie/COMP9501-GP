@@ -1,0 +1,7 @@
+seed,role,hidden_minus_ce,shuffled_minus_ce,hidden_minus_shuffled,confidence_minus_taskid_accuracy,benefit_minus_taskid_accuracy
+42,internal,0.023291442155122466,0.02754774492950951,-0.004256302774387044,0.0,0.0
+43,internal,0.0,0.0,0.0,0.0,0.0
+44,internal,0.0,0.0,0.0,0.0,0.0
+42,official,0.016626455324409872,0.01693521347868121,-0.000308758154271338,0.0,0.0
+43,official,0.0,0.0,0.0,0.0,0.0
+44,official,0.0,0.0,0.0,0.0,0.0

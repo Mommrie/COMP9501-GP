@@ -1,0 +1,41 @@
+{
+  "state": "passed",
+  "checks": [
+    {
+      "folder": "code",
+      "pattern": "test_activation_extension.py",
+      "returncode": 0,
+      "output": "...\n----------------------------------------------------------------------\nRan 3 tests in 0.613s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_independent_protocol.py",
+      "returncode": 0,
+      "output": "..\n----------------------------------------------------------------------\nRan 2 tests in 0.081s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_math.py",
+      "returncode": 0,
+      "output": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.500s\n\nOK\n"
+    },
+    {
+      "folder": "code",
+      "pattern": "test_protocol.py",
+      "returncode": 0,
+      "output": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "folder": "code/coefficient_merge",
+      "pattern": "test_core.py",
+      "returncode": 0,
+      "output": "/content/COMP9501-GP/code/coefficient_merge/test_core.py:10: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.\nConsider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)\n  x=torch.randn(7,5);weight=base.weight.detach()+sum(float(coeff.weights()[0,i]*coeff.gain())*(b@a)*2 for i,(a,b) in enumerate(factors))\n.\n----------------------------------------------------------------------\nRan 1 test in 0.601s\n\nOK\n"
+    },
+    {
+      "folder": "code/merge_study",
+      "pattern": "test_engine.py",
+      "returncode": 0,
+      "output": ".\n----------------------------------------------------------------------\nRan 1 test in 4.372s\n\nOK\n"
+    }
+  ]
+}

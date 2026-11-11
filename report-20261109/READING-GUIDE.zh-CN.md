@@ -4,7 +4,7 @@
 
 原proposal的问题是：四个任务各有LoRA adapter，平均合并会不会损伤能力？能否利用功能响应来决定合并，必要时按输入选择expert？我们已经把它实现为一套有对照的研究流程。现在要分别回答“相似度是否有预测价值”“功能目标是否有增量帮助”“路由是否真的选到更有用模型”，不能把它们当成同一个已证实的结论。
 
-三seed强化实验已于11月11日在云端L4完整复核，并从保存的预测独立重算指标。先读 [最终数值与解释](ACTUAL-RESULTS.zh-CN.md)，再看本页机制、[英文报告](report.pdf)和[逐页素材](PRESENTATION-MATERIALS.zh-CN.md)。A100历史阶段与L4新控制分别报告；恢复重跑不增加seed数。
+目前已经有完整v3实验和成本诊断；本轮新增直接hidden与best-expert实验已在云端L4启动，12个teacher恢复校验和15项开跑检查通过，尚待完整三seed结果。A100未获得分配，所有新增FP32控制使用同一L4，旧A100结果保持分开。不要把执行中的结果读成已经完成的结论。阅读顺序建议：本页 → [实验/主张映射](EXPERIMENT-AND-CLAIM-MAP.zh-CN.md) → [现有v3结果](../PART2-RESULTS-V3-2026-11-09.zh-CN.md) → [英文报告源码](report.tex) → [逐页素材](PRESENTATION-MATERIALS.zh-CN.md)。
 
 ## 1. Proposal是研究假设，不是必须兑现的胜率承诺
 
@@ -82,4 +82,4 @@ Part1的CSA帮助理解结构化表示和资源预算；当前Part2代码没有�
 4. `merge_study/engine.py`：不可变base快照重建状态、单独换head，回答是否累计叠加错权重。
 5. `activation_extension.py`：hidden loss、shuffle、router目标、锁定选择后final，以及梯度/数值/ID检查。
 
-更多逐问英文短答见 [实现Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md)。实际数值、配对差异及英文结果口答已补入 [最终结果精讲](ACTUAL-RESULTS.zh-CN.md)；行政信息仍以核对后的课程通知为准。
+更多逐问英文短答见 [实现Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md)。新实验执行后，应把实际数值补入讲稿；任何尚未核验的内容保留“待核对”，不提前写成优势。

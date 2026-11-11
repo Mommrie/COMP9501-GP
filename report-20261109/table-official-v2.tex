@@ -1,0 +1,18 @@
+\begin{table}[H]\centering\small
+\caption{Locked methods on cleaned official GLUE validation. Prior historical exploration remains disclosed; oracle uses final GT.}
+\begin{tabular}{lrrr}\toprule
+Method & Native score & Mean accuracy & Worst accuracy\\\midrule
+Individual / task ID & 0.7618 $\pm$ 0.0153 & 0.8225 $\pm$ 0.0164 & 0.7353 $\pm$ 0.0623\\
+Average & 0.5738 $\pm$ 0.0178 & 0.7111 $\pm$ 0.0033 & 0.5391 $\pm$ 0.0205\\
+Task Arithmetic & 0.5874 $\pm$ 0.0170 & 0.7025 $\pm$ 0.0063 & 0.5571 $\pm$ 0.0149\\
+TIES & 0.6007 $\pm$ 0.0095 & 0.7024 $\pm$ 0.0066 & 0.5223 $\pm$ 0.0290\\
+DARE+TA & 0.5952 $\pm$ 0.0277 & 0.6971 $\pm$ 0.0120 & 0.5387 $\pm$ 0.0578\\
+CE FP32 & 0.7050 $\pm$ 0.0220 & 0.7803 $\pm$ 0.0174 & 0.6750 $\pm$ 0.0719\\
+Selected aligned H & 0.7106 $\pm$ 0.0207 & 0.7807 $\pm$ 0.0179 & 0.6703 $\pm$ 0.0662\\
+Selected shuffled H & 0.7107 $\pm$ 0.0208 & 0.7806 $\pm$ 0.0177 & 0.6703 $\pm$ 0.0662\\
+Source router & 0.7552 $\pm$ 0.0137 & 0.8178 $\pm$ 0.0153 & 0.7316 $\pm$ 0.0646\\
+Expert router & 0.6571 $\pm$ 0.0219 & 0.7565 $\pm$ 0.0167 & 0.6462 $\pm$ 0.0407\\
+Confidence gate & 0.7618 $\pm$ 0.0153 & 0.8225 $\pm$ 0.0164 & 0.7353 $\pm$ 0.0623\\
+Benefit gate & 0.7618 $\pm$ 0.0153 & 0.8225 $\pm$ 0.0164 & 0.7353 $\pm$ 0.0623\\
+Oracle (final GT) & 0.8819 $\pm$ 0.0165 & 0.9150 $\pm$ 0.0146 & 0.8437 $\pm$ 0.0503\\
+\bottomrule\end{tabular}\end{table}

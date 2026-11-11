@@ -11,3 +11,5 @@ This folder contains recorded result JSON, experiment plans and generated figure
 Runtime package versions help reproduce the original runs. On the team branch, team-launcher identifies the embedded Colab code snapshot. Checkpoint files are shared separately through the assets manifest.
 
 For a new experiment, a separate output name plus its config, seed and useful context is usually enough to get started. Keep prior results so comparisons remain understandable. Personal tooling preferences and local migration/check logs live outside this repository.
+
+Latest follow-up / 最新补强：[results and Q&A](../report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。

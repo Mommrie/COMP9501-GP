@@ -13,3 +13,5 @@
 environment/runtime 记录帮助解释原运行条件；team-launcher 标识 Colab 中的代码快照。权重文件通过 assets 清单单独共享。本机迁移、打包检查日志和个人工具偏好不放在这里。
 
 新实验用新名字，附上配置、seed、运行命令和结果背景，后续需要再补详细分析即可。原始结果与负结果保留，避免比较时混用不同设置。
+
+Latest follow-up / 最新补强：[results and Q&A](../report-20261109/ROBUSTNESS-RESULTS.zh-CN.md)；三 seed、λ敏感性、匹配 shuffled、保守 gate、2,580条去重 validation。真实响应未超过 shuffled，gate 均回退原专家；不声称盲测或部署增益。

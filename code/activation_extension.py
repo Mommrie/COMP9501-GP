@@ -27,6 +27,12 @@ def hidden_loss(actual,target,floor):
     return ((actual.float()-target.float()).square().mean(-1)/target.float().square().mean(-1).clamp_min(floor)).mean()
 
 
+def profile_hidden_weight(plan,profile):
+    value=float(profile.get('hidden_weight',plan['hidden_weight'])) if profile.get('hidden',True) else 0.
+    if not np.isfinite(value) or value<0:raise ValueError('Hidden weight must be finite and nonnegative')
+    return value
+
+
 def derangement(n,seed):
     if n<2:raise ValueError('At least two examples are required')
     rng=np.random.default_rng(seed)
@@ -92,6 +98,10 @@ def run_seed(study,out,plan,seed):
                     h,l,y=collect(t,engine.banks[expert],rows);assert np.array_equal(y,labels);hs.append(h);ls.append(l)
                 cache[role][t]={'base':base,'hidden':np.stack(hs),'logits':np.stack(ls),'labels':labels}
                 ids[role][t]=dataset_manifest(t,cfg,role,0)['sample_ids']
+            if plan.get('save_role_cache',False):
+                path=out/(role+'-cache.npz')
+                np.savez_compressed(path,**{t+'__'+key:cache[role][t][key] for t in tasks for key in ['base','logits','labels']})
+                status.setdefault('role_cache_sha256',{})[role]=hashlib.sha256(path.read_bytes()).hexdigest()
         load_role('coefficient_fit');load_role('coefficient_selection')
         for t in tasks:
             teacher=read_config(bank/t/'run.json')
@@ -158,7 +168,7 @@ def run_seed(study,out,plan,seed):
                     response=pooled(result.hidden_states[-1],inp['attention_mask'])-base
                     hm=hidden_loss(response,target,plan['hidden_energy_floor'])
                     ce=torch.nn.functional.cross_entropy(result.logits.float(),labels) if profile['ce'] else hm.new_zeros(())
-                    loss=ce+(plan['hidden_weight'] if profile.get('hidden',True) else 0.)*hm+plan['penalty']*coeff.penalty()
+                    loss=ce+profile_hidden_weight(plan,profile)*hm+plan['penalty']*coeff.penalty()
                 if not torch.isfinite(loss):raise ValueError('Non-finite objective')
                 loss.backward();torch.nn.utils.clip_grad_norm_(coeff.parameters(),1.)
                 if step==1:

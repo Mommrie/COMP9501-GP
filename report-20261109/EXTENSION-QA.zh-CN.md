@@ -1,6 +1,6 @@
 # 强化实验：教授最可能追问的机制问题
 
-数值及逐seed差异见 [最终结果精讲](ACTUAL-RESULTS.zh-CN.md)。以下覆盖固定设计及实际负结果。
+数值口答以最终新增结果表为准；以下解释固定设计，不预设方法获胜。
 
 ## 1. 为什么又加FP32 CE？
 
@@ -73,21 +73,3 @@ expert router的task one-hot使用的是当前协议本来就提供的信息。s
 > We distinguish implementation success from hypothesis support. Learned static mixtures can improve the fixed weight-space grid in this case study, while matched controls determine whether the proposed functional signal adds anything beyond supervision, capacity or target distribution. We report the measured outcome and the conditions under which the original expectation fails.
 
 如果新对照真的有一致正结果，也只能在这套固定设置里报告；没有运行现代完整对齐基线、更多模型和独立外部目标，不能升级为SOTA结论。
-
-## 13. 都没有超过CE，项目是不是失败了？
-
-> The original improvement claim was a hypothesis. We implemented and tested it with matched controls. Learned mixtures outperform our fixed grid, while functional targets do not add benefit beyond CE here. This separates a useful parameterization from an unsupported mechanism claim.
-
-CE+hidden相对CE均值-0.073280、三seed均负。不要改称方法全局无效，也不要隐去这个控制；这是本设置的经验边界。
-
-## 14. Oracle那么高，为什么router反而差？
-
-> Oracle complementarity does not imply that our available features predict expert benefit. Our router is trained on minimum-NLL expert identities, and its errors harm more own-expert decisions than they repair. Predicting benefit conservatively is a future direction, not an established result.
-
-本次expert router相对task-ID为-6.934个百分点，oracle headroom为10.026点。拟合标签和额外expert前向也要计入预算。
-
-## 15. 恢复重跑是否算六seed？
-
-> No. We reused the same twelve teachers and the same three seeds after a runtime loss. The repeat checks recovery and reproducibility; it does not provide three additional independent training replications.
-
-原partial有CRC和manifest SHA，但整包不完整；本次完整预测另行归档。更多独立数据划分和模型仍未完成，不能由重复执行替代。

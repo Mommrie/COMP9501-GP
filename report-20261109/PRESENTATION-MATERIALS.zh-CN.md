@@ -54,61 +54,40 @@
 
 **追问准备：** 旧calibration重切不能恢复teacher选择独立性；新扩展看到过v3 final，因此诚实称探索性。
 
-## 第6页：主结果与真正的对照（65秒）
+## 第6页：更大评价区上的主结果（65秒）
 
-**图：** [三seed方法比较](../artifacts/independent-v3-2026-11-09/main-comparison.png)。空间不足时主表保留Individual、Average、TIES、Layer CE、Layer KL，完整八方法放备份页。
+**主图：** [官方静态方法比较](../artifacts/robustness-v2-2026-11-11/official-static.png)。标注872/408/277/1023条，known task head，三seed mean±sample SD；任务/官方split历史探索过。
 
-| 方法 | 主指标均值±sample SD |
-|---|---:|
-| Individual | 0.7695±0.0114 |
-| Average | 0.5578±0.0246 |
-| TIES（本实现） | 0.6146±0.0240 |
-| Layer CE | 0.7132±0.0225 |
-| Layer KL | 0.6987±0.0080 |
+| 方法 | Native均值±sample SD | Mean accuracy | Worst accuracy |
+|---|---:|---:|---:|
+| Individual / task-ID | 0.7618 ± 0.0153 | 0.8225 ± 0.0164 | 0.7353 ± 0.0623 |
+| Average | 0.5738 ± 0.0178 | 0.7111 ± 0.0033 | 0.5391 ± 0.0205 |
+| TA | 0.5874 ± 0.0170 | 0.7025 ± 0.0063 | 0.5571 ± 0.0149 |
+| TIES | 0.6007 ± 0.0095 | 0.7024 ± 0.0066 | 0.5223 ± 0.0290 |
+| DARE+TA | 0.5952 ± 0.0277 | 0.6971 ± 0.0120 | 0.5387 ± 0.0578 |
+| CE FP32 | 0.7050 ± 0.0220 | 0.7803 ± 0.0174 | 0.6750 ± 0.0719 |
+| Selected aligned H | 0.7106 ± 0.0207 | 0.7807 ± 0.0179 | 0.6703 ± 0.0662 |
+| Selected shuffled H | 0.7107 ± 0.0208 | 0.7806 ± 0.0177 | 0.6703 ± 0.0662 |
 
-> Learned coefficients improve our fixed weight-space grid, but the same-capacity CE control exceeds teacher-output KL on average. KL is higher in only one of three paired training seeds. This means the improvement over averaging cannot be uniquely attributed to teacher-output supervision, and both learned merges remain below individual models.
+> On the larger cleaned validation split, CE reaches 0.7050 native score versus 0.6007 for our TIES variant. Selected aligned and shuffled grids reach 0.7106 and 0.7107, while individual remains at 0.7618. Learning coefficients helps this pipeline, but the matched shuffle result prevents a unique activation claim.
 
-**脚注：** native mean，不是完整GLUE score；CE还使用fit GT；不同baseline总监督/计算预算不同。
+**备份：** 原v3内部CE 0.7132/KL 0.6987与固定基线完整表；两个split不能直接作单因素归因。
 
-## 第7页：直接activation检验（80秒）
+## 第7页：λ敏感性与匹配控制（80秒）
 
-**放什么：** 新扩展五profile：FP32 CE、hidden-only、CE+hidden、CE+shuffled hidden、global hidden。新增结果来自11月11日L4完整复核，不从旧KL表推断。
+**主图：** [λ曲线](../artifacts/robustness-v2-2026-11-11/lambda-sensitivity.png)。同时展示selection与已探索internal final，λ=0即CE。讲清“固定λ曲线”和“每seed按selection选λ的pipeline”是不同汇总。
 
-**关键图示：** 同一输入的teacher delta连到student；对照中换成同任务另一条输入的delta。显示“same targets, broken pairing”。
+> Unit hidden weight is too strong in our initial setting. We predeclare smaller weights and a matched shuffled grid. Both grids choose 0.01 only in seed 42 and return to CE in the other seeds. The aligned pipeline gains about 0.0055 native score on cleaned validation, but the shuffled grid is slightly higher. This does not isolate a benefit from correct response pairing.
 
-> Output KL does not directly test hidden activation information. We therefore add a normalized hidden-response objective and a fixed within-task shuffle control. CE plus real and shuffled responses share precision, capacity, and update schedule. The comparison tests whether input correspondence contributes beyond the response distribution. The global variant also probes the role of layer-wise flexibility.
+**追问准备：** 相对单CE增加selection候选；三seed不作显著性宣称；shuffling也打乱class对应，不是只去掉细粒度语义。
 
-| 方法 | Native 主指标 |
-|---|---:|
-| CE FP32（97参数） | 0.7130 ± 0.0211 |
-| Hidden-only（97） | 0.5901 ± 0.0259 |
-| CE + hidden（97） | 0.6397 ± 0.0281 |
-| CE + shuffled（97） | 0.6195 ± 0.0056 |
-| Hidden-only（5） | 0.5841 ± 0.0297 |
+## 第8页：保守gate和真实回退（75秒）
 
-> CE plus aligned hidden is lower than FP32 CE by 0.0733 native score on average, with no positive seed. Its advantage over shuffled targets is inconsistent and does not establish benefit beyond CE.
+**主图：** [官方路由比较](../artifacts/robustness-v2-2026-11-11/official-routing.png) 或 [帮助/误伤](../artifacts/robustness-v2-2026-11-11/official-routing-impact.png)。主讲优先五行：task-ID、expert、confidence、benefit、GT oracle；完整表留备份。
 
-**结论呈现规则：** 先讲真实vs同精度CE，再讲真实vsshuffled；若无提升，直接说明没有支持额外收益。MSE下降不能代替分类质量改善。新数据和图表必须标“exploratory extension”。
+> We add a confidence gate and a direct correctness-gain regressor, each with an always-own fallback. Selection requires native score and accuracy floors; it is not a final guarantee. Both families select task-ID in all three seeds. Some Ridge candidates meet the floors but tie the reference, so the switching and baseline tie rules apply. The result rejects unnecessary routing rather than establishing a new routing advantage.
 
-## 第8页：Router究竟在预测什么（75秒）
-
-**放什么：** source ID target与minimum-NLL expert target两个不同标签；比较task-ID、source router、expert router、random、GT oracle。
-
-> Recognizing an input's source is different from selecting the expert that helps its prediction. We compare a source classifier with a performance-oriented router trained on the best expert under fit labels. Because the task head is known, direct task-ID selection is the required baseline. A final-label oracle shows the bank's accuracy ceiling, not a deployable result.
-
-| 方法 | Mean accuracy | Worst-task accuracy |
-|---|---:|---:|
-| Task-ID / own expert | 0.8252 ± 0.0083 | 0.7487 ± 0.0137 |
-| Source router | 0.8232 ± 0.0083 | 0.7448 ± 0.0137 |
-| Expert router | 0.7559 ± 0.0051 | 0.6497 ± 0.0239 |
-| Random | 0.6875 ± 0.0220 | 0.5781 ± 0.0295 |
-| Oracle（使用 final GT） | 0.9255 ± 0.0025 | 0.8685 ± 0.0090 |
-
-> The expert router is 6.93 accuracy points below task-ID selection, while the final-label oracle has 10.03 points of headroom. This is a failure to learn useful choices, despite complementary experts.
-
-**Oracle只作分析上界。** 图的oracle用灰色/虚线，显著标注“uses final GT”。同时讲helps/harm比例，而不是只看来源accuracy。
-
-**追问准备：** expert router需要fit GT和离线四expert前向；本轮缓存评估不是部署耗时。
+**实际数值：** 官方macro accuracy：task-ID及两个回退gate82.253%，expert75.647%，oracle91.497%。Oracle使用final GT；缓存四expert离线结果不是部署耗时。两个gate相同柱高来自always-own，不能称新方法获胜。
 
 ## 第9页：部署成本与真实存储参照（50秒）
 
@@ -128,15 +107,17 @@
 
 **三项贡献：** 真实实现及可复现协议；把功能信号/容量/来源识别拆开对照；实测质量与成本权衡。
 
-**三项限制：** 一小模型四binary tasks；三seed同一划分且历史探索；已知task head、未建立OOD/隐藏信号独特优势。
+**三项限制：** 一小模型四binary tasks；三seed同一划分且历史探索；已知task head、未建立OOD/隐藏信号独特优势（按最终结果更新最后一句）。
 
 > We contribute a controlled implementation and evidence about when functional proxies are useful or misleading in this setting. Layer-wise merging and distillation have prior work. The limited model, tasks, training seeds and known-head protocol restrict claims about novelty and generalization.
 
 ## 第12页：结论（35秒）
 
-> Our study shows that learning a small static mixture can recover part of the averaging loss. The matched-capacity comparison is essential: teacher-output KL does not outperform CE on average. Direct hidden matching is 0.0733 native score below FP32 CE, and expert routing is 6.93 accuracy points below task-ID selection. These results delimit the original hypothesis and show why functional proxies and oracle complementarity need explicit task-quality controls.
+> Our study shows that learning a small static mixture can recover part of the averaging loss. The matched-capacity comparison is essential: teacher-output KL does not outperform CE on average. The direct hidden and expert-routing controls further test the proposal's mechanism. We report the resulting evidence and limitations, together with a reproducible pipeline, rather than equating a high proxy score with a successful merge.
 
-以上结论已填入完整复核数值；逐任务差异、帮助/损害比例和30秒口答见 [最终结果精讲](ACTUAL-RESULTS.zh-CN.md)。
+最后两句在新增实验核验后，用最终报告给出的明确结果替换概括表述。不要保留未执行实验的预计结论。
+
+第5页数据图另加锁定selection后的官方validation支路：2600原例→去16个train完整tuple重叠及4个区内重复→2580例。它历史上被探索过，不标新盲测。
 
 ## 备份页与代码讲解接口
 
@@ -147,3 +128,7 @@
 5. [26组中英Q&A](../PART2-IMPLEMENTATION-QA.zh-CN.md)，新增实验的精确结果口答以最终阅读指南为准。
 
 需要组员提供/确认的行政项：最终成员及讲述分工、Group13展示场次、是否有正式报告格式、提交/代码访问安排。不要填猜测的人名、时间或提交回执。
+
+## 路由图表的指标提醒
+
+`official-routing.png` 左图是 native task score：task-ID/gates 0.7618，expert 0.6571，oracle 0.8819。讲稿中的82.253%、75.647%、91.497%是另一个指标 task-macro accuracy，不能直接用作该图柱值。帮助/损害图也按任务宏平均，switch rate按样本加权。

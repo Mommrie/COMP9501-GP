@@ -27,3 +27,5 @@ pilot 只用于验证流水线，正式实验需要扩大训练量并运行 3 �
 # 外部数据迁移检查
 
 `transfer-check.json`：五种已固定方法、三 adapter seeds，IMDb / PAWS test 各 label-blind 抽 512 条；只复用 SST2 / MRPC 头，不在目标域调参。
+
+`activation-sensitivity-v2.json` adds aligned/shuffled weights .01 and .1, reusing completed 0/1 endpoints. `routing-safety-v2.json` freezes fallback thresholds, Ridge grid, selection constraints and cleaned-official evaluation. These are exploratory extensions after earlier final inspection; see the [protocol](../report-20261109/ROBUSTNESS-PROTOCOL.zh-CN.md).
